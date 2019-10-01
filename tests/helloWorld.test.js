@@ -1,5 +1,10 @@
-const routers = require('../routers/helloWorld');
+const app = require('../app');
+const request = require('supertest')
 
-test('POST Hello World!', () => {
-
-});
+describe('Get Endpoints', () => {
+    it('should get HelloWorld!', async () => {
+         await request(app)
+            .get('/api/helloworld')
+            .expect(200)
+    })
+})

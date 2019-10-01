@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "node_modules/.bin/env-cmd -f ./config/test.env jest --watch --runInBand",
     "dev": "node_modules/.bin/env-cmd -f ./config/dev.env nodemon index.js"
   },
   "author": "",
@@ -19,6 +19,13 @@
   "devDependencies": {
     "env-cmd": "^10.0.1",
     "jest": "^24.9.0",
-    "nodemon": "^1.19.2"
+    "nodemon": "^1.19.2",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules"
+    ]
   }
 }

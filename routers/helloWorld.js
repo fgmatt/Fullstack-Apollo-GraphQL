@@ -1,8 +1,10 @@
 const express = require('express');
-const router = new express.Router();
+const cors = require('cors')
+const corsOptions = require('./cors/cors')
+const router = express.Router();
 
-router.get('api/helloworld', function(req, res) {
-    res.send('Hello World!');
+router.get('/helloworld', cors(corsOptions), function(req, res) {
+    res.status(200).send('Hello World!');
 });
 
 module.exports = router;
