@@ -1,4 +1,4 @@
-import resolvers from '../../resolvers/helloWorldResolver';
+import * as Resolvers from '.../resolvers/helloWorldResolver'
 
 export const helloWorldTest = () => {
     const obj = {

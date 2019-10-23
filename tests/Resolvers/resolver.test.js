@@ -1,7 +1,7 @@
 import glob from 'glob';
 import path from 'path';
 
-const basePath = path.join(process.cwd(), '');
+const basePath = path.join(process.cwd(), './');
 
 describe('Resolvers', () => {
   // Find all our resolver files

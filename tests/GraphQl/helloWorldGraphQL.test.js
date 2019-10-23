@@ -1,10 +1,9 @@
-// import { ApolloServer } from 'apollo-server-express';
-// import {
-//     addMockFunctionsToSchema,
-//     mockServer
-//   } from 'graphql-tools';
-const { ApolloServer } = require('apollo-server-express');
-const { addMockFunctionsToSchema, mockServer } = require('graphql-tools')
+import { ApolloServer } from 'apollo-server-express';
+import {
+    addMockFunctionsToSchema,
+    mockServer
+  } from 'graphql-tools';
+
   
   const testCaseA = {
     id: 'Test case A',
