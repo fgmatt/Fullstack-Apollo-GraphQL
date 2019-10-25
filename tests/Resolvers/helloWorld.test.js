@@ -8,7 +8,7 @@ export const helloWorldTest = () => {
     const args = {};
     const ctx = {};
 
-    const output = resolvers.name(obj, args, ctx);
+    const output = Resolvers.name(obj, args, ctx);
 
     expect(output).toEqual('Hello World!');
 }
