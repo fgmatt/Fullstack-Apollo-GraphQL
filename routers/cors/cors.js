@@ -1,6 +1,6 @@
-const port = process.env.PORT
+const port = process.env.PORT;
 
-const whitelist = ['localhost:' + port]
+const whitelist = ['localhost:' + port];
 const corsOptions = {
     origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1 || !origin) {
