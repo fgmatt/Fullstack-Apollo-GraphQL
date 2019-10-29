@@ -1,5 +1,4 @@
 # Backend-Grundstruktur
-Ein einfaches NodeJS-Backend mit REST-Endpoint und ApolloServer mit GraphQl.
 A small NodeJS-Backend with REST-Endpoint and ApolloServer with GraphQl.
 
 ## Getting Started
