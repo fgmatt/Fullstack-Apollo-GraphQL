@@ -3,8 +3,8 @@ const { ApolloServer } = require('apollo-server-express');
 const bodyParser = require('body-parser');
 require('./db/connect');
 const helloWorldRouter = require('./routers/helloWorld');
-const typeDefs = require('./typeDefs/helloWorldDef');
-const resolvers = require('./resolvers/helloWorldResolver');
+const typeDefs = require('./graphQL/typeDefs/helloWorldDef');
+const resolvers = require('./graphQL/resolvers/helloWorldResolver');
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
