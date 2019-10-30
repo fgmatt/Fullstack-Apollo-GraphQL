@@ -1,52 +1,46 @@
-import { ApolloServer } from 'apollo-server-express';
-import {
-    addMockFunctionsToSchema,
-    mockServer
-  } from 'graphql-tools';
-
+// const { makeExecutableSchema, addMockFunctionsToSchema, mockServer } = require('apollo-server-express')
+//   const testCaseA = {
+//     id: 'Test case A',
+//     query: `
+//       query {
+//         hello 
+//       }
+//     `,
+//     variables: { },
+//     context: { },
+//     expected: { data: { hello: 'Hello World!'} }
+//   };
   
-  const testCaseA = {
-    id: 'Test case A',
-    query: `
-      query {
-        hello 
-      }
-    `,
-    variables: { },
-    context: { },
-    expected: { data: { hello: 'Hello World!'} }
-  };
-  
-  describe('Schema', () => {
-    // Array of case types
-    const cases = [testCaseA];
+//   describe('Schema', () => {
+//     // Array of case types
+//     const cases = [testCaseA];
     
-    const mockSchema = ApolloServer({ typeDefs });
+//     const mockSchema = makeExecutableSchema({ typeDefs });
   
-    // Here we specify the return payloads of mocked types
-    addMockFunctionsToSchema({
-      schema: mockSchema,
-      mocks: {
-        String: () => 'Hello World!',
-      }
-    });
+//     // Here we specify the return payloads of mocked types
+//     addMockFunctionsToSchema({
+//       schema: mockSchema,
+//       mocks: {
+//         String: () => 'Hello World!',
+//       }
+//     });
   
-    test('has valid type definitions', async () => {
-      expect(async () => {
-        const MockServer = mockServer(typeDefs);
+//     test('has valid type definitions', async () => {
+//       expect(async () => {
+//         const MockServer = mockServer(typeDefs);
   
-        await MockServer.query(`{ __schema { types { name } } }`);
-      }).not.toThrow();
-    });
+//         await MockServer.query(`{ __schema { types { name } } }`);
+//       }).not.toThrow();
+//     });
   
-    cases.forEach(obj => {
-      const { id, query, variables, context: ctx, expected } = obj;
+//     cases.forEach(obj => {
+//       const { id, query, variables, context: ctx, expected } = obj;
   
-      test(`query: ${id}`, async () => {
-        return await expect(
-          graphql(mockSchema, query, null, { ctx }, variables)
-        ).resolves.toEqual(expected);
-      });
-    });
+//       test(`query: ${id}`, async () => {
+//         return await expect(
+//           graphql(mockSchema, query, null, { ctx }, variables)
+//         ).resolves.toEqual(expected);
+//       });
+//     });
   
-  });
+//   });
