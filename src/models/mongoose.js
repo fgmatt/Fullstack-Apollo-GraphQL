@@ -1,7 +1,14 @@
-const philosophersSchema = require('./philosophers.philosophers');
-const scientistsSchema = require('./scientists.scientists');
+const mongoose = require('mongoose');
+const philosophersSchema = require('./schemas/philosophers');
+const scientistsSchema = require('./schemas/scientists');
 const usersSchema = require('./schemas/users');
 
 const Philosophers = mongoose.model('Philosophers', philosophersSchema);
 const Scientists = mongoose.model('Scientists', scientistsSchema);
-const users = mongoose.model('Users', usersSchema);
+const User = mongoose.model('Users', usersSchema);
+
+module.exports = {
+    Philosophers,
+    Scientists,
+    User
+};
