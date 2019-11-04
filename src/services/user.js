@@ -1,4 +1,5 @@
-const createUser = require('./createUser')
+const createUser = require('./createUser');
+const findByUsername = require('./filterUser');
 
 var example = {
     username: 'Nodemon',
@@ -30,5 +31,6 @@ var example3 = {
 createUser(example);
 createUser(example2);
 createUser(example3);
+findByUsername('lostofmana13');
 
 
