@@ -18,7 +18,17 @@ var example2 = {
     password: 'hash123$$'
 }
 
+var example3 = {
+    username: 'lostofmana13',
+    firstname: 'Marina',
+    sirname: 'Mirota',
+    email: 'marina@mirota.com',
+    phone: '011 666 22 33',
+    password: 'hash123$$_43'
+}
+
 createUser(example);
 createUser(example2);
+createUser(example3);
 
 
