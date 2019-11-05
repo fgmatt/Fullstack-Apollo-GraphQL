@@ -4,6 +4,7 @@ require('./db/connect');
 const helloWorldRouter = require('./routers/helloWorld');
 const server = require('./graphQL/apollo-server');
 require('./services/user');
+require('./jwt/jwt');
 
 const app = express();
 server.applyMiddleware({ app });
