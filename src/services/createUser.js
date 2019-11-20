@@ -1,4 +1,4 @@
-const { User } = require('../models/mongoose')
+const { User } = require('../models/mongoose');
 
 function createUser(user) {
     User.create(

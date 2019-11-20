@@ -9,6 +9,14 @@ Install the npm packages with
 ```
 npm install
 ```
+### Initialise the database
+In package.json in the first document under *script* it has a db script.
+Modify the Url to the path of your MongoDB application to execute. 
+The value of *-dbpath* is the path you store your data.
+path you want store yor data. You can run it with
+```
+npm run db
+```
 
 ### Create .env files
 Create a dev.env file with the variables PORT and URL_MONGODB

@@ -28,9 +28,20 @@ var example3 = {
     password: 'hash123$$_43'
 }
 
+var ExampleCreateUser = {
+    username: 'janusoftheday',
+    firstname: 'Mirco',
+    sirname: 'Janus',
+    email: 'janus@moonday.ch',
+    phone: '011 445 43 23',
+    password: 'gettibettiuserofthemoon'
+}
+
 createUser(example);
 createUser(example2);
 createUser(example3);
 findByUsername('lostofmana13');
+
+module.exports = ExampleCreateUser;
 
 

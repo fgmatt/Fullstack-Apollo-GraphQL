@@ -6,7 +6,6 @@ const { port } = require('../keys/keys')
 const server = new ApolloServer({ 
     typeDefs, 
     resolvers, 
-    playground: { endpoint: `http://localhost:${port}/playground`} 
 });
 
 module.exports = server;
