@@ -1,4 +1,4 @@
-const createUser = require('./createUser');
+const createUser = require('./authentication');
 const findByUsername = require('./filterUser');
 
 var example = {
@@ -37,10 +37,19 @@ var ExampleCreateUser = {
     password: 'gettibettiuserofthemoon'
 }
 
-createUser(example);
-createUser(example2);
-createUser(example3);
-findByUsername('lostofmana13');
+// var CreateUserBody = {
+//     username: req.body.username,
+//     firstname: req.body.firstname,
+//     sirname: req.body.sirname,
+//     email: req.body.email,
+//     phone: req.body.phone,
+//     password: req.body.password
+// }
+
+// createUser(example);
+// createUser(example2);
+// createUser(example3);
+// findByUsername('lostofmana13');
 
 module.exports = ExampleCreateUser;
 

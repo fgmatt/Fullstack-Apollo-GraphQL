@@ -9,5 +9,6 @@ const payload = {
 };
 
 var token = jwt.sign(payload, jwt_secret);
-console.log(token)
+
+module.exports = token;
 

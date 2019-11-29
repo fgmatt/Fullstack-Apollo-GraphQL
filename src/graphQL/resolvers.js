@@ -1,4 +1,4 @@
-const createUser = require('../services/createUser');
+const auth = require('../services/authentication');
 const ExampleCreateUser = require('../services/user');
 const filterUser = require('../services/filterUser');
 
@@ -10,13 +10,16 @@ const resolvers = {
             return 'Hello world!'
         },
         user: (finduser) => {
-            return filterUser(finduser)
+            return filterUser(finduser);
         },
     },
     Mutation: {
-        signUp: (parent, args, context) => {
-            return createUser(ExampleCreateUser)
+        signup: (parent, input) => {
+            return auth.signup(input);
         },
+        signin: (parent, input) => {
+            return auth.sigin(input);
+        }
     },
 };
 
