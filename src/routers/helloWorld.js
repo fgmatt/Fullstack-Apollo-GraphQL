@@ -1,6 +1,6 @@
-const express = require('express');
-const cors = require('cors');
-const corsOptions = require('./cors/cors');
+import express from 'express';
+import cors from 'cors';
+import corsOptions from './cors/cors';
 const router = express.Router();
 
 router.get('/helloworld', cors(corsOptions), function(req, res) {

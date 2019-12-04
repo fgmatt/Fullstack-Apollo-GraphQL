@@ -1,17 +1,37 @@
-const auth = require('../services/authentication');
-const ExampleCreateUser = require('../services/user');
-const filterUser = require('../services/filterUser');
-
-const finduser = 'janusoftheday';
+import auth from '../services/authentication';
+import filterUser from '../services/filterUser';
 
 const resolvers = {
     Query: {
         hello: (parent, args, context) => {
             return 'Hello world!'
         },
-        user: (finduser) => {
-            return filterUser(finduser);
+        user: (parent, input) => {
+            return filterUser(input);
         },
+    },
+    User: {
+        id: (parent) => {
+
+        },
+        username: (parent) => {
+
+        },
+        firstname: (parent) => {
+
+        },
+        sirname: (parent) => {
+
+        },
+        email: (parent) => {
+
+        },
+        phone: (parent) => {
+
+        },
+        password: (parent) => {
+
+        }
     },
     Mutation: {
         signup: (parent, input) => {

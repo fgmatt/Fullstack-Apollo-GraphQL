@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { url_mongodb } = require('../keys/keys')
+import mongoose from 'mongoose';
+import url_mongodb from '../keys/keys';
 
 mongoose.connect(url_mongodb, { useNewUrlParser: true });
 

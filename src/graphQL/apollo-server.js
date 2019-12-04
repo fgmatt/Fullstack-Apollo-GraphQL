@@ -1,7 +1,6 @@
-const { ApolloServer } = require('apollo-server-express');
-const typeDefs = require('./typeDefs');
-const resolvers = require('./resolvers');
-const { port } = require('../keys/keys')
+import { ApolloServer } from 'apollo-server-express';
+import typeDefs from './typeDefs';
+import resolvers from './resolvers';
 
 const server = new ApolloServer({ 
     typeDefs, 

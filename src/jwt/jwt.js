@@ -1,5 +1,5 @@
-const jwt = require('jsonwebtoken');
-const { jwt_secret } = require('../keys/keys');
+import jwt from 'jsonwebtoken';
+import { jwt_secret } from '../keys/keys';
 
 const payload = {
   data1: "Data 1",

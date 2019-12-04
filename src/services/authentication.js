@@ -1,5 +1,5 @@
-const { User } = require('../models/mongoose');
-const token = require('../jwt/jwt');
+import { User } from '../models/mongoose';
+import token from '../jwt/jwt';
 
 const signup = async input => {
     //const _id = input._id;

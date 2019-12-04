@@ -1,9 +1,8 @@
-const { User } = require('../models/mongoose');
+import { User } from '../models/mongoose';
 
-async function findByUsername(username) {
-    const doc = await User.findOne({ username: username }).exec();
-    console.log(doc);
-    return doc;
+const findByUsername = async input => {
+    return await User.findOne({ username: input.username }).exec();
+    
 };
 
 module.exports = findByUsername;

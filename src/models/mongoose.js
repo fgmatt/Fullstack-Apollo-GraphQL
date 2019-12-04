@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-const philosophersSchema = require('./schemas/philosophers');
-const scientistsSchema = require('./schemas/scientists');
-const usersSchema = require('./schemas/users');
+import mongoose from 'mongoose';
+import philosophersSchema from './schemas/philosophers';
+import scientistsSchema from './schemas/scientists';
+import usersSchema from './schemas/users';
 
 const Philosophers = mongoose.model('Philosophers', philosophersSchema);
 const Scientists = mongoose.model('Scientists', scientistsSchema);

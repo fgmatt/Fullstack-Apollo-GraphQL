@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
 
 const usersSchema = new mongoose.Schema({
     username: { 
@@ -66,5 +67,37 @@ const usersSchema = new mongoose.Schema({
         // }
     }
 });
+
+usersSchema.pre('save', function(next) {
+    const user = this;
+
+    bcrypt.genSalt(12, function(error, salt) {
+        if (error) {
+            return next(error);
+        }
+        bcrypt.hash(user.password, salt, function(error, hash) {
+            if (error) {
+                return next(error);
+            }
+
+            user.password = hash;
+            next();
+        });
+    });
+});
+
+usersSchema.methods.comparePassword = function(enteredPassword) {
+    const storedPassword = this.password;
+
+    return new Promise(function(resolve, reject) {
+        bcrypt.compare(enteredPassword, storedPassword, function(err, isMatch) {
+            if (err) {
+                reject(err);
+            }
+
+            resolve(isMatch);
+        });
+    });
+};
 
 module.exports = usersSchema;

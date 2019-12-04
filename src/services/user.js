@@ -1,5 +1,5 @@
-const createUser = require('./authentication');
-const findByUsername = require('./filterUser');
+import createUser from './authentication';
+import findByUsername from './filterUser';
 
 var example = {
     username: 'Nodemon',

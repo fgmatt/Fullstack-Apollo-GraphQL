@@ -1,10 +1,10 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-require('./db/connect');
-const helloWorldRouter = require('./routers/helloWorld');
-const server = require('./graphQL/apollo-server');
-require('./services/user');
-require('./jwt/jwt');
+import express from 'express';
+import bodyParser from 'body-parser';
+import './db/connect';
+import helloWorldRouter from './routers/helloWorld';
+import server from './graphQL/apollo-server';
+import './services/user';
+import './jwt/jwt';
 
 const app = express();
 server.applyMiddleware({ app });
