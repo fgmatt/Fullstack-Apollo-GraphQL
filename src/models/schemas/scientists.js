@@ -7,4 +7,4 @@ const scientistsSchema = new mongoose.Schema({
     body: String
 });
 
-module.exports = scientistsSchema;
+export default scientistsSchema;

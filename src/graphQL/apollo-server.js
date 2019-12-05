@@ -7,4 +7,4 @@ const server = new ApolloServer({
     resolvers, 
 });
 
-module.exports = server;
+export default server;

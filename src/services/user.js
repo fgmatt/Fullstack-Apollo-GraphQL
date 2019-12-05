@@ -51,6 +51,6 @@ var ExampleCreateUser = {
 // createUser(example3);
 // findByUsername('lostofmana13');
 
-module.exports = ExampleCreateUser;
+export default ExampleCreateUser;
 
 

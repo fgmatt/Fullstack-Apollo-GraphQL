@@ -5,4 +5,4 @@ const findByUsername = async input => {
     
 };
 
-module.exports = findByUsername;
+export default findByUsername;

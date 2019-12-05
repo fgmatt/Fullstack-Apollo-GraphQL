@@ -7,4 +7,4 @@ router.get('/helloworld', cors(corsOptions), function(req, res) {
     res.status(200).send('Hello World!');
 });
 
-module.exports = router;
+export default router;

@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import './db/connect';
+require('./db/connect');
 import helloWorldRouter from './routers/helloWorld';
 import server from './graphQL/apollo-server';
 import './services/user';
@@ -12,4 +12,4 @@ server.applyMiddleware({ app });
 app.use(bodyParser.json());
 app.use('/api',helloWorldRouter);
 
-module.exports = app;
+export default app;

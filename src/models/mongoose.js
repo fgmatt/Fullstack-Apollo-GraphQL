@@ -7,7 +7,7 @@ const Philosophers = mongoose.model('Philosophers', philosophersSchema);
 const Scientists = mongoose.model('Scientists', scientistsSchema);
 const User = mongoose.model('Users', usersSchema);
 
-module.exports = {
+export default {
     Philosophers,
     Scientists,
     User

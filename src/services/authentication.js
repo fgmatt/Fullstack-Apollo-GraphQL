@@ -71,7 +71,7 @@ const signin = async input => {
 
 };
 
-module.exports = {
+export default {
     signin,
     signup
 };

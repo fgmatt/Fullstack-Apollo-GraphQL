@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watch --runInBand",
-    "dev": "nodemon src/index.js",
+    "dev": "nodemon --exec babel-node src/index.js",
     "db": "/Users/florinmattmuller/mongodb/bin/mongod -dbpath=/Users/florinmattmuller/mongodb-data"
   },
   "author": "",
@@ -25,6 +25,9 @@
     "mongoose": "^5.7.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/node": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
     "env-cmd": "^10.0.1",
     "jest": "^24.9.0",
     "nodemon": "^1.19.2",

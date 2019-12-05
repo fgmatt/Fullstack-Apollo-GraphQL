@@ -10,5 +10,5 @@ const payload = {
 
 var token = jwt.sign(payload, jwt_secret);
 
-module.exports = token;
+export default token;
 
