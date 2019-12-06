@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-require('./db/connect');
+import './db/connect';
 import helloWorldRouter from './routers/helloWorld';
 import server from './graphQL/apollo-server';
 import './services/user';

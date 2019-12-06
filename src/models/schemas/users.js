@@ -2,38 +2,38 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 
 const usersSchema = new mongoose.Schema({
-    username: { 
-        type: String, 
-        required: true,
-        unique: true,
-        trim: true,
-        // validate: {
-        //     validator: function(v) {
-        //         return /^\w{0,70}$/.test(v)
-        //     },
-        //     message: props => `${props.value} is not a valid username!`
-        // }
-    },
-    firstname: { 
-        type: String,
-        trim: true,
-        // validate: {
-        //     validator: function(v) {
-        //         return /^[A-ZÇÄÖÜ][a-zü-è]{0,70}$/.test(v)
-        //     },
-        //     message: props => `${props.value} is not a valid firstname!`
-        // }
-    },
-    sirname: { 
-        type: String,
-        trim: true,
-        // validate: {
-        //     validator: function(v) {
-        //         return /^[A-ZÇÄÖÜ][a-zü-è]{0,70}$/.test(v)
-        //     },
-        //     message: props => `${props.value} is not a valid sirname!`
-        // }
-    },
+    // username: { 
+    //     type: String, 
+    //     required: true,
+    //     unique: true,
+    //     trim: true,
+    //     // validate: {
+    //     //     validator: function(v) {
+    //     //         return /^\w{0,70}$/.test(v)
+    //     //     },
+    //     //     message: props => `${props.value} is not a valid username!`
+    //     // }
+    // },
+    // firstname: { 
+    //     type: String,
+    //     trim: true,
+    //     // validate: {
+    //     //     validator: function(v) {
+    //     //         return /^[A-ZÇÄÖÜ][a-zü-è]{0,70}$/.test(v)
+    //     //     },
+    //     //     message: props => `${props.value} is not a valid firstname!`
+    //     // }
+    // },
+    // sirname: { 
+    //     type: String,
+    //     trim: true,
+    //     // validate: {
+    //     //     validator: function(v) {
+    //     //         return /^[A-ZÇÄÖÜ][a-zü-è]{0,70}$/.test(v)
+    //     //     },
+    //     //     message: props => `${props.value} is not a valid sirname!`
+    //     // }
+    // },
     email: { 
         type: String,
         required: true, 
@@ -46,16 +46,16 @@ const usersSchema = new mongoose.Schema({
         //     message: props => `${props.value} is not a valid e-mail!`
         // }
     },
-    phone: { 
-        type: String,
-        trim: true,
-        // validate: {
-        //     validator: function(v) {
-        //         return /^\d{3}\s?\d{3}\s?\d{2}\s?\d{2}$/.test(v);
-        //     },
-        //     message: props => `${props.value} is not a valid phone number!`
-        // }
-    }, 
+    // phone: { 
+    //     type: String,
+    //     trim: true,
+    //     // validate: {
+    //     //     validator: function(v) {
+    //     //         return /^\d{3}\s?\d{3}\s?\d{2}\s?\d{2}$/.test(v);
+    //     //     },
+    //     //     message: props => `${props.value} is not a valid phone number!`
+    //     // }
+    // }, 
     password: { 
         type: String, 
         required: true,
