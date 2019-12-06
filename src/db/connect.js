@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
-import keys from '../keys/keys';
+import { url_mongodb } from '../keys/keys';
 
-mongoose.connect(keys.url_mongodb, { useNewUrlParser: true });
+mongoose.connect(url_mongodb, { useNewUrlParser: false } );
 
 const db = mongoose.connection
 db.once('open', _ => {
-    console.log('Database connected:', keys.url_mongodb);
+    console.log('Database connected:', url_mongodb);
 });
 
 db.on('error', err => {
