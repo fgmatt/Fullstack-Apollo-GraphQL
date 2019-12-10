@@ -1,7 +1,7 @@
 import { User } from '../models/mongoose';
 
-const findByUsername = async input => {
-    return await User.findOne({ username: input.username }).exec();
+const findByUsername = async args => {
+    return await User.findOne({ username: args.username }).exec();
     
 };
 

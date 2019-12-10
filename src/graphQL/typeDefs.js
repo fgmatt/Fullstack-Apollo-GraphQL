@@ -6,14 +6,17 @@ const typeDefs = gql`
         user(username: String): User
     },
     type Mutation {
-        signup(email: String, password: String): User
-        signin(email: String, password: String): User
+        signup(email: String!, password: String!): AuthPayload!
+        signin(email: String!, password: String!): AuthPayload!
     },
     type User {
-        id: ID!
+        #id: ID!
         email: String
         password: String
     },
+    type AuthPayload {
+        token: String!
+    }
 `;
 
 export default typeDefs;

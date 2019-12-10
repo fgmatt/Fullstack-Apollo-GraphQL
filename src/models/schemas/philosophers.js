@@ -6,4 +6,4 @@ const philosophersSchema = new mongoose.Schema({
     body: String
 });
 
-export default philosophersSchema;
+module.exports = philosophersSchema;

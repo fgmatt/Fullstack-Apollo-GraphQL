@@ -100,4 +100,4 @@ usersSchema.methods.comparePassword = function(enteredPassword) {
     });
 };
 
-export default usersSchema;
+module.exports = usersSchema;

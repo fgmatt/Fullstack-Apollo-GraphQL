@@ -2,7 +2,7 @@ import { User } from '../models/mongoose';
 import token from '../jwt/jwt';
 
 const signup = async input => {
-    const _id = input._id;
+    //const _id = args._id;
     // const username = input.username;
     // const firstname = input.firstname;
     // const sirname = input.sirname;
@@ -26,7 +26,7 @@ const signup = async input => {
     }
 
     const user = new User({
-        _id,
+        //_id,
         // username,
         // firstname,
         // sirname,
@@ -68,7 +68,7 @@ const signin = async input => {
         throw new Error('Incorrect email, username or password');
     }
 
-    return await token(user);
+   return await token(user);
 
 };
 
