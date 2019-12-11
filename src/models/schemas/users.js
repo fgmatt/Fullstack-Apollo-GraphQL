@@ -69,8 +69,12 @@ const usersSchema = new mongoose.Schema({
     token: {
         type: String,
         required: true,
-    }
-});
+    },
+},
+
+{ timestamps: true }
+
+);
 
 usersSchema.pre('save', function(next) {
     const user = this;

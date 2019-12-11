@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
 import { url_mongodb } from '../keys/keys';
 
-mongoose.connect(url_mongodb, { useNewUrlParser: false } );
+mongoose.connect(url_mongodb, { useNewUrlParser: true } );
+mongoose.set('useFindAndModify', false);
 
 const db = mongoose.connection
 db.once('open', _ => {

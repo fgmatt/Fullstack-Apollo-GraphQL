@@ -9,14 +9,15 @@ const typeDefs = gql`
         signup(email: String!, password: String!): User!
         signin(email: String!, password: String!): User!
         deluser(_id: String!): User!
+        changeCreds(_id: String!, email: String, password: String): User!
     },
     type User {
         email: String
-        token: AuthPayload!
+        token: String
     },
-    type AuthPayload {
-        token: String!
-    }
+    # type AuthPayload {
+    #     token: String!
+    # }
 `;
 
 export default typeDefs;

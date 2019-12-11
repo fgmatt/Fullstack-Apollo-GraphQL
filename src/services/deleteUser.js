@@ -1,7 +1,14 @@
 import { User } from '../models/mongoose';
 
 const deluser = async input => {
-    return await User.deleteOne({_id: input._id});
+    const _id = input._id;
+
+    if(!_id) {
+        throw Error('You must provide a id');
+    };
+
+        return await User.findByIdAndDelete( _id);
+
 };
 
 module.exports = deluser;

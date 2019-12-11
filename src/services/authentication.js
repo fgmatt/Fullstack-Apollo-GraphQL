@@ -1,5 +1,5 @@
 import { User } from '../models/mongoose';
-import token from '../jwt/jwt';
+import tokenSign from '../jwt/jwt';
 
 const signup = async input => {
     // const username = input.username;
@@ -31,28 +31,31 @@ const signup = async input => {
         email,
         // phone,
         password,
-        token
+        token: tokenSign(email).token
     });
 
     await user.save();
 
-    //return await token(user);
+    return await user.token;
 };
 
 const signin = async input => {
-    const username = input.username;
+    //const username = input.username;
     const email = input.email;
     const password = input.password;
     
-    const userByUsernameFind = await User.findOne({ username });
+    //const userByUsernameFind = await User.findOne({ username });
     const userByEmailFind = await User.findOne({ email });
+
+    await console.log(userByEmailFind.email)
     
-    if(!userByUsernameFind && !userByEmailFind) {
+    if(/*!userByUsernameFind && */!userByEmailFind) {
         throw new Error('Incorrect email, username or password');
     };
 
-    if(userByUsernameFind) {
-        var passwordMatches = await userByUsernameFind.comparePassword(password);
+    if(/*userByUsernameFind*/!userByEmailFind) {
+        //var passwordMatches = await userByUsernameFind.comparePassword(password);
+        throw Error('incorrect email or password')
     }
     else {
         var passwordMatches = await userByEmailFind.comparePassword(password);
@@ -66,7 +69,9 @@ const signin = async input => {
         throw new Error('Incorrect email, username or password');
     }
 
-    return await token(user);
+    const tokenSignin = await User.findOneAndUpdate({ email }, { token: tokenSign(userByEmailFind.email).token });
+
+    return await tokenSignin;
 
 };
 

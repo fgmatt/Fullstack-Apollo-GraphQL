@@ -1,6 +1,7 @@
 import auth from '../services/authentication';
 import filterUser from '../services/filterUser';
 import deluser from '../services/deleteUser';
+import changeCreds from '../services/changeCreds';
 
 const resolvers = {
     Query: {
@@ -20,6 +21,9 @@ const resolvers = {
         },
         deluser: (parent, input) => {
             return deluser(input);
+        },
+        changeCreds: (parent, input) => {
+            return changeCreds(input);
         }
     },
 };
