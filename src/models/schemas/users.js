@@ -65,6 +65,10 @@ const usersSchema = new mongoose.Schema({
         //     },
         //     message: () => `password is too short or unallowed charakters are used`
         // }
+    },
+    token: {
+        type: String,
+        required: true,
     }
 });
 

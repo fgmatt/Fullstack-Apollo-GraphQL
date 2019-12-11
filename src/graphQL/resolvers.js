@@ -1,12 +1,13 @@
 import auth from '../services/authentication';
 import filterUser from '../services/filterUser';
+import deluser from '../services/deleteUser';
 
 const resolvers = {
     Query: {
         hello: (parent, args, context) => {
             return 'Hello world!'
         },
-        user: (parent, args) => {
+        userfind: (parent, args) => {
             return filterUser(args);
         },
     },
@@ -16,6 +17,9 @@ const resolvers = {
         },
         signin: (parent, input) => {
             return auth.signin(input);
+        },
+        deluser: (parent, input) => {
+            return deluser(input);
         }
     },
 };

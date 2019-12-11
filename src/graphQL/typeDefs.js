@@ -3,16 +3,16 @@ import { gql } from 'apollo-server-express';
 const typeDefs = gql`
     type Query {
         hello: String
-        user(username: String): User
+        userfind(email: String!): User!
     },
     type Mutation {
-        signup(email: String!, password: String!): AuthPayload!
-        signin(email: String!, password: String!): AuthPayload!
+        signup(email: String!, password: String!): User!
+        signin(email: String!, password: String!): User!
+        deluser(_id: String!): User!
     },
     type User {
-        #id: ID!
         email: String
-        password: String
+        token: AuthPayload!
     },
     type AuthPayload {
         token: String!
