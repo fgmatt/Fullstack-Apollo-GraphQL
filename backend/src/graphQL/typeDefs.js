@@ -15,9 +15,6 @@ const typeDefs = gql`
         email: String
         token: String
     },
-    # type AuthPayload {
-    #     token: String!
-    # }
 `;
 
 export default typeDefs;

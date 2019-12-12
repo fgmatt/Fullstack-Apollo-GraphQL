@@ -1,6 +1,7 @@
-.env
-node_modules
+backend/.env
+backend/node_modules
+frontend/node_modules
 .vscode
 .idea
-jwt/private.key
-jwt/public.key
+backend/jwt/private.key
+backend/jwt/public.key

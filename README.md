@@ -28,16 +28,17 @@ To run the programm type
 npm run dev
 ```
 
-## Queries and endpoints
+## Queries, mutation and endpoints
 This section describe the available queries and endpoints
 
 ### Endpoints
-All endpoints are in */routers*. under */routers/cors* is the cors configuration.
+All endpoints are in *src/routers*. under *src/routers/cors* is the cors configuration.
 The endpoint in *helloWorld.js* returns *Hello World!*
 
 ### GraphQl-Queries
-All GraphQl-Queries are in */typeDefs*. 
-The GraphQl-Query in *helloWorldGraphQL.js* queries a hello world string. !cus3Uw!1D
+In *src/graphQL* are the resolvers, schema definitions and the apolloServer configuration.
+The GraphQl-Query hello defined in *typeDefs* and *resolvers* queries a hello world string. 
+The GraphQl-Query userfind has 
 
 ## Testing
 The Testing section explains how to run the tests and describe in short the tests
@@ -52,7 +53,7 @@ Watch modus is enabled
 ### Test descriptions
 It have some tests to to test the Graphql- and REST-Endpoints and the Graphql-Resolver
 
-*/tests/helloWorld.test.js* tests the REST-Endpoint in */routers/helloWorld.js*
-*/tests/GraphQl/helloWorldGraphQL.test.js* tests the Graphql-Endpoint in */typeDefs/helloWorldDef.js*
-*/tests/Resolvers/helloWorld.test.js* tests the value of the resolver
-*/tests/Resolvers/resolver.test.js* loads all resolver files itselfs and tests the resolver itself 
+*src/tests/helloWorld.test.js* tests the REST-Endpoint in *src/routers/helloWorld.js*
+*src/tests/GraphQl/helloWorldGraphQL.test.js* tests the Graphql-Endpoint in *src/typeDefs/helloWorldDef.js*
+*src/tests/Resolvers/helloWorld.test.js* tests the value of the resolver
+*src/tests/Resolvers/resolver.test.js* loads all resolver files itselfs and tests the resolver itself 
