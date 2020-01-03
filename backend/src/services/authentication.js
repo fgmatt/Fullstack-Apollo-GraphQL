@@ -1,6 +1,11 @@
 import { User } from '../models/mongoose';
 import tokenSign from '../jwt/jwt';
 
+/**
+ * Sigin up a new user.
+ * @param input {object} user object
+ * @returns {Promise<void>} JWT for user
+ */
 const signup = async input => {
     // const username = input.username;
     // const firstname = input.firstname;
@@ -39,6 +44,11 @@ const signup = async input => {
     return await user.token;
 };
 
+/**
+ * Sigin in in an existing user.
+ * @param input {object}
+ * @returns {Promise<void>} JWT for user
+ */
 const signin = async input => {
     //const username = input.username;
     const email = input.email;

@@ -1,5 +1,10 @@
 import { User } from '../models/mongoose';
 
+/**
+ * to change Creds of an existing user
+ * @param input {object} user object
+ * @returns {Promise<void>} updated user
+ */
 const changeCreds = async input => {
     const _id = input._id;
     const email = input.email;

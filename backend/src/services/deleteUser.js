@@ -1,5 +1,10 @@
 import { User } from '../models/mongoose';
 
+/**
+ * delete user by id
+ * @param input {object} user object
+ * @returns {Promise<any>} deleted user
+ */
 const deluser = async input => {
     const _id = input._id;
 
