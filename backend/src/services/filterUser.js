@@ -1,7 +1,7 @@
 import { User } from '../models/mongoose';
 
 /**
- * 
+ * find user by email
  * @param args {object} user object
  * @returns {Promise<any>} found user
  */
