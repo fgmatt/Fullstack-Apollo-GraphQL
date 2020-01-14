@@ -50,11 +50,13 @@ The GraphQl-Query hello defined in *typeDefs* and *resolvers* queries a hello wo
 The GraphQl-Query userfind has 
 
 **hello**
+
 | Property  | PropertyType | Type   | Explanation                       |
 |-----------|--------------|--------|-----------------------------------|
 | none      | none         | String | It returns a HelloWorld! string   |
 
 **userfind**
+
 | Property  | PropertyType | Type   | Explanation                               |
 |-----------|--------------|--------|-------------------------------------------|
 | email     | String!      | User!  | It returns the user of the provided email |
@@ -62,23 +64,27 @@ The GraphQl-Query userfind has
 ### GraphQL-Mutations
 
 **signup**
+
 | Property  | PropertyType | Type   | Explanation                               |
 |-----------|--------------|--------|-------------------------------------------|
 | email     | String!      | User!  | It creates a user with email and password |
 | password  | String!      |        |                                           |
 
 **signin**
+
 | Property  | PropertyType | Type   | Explanation                                                                   |
 |-----------|--------------|--------|-------------------------------------------------------------------------------|
 | email     | String!      | User!  | This mutation is to signin with a existing user whith email and password      |
 | password  | String!      |        |                                                                               |
 
 **deluser**
+
 | Property  | PropertyType | Type   | Explanation                                       |
 |-----------|--------------|--------|---------------------------------------------------|
 | _id       | String!      | User!  | This mutation allows to delete a user with the id |
 
 **changeCreds**
+
 | Property  | PropertyType | Type   | Explanation                                        |
 |-----------|--------------|--------|----------------------------------------------------|
 | _id       | String!      | User!  | This mutation allows you to change a existing user |
