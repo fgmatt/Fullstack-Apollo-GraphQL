@@ -6,5 +6,5 @@ const CHANGE_CREDS = gql`
             email
             }
 }
-`
+`;
 export default CHANGE_CREDS;

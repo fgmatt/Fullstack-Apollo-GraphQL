@@ -7,5 +7,5 @@ const USERFIND = gql`
             token
     }
 }
-`
+`;
 export default USERFIND;

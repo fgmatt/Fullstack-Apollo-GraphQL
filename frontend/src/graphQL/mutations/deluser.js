@@ -6,5 +6,5 @@ const DELUSER = gql`
         email
   }
 }
-`
+`;
 export default DELUSER;

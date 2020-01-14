@@ -6,5 +6,5 @@ const SIGNIN = gql`
             email
     }
 }
-`
+`;
 export default SIGNIN;

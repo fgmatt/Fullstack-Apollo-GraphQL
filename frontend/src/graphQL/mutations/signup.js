@@ -6,5 +6,5 @@ const SIGNUP = gql`
             email
     }
 }
-`
+`;
 export default SIGNUP;
