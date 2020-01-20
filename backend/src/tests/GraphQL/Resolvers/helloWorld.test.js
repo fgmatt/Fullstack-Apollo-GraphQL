@@ -11,4 +11,4 @@ export const helloWorldTest = () => {
     const output = Resolvers.name(obj, args, ctx);
 
     expect(output).toEqual('Hello World!');
-}
+};

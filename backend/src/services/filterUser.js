@@ -1,4 +1,4 @@
-import { User } from '../models/mongoose';
+import { User } from '../models';
 
 /**
  * find user by email

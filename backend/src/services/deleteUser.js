@@ -1,4 +1,4 @@
-import { User } from '../models/mongoose';
+import { User } from '../models';
 
 /**
  * delete user by id

@@ -8,7 +8,7 @@ var example = {
     email: 'example@nodemon.com',
     phone: '099 111 22 33',
     password: 'dummy123$'
-}
+};
 
 var example2 = {
     username: 'slash4512',
@@ -17,7 +17,7 @@ var example2 = {
     email: 'example@merchant.com',
     phone: '099 666 22 33',
     password: 'hash123$$'
-}
+};
 
 var example3 = {
     username: 'lostofmana13',
@@ -26,7 +26,7 @@ var example3 = {
     email: 'marina@mirota.com',
     phone: '011 666 22 33',
     password: 'hash123$$_43'
-}
+};
 
 var ExampleCreateUser = {
     username: 'janusoftheday',
@@ -35,7 +35,7 @@ var ExampleCreateUser = {
     email: 'janus@moonday.ch',
     phone: '011 445 43 23',
     password: 'gettibettiuserofthemoon'
-}
+};
 
 // var CreateUserBody = {
 //     username: req.body.username,
@@ -44,7 +44,7 @@ var ExampleCreateUser = {
 //     email: req.body.email,
 //     phone: req.body.phone,
 //     password: req.body.password
-// }
+// };
 
 // createUser(example);
 // createUser(example2);

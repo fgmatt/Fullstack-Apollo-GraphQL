@@ -1,4 +1,4 @@
-import { User } from '../models/mongoose';
+import { User } from '../models';
 import tokenSign from '../jwt/jwt';
 
 /**
@@ -16,18 +16,18 @@ const signup = async input => {
 
     if (!email /*|| !username*/ || !password) {
         throw new Error('You must provide a email, username or password');
-    }
+    };
 
    //const existingUsername = await User.findOne({ username });
     const existingEmail = await User.findOne({ email });
 
     // if (existingUsername) {
     //     throw new Error('Username already in use');
-    // }
+    // };
 
     if (existingEmail) {
         throw new Error('Email already in use');
-    }
+    };
 
     const user = new User({
         // username,
@@ -57,7 +57,7 @@ const signin = async input => {
     //const userByUsernameFind = await User.findOne({ username });
     const userByEmailFind = await User.findOne({ email });
 
-    await console.log(userByEmailFind.email)
+    await console.log(userByEmailFind.email);
     
     if(/*!userByUsernameFind && */!userByEmailFind) {
         throw new Error('Incorrect email, username or password');
@@ -65,19 +65,19 @@ const signin = async input => {
 
     if(/*userByUsernameFind*/!userByEmailFind) {
         //var passwordMatches = await userByUsernameFind.comparePassword(password);
-        throw Error('incorrect email or password')
+        throw Error('incorrect email or password');
     }
     else {
         var passwordMatches = await userByEmailFind.comparePassword(password);
-    }
+    };
 
     if (passwordMatches === Error) {
         throw new Error('An error occured while verifying the password');
-    }
+    };
 
     if (!passwordMatches) {
         throw new Error('Incorrect email, username or password');
-    }
+    };
 
     const tokenSignin = await User.findOneAndUpdate({ email }, { token: tokenSign(userByEmailFind.email).token });
 

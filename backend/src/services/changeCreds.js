@@ -1,4 +1,4 @@
-import { User } from '../models/mongoose';
+import { User } from '../models';
 
 /**
  * to change Creds of an existing user
@@ -16,7 +16,7 @@ const changeCreds = async input => {
 
     const Creds = await User.findOne({ _id });
 
-    const passwordMatches = await Creds.comparePassword(password)
+    const passwordMatches = await Creds.comparePassword(password);
 
     if(Creds.email === email && passwordMatches) {
         throw Error('The same email and password');

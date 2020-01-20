@@ -7,12 +7,12 @@ const usersSchema = new mongoose.Schema({
     //     required: true,
     //     unique: true,
     //     trim: true,
-    //     // validate: {
-    //     //     validator: function(v) {
-    //     //         return /^\w{0,70}$/.test(v)
-    //     //     },
-    //     //     message: props => `${props.value} is not a valid username!`
-    //     // }
+    //     validate: {
+    //         validator: function(v) {
+    //             return /^\w{0,70}$/.test(v)
+    //         },
+    //         message: props => `${props.value} is not a valid username!`
+    //     }
     // },
     // firstname: { 
     //     type: String,
@@ -82,11 +82,12 @@ usersSchema.pre('save', function(next) {
     bcrypt.genSalt(12, function(error, salt) {
         if (error) {
             return next(error);
-        }
+        };
+
         bcrypt.hash(user.password, salt, function(error, hash) {
             if (error) {
                 return next(error);
-            }
+            };
 
             user.password = hash;
             next();
@@ -101,7 +102,7 @@ usersSchema.methods.comparePassword = function(enteredPassword) {
         bcrypt.compare(enteredPassword, storedPassword, function(err, isMatch) {
             if (err) {
                 reject(err);
-            }
+            };
 
             resolve(isMatch);
         });

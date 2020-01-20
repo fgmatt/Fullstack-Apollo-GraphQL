@@ -6,7 +6,7 @@ import changeCreds from '../services/changeCreds';
 const resolvers = {
     Query: {
         hello: (parent, args, context) => {
-            return 'Hello world!'
+            return 'Hello world!';
         },
         userfind: (parent, args) => {
             return filterUser(args);
