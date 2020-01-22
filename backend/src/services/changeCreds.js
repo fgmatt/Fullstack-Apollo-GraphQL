@@ -20,7 +20,7 @@ const changeCreds = async input => {
 
     if(Creds.email === email && passwordMatches) {
         throw Error('The same email and password');
-    }
+    };
 
     return await User.updateOne({ _id }, { email, password });
 

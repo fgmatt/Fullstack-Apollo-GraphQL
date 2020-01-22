@@ -18,7 +18,7 @@ const signup = async input => {
         throw new Error('You must provide a email, username or password');
     };
 
-   //const existingUsername = await User.findOne({ username });
+    //const existingUsername = await User.findOne({ username });
     const existingEmail = await User.findOne({ email });
 
     // if (existingUsername) {

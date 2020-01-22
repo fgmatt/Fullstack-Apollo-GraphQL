@@ -15,10 +15,10 @@ const tokenSign = (user) => {
     iat: timestamp,
     exp: expires
   };
-  
-   var token = jwt.sign(payload, jwt_secret);
+    
+  const token = jwt.sign(payload, jwt_secret);
 
-   return { token, expires };
+  return { token, expires };
 
 };
 
