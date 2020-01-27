@@ -1,17 +1,16 @@
 const port = process.env.PORT;
 
-const whitelist = ['localhost:' + port];
+const whitelist = ["localhost:" + port];
 const corsOptions = {
-    origin: function (origin, callback) {
+    origin: function(origin, callback) {
         if (whitelist.indexOf(origin) !== -1 || !origin) {
-            callback(null, true)
+            callback(null, true);
         } else {
-            callback(new Error('Not allowed by CORS'))
-        };
-    }
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
 };
 
 module.exports = {
-    corsOptions
+    corsOptions,
 };
-

@@ -1,4 +1,4 @@
-import { User } from '../models';
+import { User } from "../models";
 
 /**
  * find user by email
@@ -7,7 +7,6 @@ import { User } from '../models';
  */
 const findByUsername = async args => {
     return await User.findOne({ email: args.email }).exec();
-    
 };
 
 export default findByUsername;

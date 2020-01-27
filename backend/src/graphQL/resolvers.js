@@ -1,12 +1,12 @@
-import auth from '../services/authentication';
-import filterUser from '../services/filterUser';
-import deluser from '../services/deleteUser';
-import changeCreds from '../services/changeCreds';
+import auth from "../services/authentication";
+import filterUser from "../services/filterUser";
+import deluser from "../services/deleteUser";
+import changeCreds from "../services/changeCreds";
 
 const resolvers = {
     Query: {
         hello: (parent, args, context) => {
-            return 'Hello world!';
+            return "Hello world!";
         },
         userfind: (parent, args) => {
             return filterUser(args);
@@ -24,7 +24,7 @@ const resolvers = {
         },
         changeCreds: (parent, input) => {
             return changeCreds(input);
-        }
+        },
     },
 };
 

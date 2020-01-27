@@ -1,8 +1,8 @@
-import * as Resolvers from '.../resolvers/helloWorldResolver';
+import * as Resolvers from ".../resolvers/helloWorldResolver";
 
 export const helloWorldTest = () => {
     const obj = {
-        hello: 'Hello World!'
+        hello: "Hello World!",
     };
 
     const args = {};
@@ -10,5 +10,5 @@ export const helloWorldTest = () => {
 
     const output = Resolvers.name(obj, args, ctx);
 
-    expect(output).toEqual('Hello World!');
+    expect(output).toEqual("Hello World!");
 };
