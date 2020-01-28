@@ -1,5 +1,5 @@
-import createUser from "./authentication";
-import findByUsername from "./filterUser";
+import createUser from "./userService/authentication";
+import findByUsername from "./userService/filterUser";
 
 var example = {
     username: "Nodemon",

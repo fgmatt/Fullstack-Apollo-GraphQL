@@ -1,7 +1,7 @@
-import auth from "../services/authentication";
-import filterUser from "../services/filterUser";
-import deluser from "../services/deleteUser";
-import changeCreds from "../services/changeCreds";
+import auth from "../services/userService/index";
+import filterUser from "../services/userService/index";
+import deluser from "../services/userService/index";
+import changeCreds from "../services/userService/index";
 
 const resolvers = {
     Query: {

@@ -1,5 +1,5 @@
-import { User } from "../models";
-import tokenSign from "../jwt/jwt";
+import { User } from "../../models";
+import tokenSign from "../../jwt/jwt";
 
 /**
  * Sigin up a new user.
