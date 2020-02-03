@@ -1,4 +1,4 @@
-import { User } from "../../models";
+import { User } from "./userService";
 import tokenSign from "../../jwt/jwt";
 
 /**

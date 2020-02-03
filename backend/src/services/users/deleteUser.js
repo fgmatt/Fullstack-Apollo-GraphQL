@@ -1,4 +1,4 @@
-import { User } from "../../models";
+import { User } from "./userService";
 
 /**
  * delete user by id

@@ -1,10 +1,14 @@
 import express from "express";
-import cors from "cors";
-import corsOptions from "./cors/cors";
+// import cors from "cors";
+// import corsOptions from "./cors/cors";
 const router = express.Router();
 
-router.get("/helloworld", cors(corsOptions), function(req, res) {
+router.get("/helloworld", function(req, res) {
     res.status(200).send("Hello World!");
 });
+
+// router.get("/helloworld", cors(corsOptions), function(req, res) {
+//     res.status(200).send("Hello World!");
+// });
 
 module.exports = router;

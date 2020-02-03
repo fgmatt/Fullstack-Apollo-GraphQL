@@ -1,4 +1,4 @@
-import { User } from "../../models";
+import { User } from "./userService";
 
 /**
  * to change Creds of an existing user

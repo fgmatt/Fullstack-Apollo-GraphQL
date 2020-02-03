@@ -1,4 +1,4 @@
-const port = process.env.PORT;
+import { port } from "../../keys/keys";
 
 const whitelist = ["localhost:" + port];
 const corsOptions = {
