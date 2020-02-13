@@ -4,7 +4,7 @@ import cors from "cors";
 import "./db/connect";
 import helloWorldRouter from "./routers/helloWorld";
 import server from "./graphQL/apollo-server";
-import "./services/user";
+//import "./services/user";
 import "./jwt/jwt";
 
 const app = express();
