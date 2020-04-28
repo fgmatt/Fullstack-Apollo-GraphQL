@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Email = async () => {
+const Email = () => {
     return (
         <div>
             <input placeholder="Email" type="text" value />

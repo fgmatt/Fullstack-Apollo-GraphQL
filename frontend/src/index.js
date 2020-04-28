@@ -2,46 +2,20 @@ import React from "react";
 import { render } from "react-dom";
 
 import ApolloClient from "apollo-boost";
-import { ApolloProvider, useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
+import { ApolloProvider } from "@apollo/react-hooks";
+
+//import "./style.css";
+import App from "./components/App";
 
 const client = new ApolloClient({
-  uri: "http://localhost:2850"
+  uri: "http://localhost:2850",
 });
 
-// function ExchangeRates() {
-//   const { loading, error, data } = useQuery(gql`
-//     {
-//       rates(currency: "USD") {
-//         currency
-//         rate
-//       }
-//     }
-//   `);
+render(
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>,
+  document.getElementById("root")
+);
 
-//   if (loading) return <p>Loading...</p>;
-//   if (error) return <p>Error :(</p>;
-
-//   return data.rates.map(({ currency, rate }) => (
-//     <div key={currency}>
-//       <p>
-//         {currency}: {rate}
-//       </p>
-//     </div>
-//   ));
-// }
-
-// const App = () => (
-//   <ApolloProvider client={client}>
-//     <div>
-//       <h2>My first Apollo app 🚀</h2>
-//       <ExchangeRates />
-//     </div>
-//   </ApolloProvider>
-// );
-
-render(<App />, document.getElementById("root"));
-
-
-
-
+if (module.hot) module.hot.accept();

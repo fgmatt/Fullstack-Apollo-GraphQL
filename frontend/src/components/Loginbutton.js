@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Loginbutton = async () => {
+const Loginbutton = () => {
     return (
         <div>
             <button name="login" type="submit">Login</button>
