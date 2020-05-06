@@ -33,14 +33,14 @@ Beim Klick auf Login erstellen werden die vorhergehenden Prüfungen getestet und
 ## Erweiterung
 Ferner sind auch Verbesserungen und eine Erweiterung der Funktionalität denkbar.
 
-### Benutzerbereich
-Der obere Bereich ist so wie bisher. Der Button links mit Icon führt zu einer Seite auf der weitere Links zur Änderung des Benutzernamens und Passwortes bereitstehen. Der rechte Button führt zu einer Auswahl von Games.(Sehr einfache selbst Programmiert oder verlinkt auf frei Verfügbare).
+### Hauptbereich
+Benutzerbereich wird in Hauptbereich unbenannt. Oben links ist ein aufklappbares Menü, das den aktuellen Benutzer in Form der E-Mail anzeigt. Oben rechts ist der Logout Link, der noch gleich funktioniert. Der mittlere Bereich bleibt vorerst leer. Unten sind die Icons, die in weitere Bereiche führen. Das Icon links führt zu einer Seite auf der weitere Links zur Änderung des Benutzernamens und Passwortes bereitstehen. Das mittlere Icon führt zu einer Auswahl von Games.(Sehr einfache selbst Programmiert oder verlinkt auf frei Verfügbare). Das rechte ist vorerst nur Platzhalter.
 
 ### Benutzerdaten ändern
-Bei der Seite Benutzerdaten ändern kann das Passwort und die E-mail geändert werden. Zurück führt auf den Benutzerbereich zurück.
+Bei der Seite Benutzerdaten ändern kann das Passwort und die E-mail geändert werden. Diese beiden Funktionen wurden in ein vertikales Register gepackt. Zurück führt auf den Hauptbereich zurück.
 
 ### E-Mail und Passwort ändern
-Es wird bei Beiden das aktuelle Passwort abgefragt. Wird die E-Mail geändert und die Neue auf die Merkmale der E-Mail, wie beim Erstellen des Logins geprüft. Abbruch geht zurück auf Benutzerdaten ändern ohne irgend etwas zu ändern. Ändern schickt das Formular ab, insofern die Prüfung positiv ausgefallen ist, sonst gibt es eine Fehlermeldung.
+Es wird bei Beiden das aktuelle Passwort abgefragt. Wird die E-Mail geändert und die Neue auf die Merkmale der E-Mail, wie beim Erstellen des Logins geprüft. Abbruch setzt die Auswahl eines Registers zurück ohne irgend etwas zu ändern. Ändern schickt das Formular ab, insofern die Prüfung positiv ausgefallen ist, sonst gibt es eine Fehlermeldung.
 
 ### Games
-Bei Games wird eine Seite mit den verfügbaren Games angezeigt. Klickt man auf das gewünschte Game, wird man zu Diesem weitergeleitet. Klickt man auf zurück landet man wieder auf der Hauptseite des Benutzerbereichs.
+Bei Games wird eine Seite mit einer Liste von verfügbaren Games angezeigt. Klickt man auf das gewünschte Game, wird man zu Diesem weitergeleitet. Klickt man auf zurück landet man wieder auf dem Hauptbereich.
