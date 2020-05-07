@@ -1,9 +1,9 @@
 import React from "react";
-import Email from "./Email";
-import Password from "./Password";
-import Loginbutton from "./Loginbutton";
+import Email from "../Elements/Email";
+import Password from "../Elements/Password";
+import Loginbutton from "../Elements/Loginbutton";
 import { useMutation } from "@apollo/react-hooks";
-import SIGNIN from "../graphQL/mutations";
+import SIGNIN from "../../graphQL/mutations";
 
 // const [signin, { data }] = useMutation(SIGNIN);
 
