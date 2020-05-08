@@ -5,18 +5,22 @@ class NewLogin extends React.Component {
     super(props);
     this.state = { email: "", password: "", passwordb: "" };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChangeEmail = this.handleChangeEmail.bind(this);
+    this.handleChangePassword = this.handleChangePassword.bind(this);
+    this.handleChangePasswordB = this.handleChangePasswordB.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    const target = event.target;
+  handleChangeEmail(event) {
+    this.setState({email: event.target.value});
+  }
 
-    this.setState({
-      email: target.value,
-      password: target.value,
-      passwordb: target.value,
-    });
+  handleChangePassword(event) {
+    this.setState({password: event.target.value});
+  }
+
+  handleChangePasswordB(event) {
+    this.setState({passwordb: event.target.value});
   }
 
   handleSubmit(event) {
@@ -41,7 +45,7 @@ class NewLogin extends React.Component {
             name="email"
             type="email"
             value={this.state.email}
-            onChange={this.handleChange}
+            onChange={this.handleChangeEmail}
           />
         </label>
         <label>
@@ -50,7 +54,7 @@ class NewLogin extends React.Component {
             name="password"
             type="password"
             value={this.state.password}
-            onChange={this.handleChange}
+            onChange={this.handleChangePassword}
           />
         </label>
         <label>
@@ -59,11 +63,11 @@ class NewLogin extends React.Component {
             name="passwordb"
             type="password"
             value={this.state.passwordb}
-            onChange={this.handleChange}
+            onChange={this.handleChangePasswordB}
           />
         </label>
-        <input type="submit" value="Abbrechen" />
-        <input type="button" value="Neuer Benutzer" />
+        <input type="button" value="Abbrechen" />
+        <input type="submit" value="Neuer Benutzer" />
         {/* <Email />
       <Password />
       <Loginbutton /> */}
