@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class NewLogin extends React.Component {
   constructor(props) {
@@ -66,7 +67,9 @@ class NewLogin extends React.Component {
             onChange={this.handleChangePasswordB}
           />
         </label>
-        <input type="button" value="Abbrechen" />
+        <input type="button" value="Abbrechen" >
+          <Link to="/"></Link>
+        </input>
         <input type="submit" value="Neuer Benutzer" />
         {/* <Email />
       <Password />

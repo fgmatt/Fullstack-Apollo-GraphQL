@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Email from "../Elements/Email";
 import Password from "../Elements/Password";
 import Loginbutton from "../Elements/Loginbutton";
@@ -57,6 +58,9 @@ class Login extends React.Component {
             onChange={this.handleChangePassword}
           />
         </label>
+        <p>
+          <Link to="/NeuerBenutzer">Neuer Benutzer</Link>
+        </p>
         <input type="submit" value="Login" />
         {/* <Email />
       <Password />
