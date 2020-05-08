@@ -9,7 +9,7 @@ class App extends Component {
       <Router>
         <div className="container">
           <Switch>
-            <Route path="/">
+            <Route exact path="/">
               <Login />
             </Route>
             <Route path="/NeuerBenutzer">
