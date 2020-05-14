@@ -1,7 +1,7 @@
-import auth from "../services/users/index";
-import filterUser from "../services/users/index";
-import deluser from "../services/users/index";
-import changeCreds from "../services/users/index";
+import { auth } from "../services/users/";
+import { findByUsername } from "../services/users/";
+import { deluser } from "../services/users/";
+import { changeCreds } from "../services/users/";
 
 const resolvers = {
     Query: {
@@ -9,21 +9,21 @@ const resolvers = {
             return "Hello world!";
         },
         userfind: (parent, args) => {
-            return filterUser(args);
+            return findByUsername(args);
         },
     },
     Mutation: {
-        signup: (parent, input) => {
-            return auth.signup(input);
+        signup: (parent, args) => {
+            return auth.signup(args);
         },
-        signin: (parent, input) => {
-            return auth.signin(input);
+        signin: (parent, args) => {
+            return auth.signin(args);
         },
-        deluser: (parent, input) => {
-            return deluser(input);
+        deluser: (parent, args) => {
+            return deluser(args);
         },
-        changeCreds: (parent, input) => {
-            return changeCreds(input);
+        changeCreds: (parent, args) => {
+            return changeCreds(args);
         },
     },
 };

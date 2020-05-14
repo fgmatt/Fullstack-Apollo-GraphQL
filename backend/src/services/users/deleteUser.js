@@ -1,12 +1,12 @@
-import { User } from "./userService";
+import  User  from "./userService";
 
 /**
  * delete user by id
- * @param input {object} user object
+ * @param args {object} user object
  * @returns {Promise<any>} deleted user
  */
-const deluser = async input => {
-    const _id = input._id;
+const deluser = async args => {
+    const _id = args._id;
 
     if (!_id) {
         throw Error("You must provide a id");

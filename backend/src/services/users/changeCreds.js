@@ -1,14 +1,14 @@
-import { User } from "./userService";
+import  User  from "./userService";
 
 /**
  * to change Creds of an existing user
- * @param input {object} user object
+ * @param args {object} user object
  * @returns {Promise<void>} updated user
  */
-const changeCreds = async input => {
-    const _id = input._id;
-    const email = input.email;
-    const password = input.password;
+const changeCreds = async args => {
+    const _id = args._id;
+    const email = args.email;
+    const password = args.password;
 
     if (!_id) {
         throw Error("Please provide a id");

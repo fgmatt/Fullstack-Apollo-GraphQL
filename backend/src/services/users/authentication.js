@@ -1,18 +1,18 @@
-import { User } from "./userService";
+import User from "./userService";
 import tokenSign from "../../jwt/jwt";
 
 /**
  * Sigin up a new user.
- * @param input {object} user object
+ * @param args {object} user object
  * @returns {Promise<void>} JWT for user
  */
-const signup = async input => {
-    // const username = input.username;
-    // const firstname = input.firstname;
-    // const sirname = input.sirname;
-    const email = input.email;
-    // const phone = input.phone;
-    const password = input.password;
+const signup = async args => {
+    // const username = args.username;
+    // const firstname = args.firstname;
+    // const sirname = args.sirname;
+    const email = args.email;
+    // const phone = args.phone;
+    const password = args.password;
 
     if (!email /*|| !username*/ || !password) {
         throw new Error("You must provide a email, username or password");
@@ -46,13 +46,13 @@ const signup = async input => {
 
 /**
  * Sigin in in an existing user.
- * @param input {object}
+ * @param args {object}
  * @returns {Promise<void>} JWT for user
  */
-const signin = async input => {
-    //const username = input.username;
-    const email = input.email;
-    const password = input.password;
+const signin = async args => {
+    //const username = args.username;
+    const email = args.email;
+    const password = args.password;
 
     //const userByUsernameFind = await User.findOne({ username });
     const userByEmailFind = await User.findOne({ email });

@@ -6,8 +6,6 @@ import Loginbutton from "../Elements/Loginbutton";
 import { useMutation } from "@apollo/react-hooks";
 import SIGNIN from "../../graphQL/mutations";
 
-// const [signin, { data }] = useMutation(SIGNIN);
-
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -27,13 +25,15 @@ class Login extends React.Component {
   }
 
   handleSubmit(event) {
-    alert(
-      "Eine Email wurde abgeschickt: " +
-        this.state.email +
-        " Ein Passwort wurde abgeschickt: " +
-        this.state.password
-    );
+    const [signin, { data }] = useMutation(SIGNIN);
+    // alert(
+    //   "Eine Email wurde abgeschickt: " +
+    //     this.state.email +
+    //     " Ein Passwort wurde abgeschickt: " +
+    //     this.state.password
+    // );
     event.preventDefault();
+    signin({ variables: { email: this.state.email, password: this.state.password } })
   }
   
   render() {

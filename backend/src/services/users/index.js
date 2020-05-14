@@ -1,11 +1,11 @@
 import auth from './authentication';
 import changeCreds from './changeCreds';
 import deluser from './deleteUser';
-import filterByUsername from './filterUser';
+import findByUsername from './filterUser';
 
-export default {
+export {
     auth,
     changeCreds,
     deluser,
-    filterByUsername
+    findByUsername
 };

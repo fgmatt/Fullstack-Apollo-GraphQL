@@ -10,6 +10,7 @@ class NewLogin extends React.Component {
     this.handleChangePassword = this.handleChangePassword.bind(this);
     this.handleChangePasswordB = this.handleChangePasswordB.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    //this.handleQuitButton = this.handleQuitButton(this);
   }
 
   handleChangeEmail(event) {
@@ -67,9 +68,9 @@ class NewLogin extends React.Component {
             onChange={this.handleChangePasswordB}
           />
         </label>
-        <input type="button" value="Abbrechen" >
-          <Link to="/"></Link>
-        </input>
+        <button>
+          <Link to="/">Abbrechen</Link>
+        </button>
         <input type="submit" value="Neuer Benutzer" />
         {/* <Email />
       <Password />

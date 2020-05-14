@@ -1,4 +1,4 @@
-import { User } from "./userService";
+import User from "./userService";
 
 /**
  * find user by email
@@ -6,7 +6,7 @@ import { User } from "./userService";
  * @returns {Promise<any>} found user
  */
 const findByUsername = async args => {
-    return await User.findOne({ email: args.email }).exec();
+    return await User.findOne( { email: args.email } ).exec();
 };
 
-export default findByUsername;
+module.exports = findByUsername;

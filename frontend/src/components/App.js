@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./Login";
 import NewLogin from "./NewLogin";
+import UserSpace from "./UserSpace";
 
 class App extends Component {
   render() {
@@ -14,6 +15,9 @@ class App extends Component {
             </Route>
             <Route path="/NeuerBenutzer">
               <NewLogin />
+            </Route>
+            <Route path="/Benutzerbereich">
+              <UserSpace />
             </Route>
           </Switch>
         </div>
