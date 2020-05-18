@@ -3,7 +3,7 @@ import DELUSER from './deluser';
 import SIGNIN from './signin';
 import SIGNUP from './signup';
 
-export default  {
+export {
     CHANGE_CREDS,
     DELUSER,
     SIGNIN,

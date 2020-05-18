@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Email from "../Elements/Email";
-import Password from "../Elements/Password";
-import Loginbutton from "../Elements/Loginbutton";
 import { useMutation } from "@apollo/react-hooks";
-import SIGNIN from "../../graphQL/mutations";
+import { Mutation } from "react-apollo";
+import { SIGNIN } from "../../graphQL/mutations";
+import  LogButton  from "../Elements/Buttons";
+import Email from "../Elements/Email";
+import { Password } from "../Elements/Password";
+import { PasswordInput } from "../Elements/Password";
 
 class Login extends React.Component {
   constructor(props) {
@@ -25,46 +27,34 @@ class Login extends React.Component {
   }
 
   handleSubmit(event) {
-    const [signin, { data }] = useMutation(SIGNIN);
-    // alert(
-    //   "Eine Email wurde abgeschickt: " +
-    //     this.state.email +
-    //     " Ein Passwort wurde abgeschickt: " +
-    //     this.state.password
-    // );
-    event.preventDefault();
-    signin({ variables: { email: this.state.email, password: this.state.password } })
+    alert(
+      "Eine Email wurde abgeschickt: " +
+        this.state.email +
+        " Ein Passwort wurde abgeschickt: " +
+        this.state.password
+    );
+     event.preventDefault();
   }
   
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <h2>Login</h2>
-        <label>
-          E-Mail:
-          <input
-            name="email"
-            type="email"
-            value={this.state.email}
-            onChange={this.handleChangeEmail}
-          />
-        </label>
-        <label>
+        <Email
+          value={this.state.email}
+          onChange={this.handleChangeEmail} 
+        />
+        <PasswordInput
+          name="Password"
+          value={this.state.password}
+          onChange={this.handleChangePassword}
+        >
           Passwort:
-          <input
-            name="password"
-            type="password"
-            value={this.state.password}
-            onChange={this.handleChangePassword}
-          />
-        </label>
+        </PasswordInput>
         <p>
           <Link to="/NeuerBenutzer">Neuer Benutzer</Link>
         </p>
-        <input type="submit" value="Login" />
-        {/* <Email />
-      <Password />
-      <Loginbutton /> */}
+        <LogButton value="Login" />
       </form>
     );
   }

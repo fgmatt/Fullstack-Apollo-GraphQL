@@ -1,5 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import  LogButton  from "../Elements/Buttons";
+import Email from "../Elements/Email";
+import { Password } from "../Elements/Password";
+import { Passwordb } from "../Elements/Password";
+import { PasswordInput} from "../Elements/Password";
 
 class NewLogin extends React.Component {
   constructor(props) {
@@ -41,40 +46,28 @@ class NewLogin extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <h2>Login</h2>
-        <label>
-          E-Mail:
-          <input
-            name="email"
-            type="email"
-            value={this.state.email}
-            onChange={this.handleChangeEmail}
-          />
-        </label>
-        <label>
+        <Email 
+          value={this.state.email}
+          onChange={this.handleChangeEmail}
+        />
+        <PasswordInput
+          name="password" 
+          value={this.state.password}
+          onChange={this.handleChangePassword}
+        >
           Passwort:
-          <input
-            name="password"
-            type="password"
-            value={this.state.password}
-            onChange={this.handleChangePassword}
-          />
-        </label>
-        <label>
+        </PasswordInput>
+        <PasswordInput
+          name="passwordb" 
+          value={this.state.passwordb}
+          onChange={this.handleChangePasswordB}
+        >
           Passwort B:
-          <input
-            name="passwordb"
-            type="password"
-            value={this.state.passwordb}
-            onChange={this.handleChangePasswordB}
-          />
-        </label>
+        </PasswordInput>
         <button>
           <Link to="/">Abbrechen</Link>
         </button>
-        <input type="submit" value="Neuer Benutzer" />
-        {/* <Email />
-      <Password />
-      <Loginbutton /> */}
+        <LogButton value="Neuer_Benutzer" />
       </form>
     );
   }
