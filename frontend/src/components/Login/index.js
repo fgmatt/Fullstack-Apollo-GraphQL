@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { Mutation } from "react-apollo";
 import { SIGNIN } from "../../graphQL/mutations";
+import Form from "../Elements/Form";
 import  LogButton  from "../Elements/Buttons";
 import Email from "../Elements/Email";
-import { Password } from "../Elements/Password";
-import { PasswordInput } from "../Elements/Password";
+import  PasswordInput  from "../Elements/Password";
 
 class Login extends React.Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class Login extends React.Component {
   
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit}>
         <h2>Login</h2>
         <Email
           value={this.state.email}
@@ -55,7 +55,7 @@ class Login extends React.Component {
           <Link to="/NeuerBenutzer">Neuer Benutzer</Link>
         </p>
         <LogButton value="Login" />
-      </form>
+      </Form>
     );
   }
 }

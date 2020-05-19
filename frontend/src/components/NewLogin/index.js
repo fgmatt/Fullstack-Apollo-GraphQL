@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Form from "../Elements/Form";
 import  LogButton  from "../Elements/Buttons";
 import Email from "../Elements/Email";
-import { Password } from "../Elements/Password";
-import { Passwordb } from "../Elements/Password";
-import { PasswordInput} from "../Elements/Password";
+import  PasswordInput from "../Elements/Password";
 
 class NewLogin extends React.Component {
   constructor(props) {
@@ -44,7 +43,7 @@ class NewLogin extends React.Component {
   
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit}>
         <h2>Login</h2>
         <Email 
           value={this.state.email}
@@ -68,7 +67,7 @@ class NewLogin extends React.Component {
           <Link to="/">Abbrechen</Link>
         </button>
         <LogButton value="Neuer_Benutzer" />
-      </form>
+      </Form>
     );
   }
 }
