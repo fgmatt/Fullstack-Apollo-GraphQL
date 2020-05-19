@@ -43,7 +43,7 @@ class NewLogin extends React.Component {
   
   render() {
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit} email={this.state.email} password={this.state.password} mutation="SIGNUP">
         <h2>Login</h2>
         <Email 
           value={this.state.email}

@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useMutation } from "@apollo/react-hooks";
-import { Mutation } from "react-apollo";
-import { SIGNIN } from "../../graphQL/mutations";
+//import { useMutation } from "@apollo/react-hooks";
+//import { Mutation } from "react-apollo";
+//import { SIGNIN } from "../../graphQL/mutations";
 import Form from "../Elements/Form";
 import  LogButton  from "../Elements/Buttons";
 import Email from "../Elements/Email";
@@ -38,7 +38,7 @@ class Login extends React.Component {
   
   render() {
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit} email={this.state.email} password={this.state.password} mutation="SIGNIN">
         <h2>Login</h2>
         <Email
           value={this.state.email}
