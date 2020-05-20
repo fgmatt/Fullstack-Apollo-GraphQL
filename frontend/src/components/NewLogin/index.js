@@ -1,75 +1,68 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/react-hooks";
+import { SIGNUP } from "../../graphQL/mutations";
 import Form from "../Elements/Form";
-import  LogButton  from "../Elements/Buttons";
+import LogButton from "../Elements/Buttons";
 import Email from "../Elements/Email";
-import  PasswordInput from "../Elements/Password";
+import PasswordInput from "../Elements/Password";
 
-class NewLogin extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { email: "", password: "", passwordb: "" };
+function NewLogin() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordb, setPasswordb] = useState("");
+  const [signup, { data }] = useMutation(SIGNUP);
 
-    this.handleChangeEmail = this.handleChangeEmail.bind(this);
-    this.handleChangePassword = this.handleChangePassword.bind(this);
-    this.handleChangePasswordB = this.handleChangePasswordB.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    //this.handleQuitButton = this.handleQuitButton(this);
+  function handleChangeEmail(event) {
+    setEmail(event.target.value);
   }
 
-  handleChangeEmail(event) {
-    this.setState({email: event.target.value});
+  function handleChangePassword(event) {
+    setPassword(event.target.value);
   }
 
-  handleChangePassword(event) {
-    this.setState({password: event.target.value});
+  function handleChangePasswordB(event) {
+    setPasswordb(event.target.value);
   }
 
-  handleChangePasswordB(event) {
-    this.setState({passwordb: event.target.value});
-  }
-
-  handleSubmit(event) {
-    alert(
-      "Eine Email wurde abgeschickt: " +
-        this.state.email +
-        " Ein Passwort wurde abgeschickt: " +
-        this.state.password +
-        " Ein Passwort B. wurde abgeschickt: " +
-        this.state.passwordb
-    );
+  function handleSubmit(event) {
     event.preventDefault();
+    signup({ variables: { email: email, password: password }})
+    // alert(
+    //   "Eine Email wurde abgeschickt: " +
+    //     email +
+    //     " Ein Passwort wurde abgeschickt: " +
+    //     password +
+    //     " Ein Passwort B. wurde abgeschickt: " +
+    //     passwordb
+    // );
+    // event.preventDefault();
   }
-  
-  render() {
-    return (
-      <Form onSubmit={this.handleSubmit} email={this.state.email} password={this.state.password} mutation="SIGNUP">
-        <h2>Login</h2>
-        <Email 
-          value={this.state.email}
-          onChange={this.handleChangeEmail}
-        />
-        <PasswordInput
-          name="password" 
-          value={this.state.password}
-          onChange={this.handleChangePassword}
-        >
-          Passwort:
-        </PasswordInput>
-        <PasswordInput
-          name="passwordb" 
-          value={this.state.passwordb}
-          onChange={this.handleChangePasswordB}
-        >
-          Passwort B:
-        </PasswordInput>
-        <button>
-          <Link to="/">Abbrechen</Link>
-        </button>
-        <LogButton value="Neuer_Benutzer" />
-      </Form>
-    );
-  }
+
+  return (
+    <Form onSubmit={(e) => handleSubmit(e)}>
+      <h2>Login</h2>
+      <Email value={email} onChange={(e) => handleChangeEmail(e)} />
+      <PasswordInput
+        name="password"
+        value={password}
+        onChange={(e) => handleChangePassword(e)}
+      >
+        Passwort:
+      </PasswordInput>
+      <PasswordInput
+        name="passwordb"
+        value={passwordb}
+        onChange={(e) => handleChangePasswordB(e)}
+      >
+        Passwort B:
+      </PasswordInput>
+      <button>
+        <Link to="/">Abbrechen</Link>
+      </button>
+      <LogButton value="Neuer_Benutzer" />
+    </Form>
+  );
 }
 
 export default NewLogin;
