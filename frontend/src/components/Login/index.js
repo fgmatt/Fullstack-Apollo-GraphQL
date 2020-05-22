@@ -22,14 +22,7 @@ function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    signin({ variables: { email: email, password: password }})
-    alert(
-      "Eine Email wurde abgeschickt: " +
-        email +
-        " Ein Passwort wurde abgeschickt: " +
-        password
-    );
-    // event.preventDefault();
+    signin({ variables: { email: email, password: password } });
   }
 
   return (

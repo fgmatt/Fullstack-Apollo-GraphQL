@@ -28,15 +28,6 @@ function NewLogin() {
   function handleSubmit(event) {
     event.preventDefault();
     signup({ variables: { email: email, password: password }})
-    // alert(
-    //   "Eine Email wurde abgeschickt: " +
-    //     email +
-    //     " Ein Passwort wurde abgeschickt: " +
-    //     password +
-    //     " Ein Passwort B. wurde abgeschickt: " +
-    //     passwordb
-    // );
-    // event.preventDefault();
   }
 
   return (

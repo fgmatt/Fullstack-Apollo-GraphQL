@@ -26,10 +26,4 @@ class App extends Component {
   }
 }
 
-// const App = () => {
-//   return (
-
-//   )
-// }
-
 export default App;

@@ -2,7 +2,6 @@ import React from "react";
 import { render } from "react-dom";
 
 import ApolloClient from "apollo-boost";
-import { HttpLink } from "apollo-link-http";
 import { ApolloProvider } from "@apollo/react-hooks";
 
 import "./style.css";
