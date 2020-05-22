@@ -1,16 +1,19 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { SIGNIN } from "../../graphQL/mutations";
 import Form from "../Elements/Form";
-import LogButton from "../Elements/Buttons";
+import SubButton from "../Elements/Buttons";
 import Email from "../Elements/Email";
 import PasswordInput from "../Elements/Password";
 
 function Login() {
+  let history = useHistory();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [signin, { data }] = useMutation(SIGNIN);
+
+  const [signin, { loading, error, data }] = useMutation(SIGNIN);
 
   function handleChangeEmail(event) {
     setEmail(event.target.value);
@@ -21,8 +24,12 @@ function Login() {
   }
 
   function handleSubmit(event) {
-    event.preventDefault();
+    event.preventDefault();   
     signin({ variables: { email: email, password: password } });
+    history.push("/Benutzerbereich")
+    // alert (
+    //   "E-Mail: " + data.signin.email
+    // )
   }
 
   return (
@@ -39,7 +46,7 @@ function Login() {
       <p>
         <Link to="/NeuerBenutzer">Neuer Benutzer</Link>
       </p>
-      <LogButton value="Login" />
+      <SubButton value="Login" />
     </Form>
   );
 }

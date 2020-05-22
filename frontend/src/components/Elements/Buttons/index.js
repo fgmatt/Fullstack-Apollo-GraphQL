@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LogButton = ({ value }) => {
+const SubButton = ({ value }) => {
     return (
         <div>
             <input type="submit" value={value} />
@@ -8,4 +8,4 @@ const LogButton = ({ value }) => {
     )
 }
 
-export default LogButton;
+export default SubButton;
