@@ -1,11 +1,19 @@
-import React from 'react';
+import React from "react";
 
-const SubButton = ({ value }) => {
-    return (
-        <div>
-            <input type="submit" value={value} />
-        </div>
-    )
-}
+const SubButton = ({ value = "Bestätigen" }) => {
+  return (
+    <div>
+      <input type="submit" value={value} />
+    </div>
+  );
+};
 
-export default SubButton;
+const InputButton = ({ value = "Abbrechen", onClick }) => {
+  return (
+    <div>
+      <input type="button" value={value} onClick={onClick} />
+    </div>
+  );
+};
+
+export { SubButton, InputButton };

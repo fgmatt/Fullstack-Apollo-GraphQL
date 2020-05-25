@@ -17,10 +17,10 @@ class UserSpace extends React.Component {
         </div>
         <div>
             <p>
-                <Link to="email">E-Mail ändern</Link>
+                <Link to="/email">E-Mail ändern</Link>
             </p>
             <p>
-                <Link to="password">Passwort ändern</Link>
+                <Link to="/password">Passwort ändern</Link>
             </p>
         </div>
       </div>

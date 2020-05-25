@@ -1,24 +1,51 @@
-import React from 'react';
-import { CHANGE_CREDS } from '../../graphQL/mutations';
-import Form from '../Elements/Form';
-import Email from '../Elements/Email';
-import PasswordInput from '../Elements/Password';
-import SubButton from '../Elements/Buttons'
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { CHANGE_CREDS } from "../../graphQL/mutations";
+import Form from "../Elements/Form";
+import Email from "../Elements/Email";
+import PasswordInput from "../Elements/Password";
+import { SubButton, InputButton } from "../Elements/Buttons";
 
 function ChangeEmail() {
+    const history = useHistory();
 
-    return (
-        <Form>
-            <h2>Email-ändern</h2>
-            <Email>
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-            </Email>
-            <PasswordInput>
+   function handleChangeEmail(event) {
+        setEmail(event.target.value)
+    }
 
-            </PasswordInput>
-            <SubButton />
-        </Form>
-    )
+    function handleChangePassword(event) {
+        setPassword(event.target.value)
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        alert(
+            "E-Mail: " + email +
+            "Password: " + password
+        )
+    }
+
+    function handleQuitButton(event) {
+        event.preventDefault();
+        history.push("/Benutzerbereich")
+    }
+
+  return (
+    <Form onSubmit={(e) => handleSubmit(e)}>
+      <h2>Email-ändern</h2>
+      <Email value={email} onChange={(e) => handleChangeEmail(e)}></Email>
+      <PasswordInput
+        name="password"
+        value={password}
+        onChange={(e) => handleChangePassword(e)}
+      > Passwort:</PasswordInput>
+      <InputButton onClick={(e) => handleQuitButton(e)}/>
+      <SubButton />
+    </Form>
+  );
 }
 
 export default ChangeEmail;

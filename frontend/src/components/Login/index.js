@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { SIGNIN } from "../../graphQL/mutations";
 import Form from "../Elements/Form";
-import SubButton from "../Elements/Buttons";
+import { SubButton } from "../Elements/Buttons";
 import Email from "../Elements/Email";
 import PasswordInput from "../Elements/Password";
 
@@ -24,9 +24,9 @@ function Login() {
   }
 
   function handleSubmit(event) {
-    event.preventDefault();   
+    event.preventDefault();
     signin({ variables: { email: email, password: password } });
-    history.push("/Benutzerbereich")
+    history.push("/Benutzerbereich");
     // alert (
     //   "E-Mail: " + data.signin.email
     // )

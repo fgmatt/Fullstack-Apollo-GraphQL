@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { SIGNUP } from "../../graphQL/mutations";
 import Form from "../Elements/Form";
-import SubButton from "../Elements/Buttons";
+import { SubButton, InputButton } from "../Elements/Buttons";
 import Email from "../Elements/Email";
 import PasswordInput from "../Elements/Password";
 
@@ -29,7 +29,14 @@ function NewLogin() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    signup({ variables: { email: email, password: password }}).then(history.push("/"));
+    signup({ variables: { email: email, password: password } }).then(
+      history.push("/")
+    );
+  }
+
+  function handleButtonClick(event) {
+    event.preventDefault();
+    history.push("/")
   }
 
   return (
@@ -50,9 +57,7 @@ function NewLogin() {
       >
         Passwort B:
       </PasswordInput>
-      <button>
-        <Link to="/">Abbrechen</Link>
-      </button>
+      <InputButton onClick={(e) => handleButtonClick(e)}/>
       <SubButton value="Neuer_Benutzer" />
     </Form>
   );
