@@ -95,6 +95,25 @@ usersSchema.pre("save", function(next) {
     });
 });
 
+usersSchema.pre("updateOne", function(next) {
+    const query = this;
+
+    bcrypt.genSalt(12, function(error, salt) {
+        if (error) {
+            return next(error);
+        }
+
+        bcrypt.hash(query._update.password, salt, function(error, hash) {
+            if (error) {
+                return next(error);
+            }
+
+            query._update.password = hash;
+            next();
+        });
+    });
+});
+
 usersSchema.methods.comparePassword = function(enteredPassword) {
     const storedPassword = this.password;
 

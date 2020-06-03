@@ -2,6 +2,8 @@ import { auth } from "../services/users/";
 import { findByUsername } from "../services/users/";
 import { deluser } from "../services/users/";
 import { changeCreds } from "../services/users/";
+import { changeEmail } from "../services/users/";
+import { changePassword } from "../services/users/";
 
 const resolvers = {
     Query: {
@@ -25,6 +27,12 @@ const resolvers = {
         changeCreds: (parent, args) => {
             return changeCreds(args);
         },
+        changeEmail: (parent, args) => {
+            return changeEmail(args);
+        },
+        changePassword: (parent, args) => {
+            return changePassword(args);
+        }
     },
 };
 

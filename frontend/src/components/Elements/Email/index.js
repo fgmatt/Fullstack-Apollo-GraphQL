@@ -1,10 +1,10 @@
 import React from "react";
 
-const Email = ({ value, onChange }) => {
+const Email = ({ value, onChange, children }) => {
   return (
     <div>
       <label>
-        E-Mail:
+        {children}
         <input
           name="email"
           type="email"

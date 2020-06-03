@@ -29,20 +29,24 @@ function NewLogin() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    signup({ variables: { email: email, password: password } }).then(
-      history.push("/")
-    );
+    signup({ variables: { email: email, password: password } })
+      .then(({ data }) => {
+        history.push("/");
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }
 
   function handleButtonClick(event) {
     event.preventDefault();
-    history.push("/")
+    history.push("/");
   }
 
   return (
     <Form onSubmit={(e) => handleSubmit(e)}>
       <h2>Login</h2>
-      <Email value={email} onChange={(e) => handleChangeEmail(e)} />
+      <Email value={email} onChange={(e) => handleChangeEmail(e)} >E-Mail:</Email>
       <PasswordInput
         name="password"
         value={password}
@@ -57,7 +61,7 @@ function NewLogin() {
       >
         Passwort B:
       </PasswordInput>
-      <InputButton onClick={(e) => handleButtonClick(e)}/>
+      <InputButton onClick={(e) => handleButtonClick(e)} />
       <SubButton value="Neuer_Benutzer" />
     </Form>
   );

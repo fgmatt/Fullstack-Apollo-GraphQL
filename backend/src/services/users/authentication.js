@@ -45,7 +45,7 @@ const signup = async args => {
 };
 
 /**
- * Sigin in in an existing user.
+ * Sigin in an existing user.
  * @param args {object}
  * @returns {Promise<void>} JWT for user
  */

@@ -1,11 +1,11 @@
 import User from "./userService";
 
 /**
- * to change Creds of an existing user
+ * to change Email of an existing user
  * @param args {object} user object
  * @returns {Promise<void>} updated user
  */
-const changeCreds = async (args) => {
+const changeEmail = async (args) => {
     const _id = args._id;
     const email = args.email;
     const password = args.password;
@@ -18,13 +18,15 @@ const changeCreds = async (args) => {
 
     const passwordMatches = await Creds.comparePassword(password);
 
-    if (Creds.email === email && passwordMatches) {
-        throw Error("The same email and password");
+    if (Creds.email === email) {
+        throw Error("The same email");
     }
 
-    const query = User.updateOne({ _id }, { email, password });
+    if (!passwordMatches) {
+        throw Error("Invalid Password");
+    }
 
-    return await query.exec();
+    return await User.updateOne({ _id }, { email });
 };
 
-module.exports = changeCreds;
+module.exports = changeEmail;

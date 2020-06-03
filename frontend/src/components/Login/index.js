@@ -13,7 +13,9 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [signin, { loading, error, data }] = useMutation(SIGNIN);
+  const [signin, { loading, error, data }] = useMutation(SIGNIN, {
+    variables: { email: email, password: password },
+  });
 
   function handleChangeEmail(event) {
     setEmail(event.target.value);
@@ -25,17 +27,23 @@ function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    signin({ variables: { email: email, password: password } });
-    history.push("/Benutzerbereich");
-    // alert (
-    //   "E-Mail: " + data.signin.email
-    // )
+    signin()
+      .then(({ data }) => {
+        history.push("/Benutzerbereich");
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }
 
   return (
     <Form onSubmit={(e) => handleSubmit(e)}>
       <h2>Login</h2>
-      <Email value={email} onChange={(e) => handleChangeEmail(e)} />
+      {loading && <p></p>}
+      {error && <p>Email oder Passwort inkorrekt.</p>}
+      <Email value={email} onChange={(e) => handleChangeEmail(e)}>
+        E-Mail:
+      </Email>
       <PasswordInput
         name="Password"
         value={password}

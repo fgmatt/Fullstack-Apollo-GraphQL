@@ -10,8 +10,11 @@ const typeDefs = gql`
         signin(email: String!, password: String!): User!
         deluser(_id: String!): User!
         changeCreds(_id: String!, email: String, password: String): User!
+        changeEmail(_id: String!, email: String!, password: String!): User!
+        changePassword(_id: String!, password: String!, newPassword: String!): User
     }
     type User {
+        _id: String
         email: String
         token: String
     }
