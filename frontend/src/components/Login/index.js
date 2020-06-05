@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { SIGNIN } from "../../graphQL/mutations";
+import client from "../../ApolloClient/";
 import Form from "../Elements/Form";
 import { SubButton } from "../Elements/Buttons";
 import Email from "../Elements/Email";
 import PasswordInput from "../Elements/Password";
 
 function Login() {
-  let history = useHistory();
+  const history = useHistory();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

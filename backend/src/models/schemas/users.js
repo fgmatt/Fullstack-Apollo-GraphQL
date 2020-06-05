@@ -76,15 +76,15 @@ const usersSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-usersSchema.pre("save", function(next) {
+usersSchema.pre("save", function (next) {
     const user = this;
 
-    bcrypt.genSalt(12, function(error, salt) {
+    bcrypt.genSalt(12, function (error, salt) {
         if (error) {
             return next(error);
         }
 
-        bcrypt.hash(user.password, salt, function(error, hash) {
+        bcrypt.hash(user.password, salt, function (error, hash) {
             if (error) {
                 return next(error);
             }
@@ -95,30 +95,37 @@ usersSchema.pre("save", function(next) {
     });
 });
 
-usersSchema.pre("updateOne", function(next) {
+usersSchema.pre("updateOne", function (next) {
     const query = this;
 
-    bcrypt.genSalt(12, function(error, salt) {
-        if (error) {
-            return next(error);
-        }
-
-        bcrypt.hash(query._update.password, salt, function(error, hash) {
+    if (query._update.password) {
+        bcrypt.genSalt(12, function (error, salt) {
             if (error) {
                 return next(error);
             }
 
-            query._update.password = hash;
-            next();
+            bcrypt.hash(query._update.password, salt, function (error, hash) {
+                if (error) {
+                    return next(error);
+                }
+
+                query._update.password = hash;
+                next();
+            });
         });
-    });
+    } else {
+        next();
+    }
 });
 
-usersSchema.methods.comparePassword = function(enteredPassword) {
+usersSchema.methods.comparePassword = function (enteredPassword) {
     const storedPassword = this.password;
 
-    return new Promise(function(resolve, reject) {
-        bcrypt.compare(enteredPassword, storedPassword, function(err, isMatch) {
+    return new Promise(function (resolve, reject) {
+        bcrypt.compare(enteredPassword, storedPassword, function (
+            err,
+            isMatch
+        ) {
             if (err) {
                 reject(err);
             }

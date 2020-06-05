@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
-import { CHANGE_CREDS } from "../../graphQL/mutations";
+import { CHANGE_PASSWORD } from "../../graphQL/mutations";
 import Form from "../Elements/Form";
 import PasswordInput from "../Elements/Password";
 import { SubButton, InputButton } from "../Elements/Buttons";
@@ -12,8 +12,8 @@ function ChangePassword() {
   const [passwordv, setPasswordv] = useState("");
   const [password, setPassword] = useState("");
   const [passwordb, setPasswordb] = useState("");
-  const [changeCreds, { loading, error, data }] = useMutation(CHANGE_CREDS, {
-    variables: { _id: "5df0d851ae569805c8593f32", password: password },
+  const [ChangePassword, { loading, error, data }] = useMutation(CHANGE_PASSWORD, {
+    variables: { _id: "5ebd0951c8499905863987f0", password: passwordv, newPassword: password },
   });
 
   function handleChangePasswordv(event) {
@@ -30,10 +30,10 @@ function ChangePassword() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (password == passwordb) {
+    if (password != passwordb) {
       return null;
     }
-    changeCreds()
+    ChangePassword()
       .then(({ data }) => {
         history.push("/Benutzerbereich");
       })
@@ -49,6 +49,8 @@ function ChangePassword() {
 
   return (
     <Form onSubmit={(e) => handleSubmit(e)}>
+      {loading && <p></p>}
+      {error && <p>Email oder Passwort inkorrekt.</p>}
       <PasswordInput
         name="passwordv"
         value={passwordv}
