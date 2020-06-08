@@ -6,12 +6,12 @@ import { jwt_secret } from "../keys/keys";
  * @param user {object} the user the JWT is for
  * @returns {{token: *, expires: *}} JWT
  */
-const tokenSign = user => {
-    const timestamp = new Date().getTime();
+const tokenSign = email => {
+    const timestamp = Math.floor(new Date().getTime() / 1000);
     const expires = Math.floor(Date.now() / 1000) + 60 * 60 * 24;
 
     const payload = {
-        ub: user.email,
+        ub: email,
         iat: timestamp,
         exp: expires,
     };

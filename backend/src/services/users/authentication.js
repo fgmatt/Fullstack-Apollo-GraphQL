@@ -83,6 +83,8 @@ const signin = async args => {
         { token: tokenSign(userByEmailFind.email).token }
     );
 
+    console.log(userByEmailFind.email)
+
     return await tokenSignin;
 };
 
