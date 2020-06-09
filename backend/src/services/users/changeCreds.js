@@ -1,4 +1,6 @@
 import User from "./userService";
+import { emailValidation } from "../validation";
+import { passwordValidation } from "../validation";
 
 /**
  * to change Creds of an existing user
@@ -22,9 +24,14 @@ const changeCreds = async (args) => {
         throw Error("The same email and password");
     }
 
+    emailValidation(email);
+    passwordValidation(password);
+
     const query = User.updateOne({ _id }, { email, password });
 
-    return await query.exec();
+    await query.exec();
+
+    return await User.findOne({ _id });
 };
 
 module.exports = changeCreds;

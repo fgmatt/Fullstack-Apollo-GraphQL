@@ -1,5 +1,7 @@
 import User from "./userService";
 import tokenSign from "../../jwt/jwt";
+import { emailValidation } from "../validation";
+import { passwordValidation } from "../validation";
 
 /**
  * Sigin up a new user.
@@ -17,6 +19,9 @@ const signup = async args => {
     if (!email /*|| !username*/ || !password) {
         throw new Error("You must provide a email, username or password");
     }
+
+    emailValidation(email);
+    passwordValidation(password);
 
     //const existingUsername = await User.findOne({ username });
     const existingEmail = await User.findOne({ email });
@@ -57,8 +62,6 @@ const signin = async args => {
     //const userByUsernameFind = await User.findOne({ username });
     const userByEmailFind = await User.findOne({ email });
 
-    await console.log(userByEmailFind.email);
-
     if (/*!userByUsernameFind && */ !userByEmailFind) {
         throw new Error("Incorrect email, username or password");
     }
@@ -78,12 +81,14 @@ const signin = async args => {
         throw new Error("Incorrect email, username or password");
     }
 
-    const tokenSignin = await User.findOneAndUpdate(
+    const Signin = await User.findOneAndUpdate(
         { email },
         { token: tokenSign(userByEmailFind.email).token }
     );
 
-    return await tokenSignin;
+    await Signin;
+
+    return await User.findOne({ email });
 };
 
 export default {

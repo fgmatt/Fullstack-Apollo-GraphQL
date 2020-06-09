@@ -1,4 +1,5 @@
 import User from "./userService";
+import { passwordValidation } from "../validation";
 
 /**
  * to change Password of an existing user
@@ -26,6 +27,8 @@ const changePassword = async (args) => {
     if (newPasswordMatches) {
         throw Error("the same password")
     }
+
+    passwordValidation(newPassword);
 
     const query = User.updateOne({ _id }, { password: newPassword });
 

@@ -1,4 +1,5 @@
 import User from "./userService";
+import { emailValidation } from "../validation";
 
 /**
  * to change Email of an existing user
@@ -26,7 +27,11 @@ const changeEmail = async (args) => {
         throw Error("Invalid Password");
     }
 
-    return await User.updateOne({ _id }, { email });
+    emailValidation(email);
+
+    await User.updateOne({ _id }, { email });
+
+    return User.findOne({ _id });
 };
 
 module.exports = changeEmail;
