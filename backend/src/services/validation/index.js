@@ -1,5 +1,5 @@
 const passwordValidation = (p) => {
-    const regexL = /^{8,20}$/;
+    const regexL = /^.{8,20}$/;
     const regexN = /\d/;
     const regexA = /[a-z]/;
     const regexAc = /[A-Z]/;
@@ -35,7 +35,7 @@ const passwordValidation = (p) => {
 };
 
 const emailValidation = (e) => {
-    const regexL = /^{5,998}$/;
+    const regexL = /^.{5,998}$/;
     const regexE = /^\w*\56?\w*@\w+\56\w{2,}$/;
 
     const vEmailL = e.match(regexL);
