@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Login from "./Login";
+import { Login } from "./Login";
 import NewLogin from "./NewLogin";
 import UserSpace from "./UserSpace";
 import ChangeEmail from "./ChangeEmail";

@@ -8,6 +8,8 @@ import { SubButton } from "../Elements/Buttons";
 import Email from "../Elements/Email";
 import PasswordInput from "../Elements/Password";
 
+let userId;
+
 function Login() {
   const history = useHistory();
 
@@ -19,7 +21,7 @@ function Login() {
   });
 
   function handleChangeEmail(event) {
-    setEmail(event.target.value);
+    setEmail(event.target.value)
   }
 
   function handleChangePassword(event) {
@@ -30,6 +32,7 @@ function Login() {
     event.preventDefault();
     signin()
       .then(({ data }) => {
+        userId = data.signin._id;
         history.push("/Benutzerbereich");
       })
       .catch((e) => {
@@ -60,4 +63,4 @@ function Login() {
   );
 }
 
-export default Login;
+export { Login, userId };

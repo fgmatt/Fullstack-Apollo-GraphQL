@@ -1,11 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
-import { USERFIND } from "../../graphQL/queries";
+import { USERFINDBYID } from "../../graphQL/queries";
+import { userId } from "../Login";
 
 function UserSpace() {
-  const { loading, error, data } = useQuery(USERFIND, {
-    variables: { email: "example@gmail.com1" },
+  const history = useHistory();
+  if (!userId) {
+    history.push("/");
+  }
+  
+  const { loading, error, data } = useQuery(USERFINDBYID, {
+    variables: { _id: userId },
   });
   return (
     <div>
@@ -18,7 +24,7 @@ function UserSpace() {
       <div>
         <p>Benutzer ist eingeloggt als:</p>
         {loading && <p>Loading...</p>}
-        {data && <p>{data.userfind.email}</p>}
+        {data && <p>{data.userfindById.email}</p>}
       </div>
       <div>
         <p>

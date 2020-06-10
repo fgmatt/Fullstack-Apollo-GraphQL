@@ -1,5 +1,5 @@
 import { auth } from "../services/users/";
-import { findByUsername } from "../services/users/";
+import { findUser } from "../services/users/";
 import { deluser } from "../services/users/";
 import { changeCreds } from "../services/users/";
 import { changeEmail } from "../services/users/";
@@ -11,8 +11,11 @@ const resolvers = {
             return "Hello world!";
         },
         userfind: (parent, args) => {
-            return findByUsername(args);
+            return findUser.findByUsername(args);
         },
+        userfindById: (parent, args) => {
+            return findUser.userfindById(args);
+        }
     },
     Mutation: {
         signup: (parent, args) => {

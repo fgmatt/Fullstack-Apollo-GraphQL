@@ -4,6 +4,7 @@ const typeDefs = gql`
     type Query {
         hello: String
         userfind(email: String!): User!
+        userfindById(_id: String!): User!
     }
     type Mutation {
         signup(email: String!, password: String!): User!

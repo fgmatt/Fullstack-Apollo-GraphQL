@@ -9,7 +9,7 @@ import { passwordValidation } from "../validation";
 const changePassword = async (args) => {
     const _id = args._id;
     const password = args.password;
-    const newPassword = args.newPassword
+    const newPassword = args.newPassword;
 
     if (!_id) {
         throw Error("Please provide a id");
@@ -25,14 +25,16 @@ const changePassword = async (args) => {
     }
 
     if (newPasswordMatches) {
-        throw Error("the same password")
+        throw Error("the same password");
     }
 
     passwordValidation(newPassword);
 
     const query = User.updateOne({ _id }, { password: newPassword });
 
-    return await query.exec();
+    await query.exec();
+
+    return await User.findOne({ _id });
 };
 
 module.exports = changePassword;

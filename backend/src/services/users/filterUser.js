@@ -5,8 +5,12 @@ import User from "./userService";
  * @param args {object} user object
  * @returns {Promise<any>} found user
  */
-const findByUsername = async args => {
-    return await User.findOne( { email: args.email } ).exec();
+const findByUsername = async (args) => {
+    return await User.findOne({ email: args.email }).exec();
 };
 
-module.exports = findByUsername;
+const userfindById = async (args) => {
+    return await User.findOne({ _id: args._id }).exec();
+};
+
+module.exports = { findByUsername, userfindById };
