@@ -6,14 +6,19 @@ import Form from "../Elements/Form";
 import Email from "../Elements/Email";
 import PasswordInput from "../Elements/Password";
 import { SubButton, InputButton } from "../Elements/Buttons";
+import { userId } from "../Login";
 
 function ChangeEmail() {
   const history = useHistory();
 
+  if (!userId) {
+    history.push("/");
+  }
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [changeEmail, { loading, error, data }] = useMutation(CHANGE_EMAIL, {
-    variables: { _id: "5ebd0951c8499905863987f0", email: email, password: password },
+    variables: { _id: userId, email: email, password: password },
   });
 
   function handleChangeEmail(event) {
@@ -45,7 +50,9 @@ function ChangeEmail() {
       <h2>Email-ändern</h2>
       {loading && <p></p>}
       {error && <p>Email oder Passwort inkorrekt.</p>}
-      <Email value={email} onChange={(e) => handleChangeEmail(e)}>Neue Email:</Email>
+      <Email value={email} onChange={(e) => handleChangeEmail(e)}>
+        Neue Email:
+      </Email>
       <PasswordInput
         name="password"
         value={password}

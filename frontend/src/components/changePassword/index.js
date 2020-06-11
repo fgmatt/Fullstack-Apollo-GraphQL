@@ -5,16 +5,28 @@ import { CHANGE_PASSWORD } from "../../graphQL/mutations";
 import Form from "../Elements/Form";
 import PasswordInput from "../Elements/Password";
 import { SubButton, InputButton } from "../Elements/Buttons";
+import { userId } from "../Login";
 
 function ChangePassword() {
   const history = useHistory();
 
+  if (!userId) {
+    history.push("/");
+  }
+
   const [passwordv, setPasswordv] = useState("");
   const [password, setPassword] = useState("");
   const [passwordb, setPasswordb] = useState("");
-  const [ChangePassword, { loading, error, data }] = useMutation(CHANGE_PASSWORD, {
-    variables: { _id: "5ebd0951c8499905863987f0", password: passwordv, newPassword: password },
-  });
+  const [ChangePassword, { loading, error, data }] = useMutation(
+    CHANGE_PASSWORD,
+    {
+      variables: {
+        _id: "5ebd0951c8499905863987f0",
+        password: passwordv,
+        newPassword: password,
+      },
+    }
+  );
 
   function handleChangePasswordv(event) {
     setPasswordv(event.target.value);
