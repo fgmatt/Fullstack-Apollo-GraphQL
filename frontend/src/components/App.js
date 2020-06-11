@@ -5,6 +5,7 @@ import NewLogin from "./NewLogin";
 import UserSpace from "./UserSpace";
 import ChangeEmail from "./ChangeEmail";
 import ChangePassword from "./ChangePassword";
+import NoMatch from "./NoMatch";
 
 class App extends Component {
   render() {
@@ -26,6 +27,9 @@ class App extends Component {
             </Route>
             <Route path="/password">
               <ChangePassword />
+            </Route>
+            <Route path="*">
+              <NoMatch />
             </Route>
           </Switch>
         </div>
