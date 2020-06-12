@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Login } from "./Login";
 import NewLogin from "./NewLogin";
 import UserSpace from "./UserSpace";
+import MainSpace from "./MainSpace";
 import ChangeEmail from "./ChangeEmail";
 import ChangePassword from "./ChangePassword";
 import NoMatch from "./NoMatch";
@@ -19,8 +20,11 @@ class App extends Component {
             <Route path="/NeuerBenutzer">
               <NewLogin />
             </Route>
-            <Route path="/Benutzerbereich">
+            {/* <Route path="/Benutzerbereich">
               <UserSpace />
+            </Route> */}
+            <Route path="/Hauptbereich">
+              <MainSpace />
             </Route>
             <Route path="/email">
               <ChangeEmail />

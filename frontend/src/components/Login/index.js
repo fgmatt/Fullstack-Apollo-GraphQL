@@ -33,7 +33,8 @@ function Login() {
     signin()
       .then(({ data }) => {
         userId = data.signin._id;
-        history.push("/Benutzerbereich");
+        // history.push("/Benutzerbereich");
+        history.push("/Hauptbereich");
       })
       .catch((e) => {
         console.log(e);
