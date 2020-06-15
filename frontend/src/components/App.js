@@ -20,9 +20,9 @@ class App extends Component {
             <Route path="/NeuerBenutzer">
               <NewLogin />
             </Route>
-            {/* <Route path="/Benutzerbereich">
+            <Route path="/Benutzerbereich">
               <UserSpace />
-            </Route> */}
+            </Route>
             <Route path="/Hauptbereich">
               <MainSpace />
             </Route>

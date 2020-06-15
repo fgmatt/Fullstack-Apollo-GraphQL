@@ -9,10 +9,31 @@ import {
 import { Link, useHistory } from "react-router-dom";
 import { userId } from "../Login";
 
+let userIdFake;
+
 function MainSpace() {
   const history = useHistory();
-  if (!userId) {
-    history.push("/");
+
+  console.log(userIdFake);
+  
+  if (!userIdFake) {
+    if (!userId) {
+      history.push("/");
+    } else {
+      userIdFake = 1;
+    }
+  }
+
+  function handleHouseUser() {
+    history.push("/email");
+  }
+
+  function handleFlask() {
+    history.push("/science");
+  }
+
+  function handleStickyNote() {
+    history.push("/some");
   }
 
   const [flask, setFlask] = useState("");
@@ -29,13 +50,17 @@ function MainSpace() {
         </p>
       </div>
       <div>
-        <FontAwesomeIcon icon={faHouseUser} size="3x">
-          <p>Benutzerdaten</p>
-        </FontAwesomeIcon>
-        <FontAwesomeIcon icon={faFlask} size="3x">
-        Scientists
-        </FontAwesomeIcon>
-        <FontAwesomeIcon icon={faStickyNote} size="3x"/>
+        <FontAwesomeIcon
+          icon={faHouseUser}
+          size="3x"
+          onClick={handleHouseUser}
+        />
+        <FontAwesomeIcon icon={faFlask} size="3x" onClick={handleFlask} />
+        <FontAwesomeIcon
+          icon={faStickyNote}
+          size="3x"
+          onClick={handleStickyNote}
+        />
       </div>
     </div>
   );

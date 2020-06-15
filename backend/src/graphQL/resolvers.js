@@ -15,7 +15,7 @@ const resolvers = {
         },
         userfindById: (parent, args) => {
             return findUser.userfindById(args);
-        }
+        },
     },
     Mutation: {
         signup: (parent, args) => {
@@ -35,7 +35,7 @@ const resolvers = {
         },
         changePassword: (parent, args) => {
             return changePassword(args);
-        }
+        },
     },
 };
 
