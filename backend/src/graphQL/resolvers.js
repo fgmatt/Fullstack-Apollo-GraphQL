@@ -4,6 +4,12 @@ import { deluser } from "../services/users/";
 import { changeCreds } from "../services/users/";
 import { changeEmail } from "../services/users/";
 import { changePassword } from "../services/users/";
+import {
+    createScientist,
+    searchScientistByName,
+    fetchAllScientists,
+    changeScientist
+} from "../services/scientists";
 
 const resolvers = {
     Query: {
@@ -15,6 +21,12 @@ const resolvers = {
         },
         userfindById: (parent, args) => {
             return findUser.userfindById(args);
+        },
+        searchScientistByName: (parent, args) => {
+            return searchScientistByName(args);
+        },
+        allScientists: (parent, args) => {
+            return fetchAllScientists();
         },
     },
     Mutation: {
@@ -36,6 +48,12 @@ const resolvers = {
         changePassword: (parent, args) => {
             return changePassword(args);
         },
+        createScientist: (parent, args) => {
+            return createScientist(args);
+        },
+        changeScientist: (parent, args) => {
+            return changeScientist(args);
+        }
     },
 };
 
