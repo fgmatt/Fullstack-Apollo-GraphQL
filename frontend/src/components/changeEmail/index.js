@@ -33,7 +33,8 @@ function ChangeEmail() {
     event.preventDefault();
     changeEmail()
       .then(({ data }) => {
-        history.push("/Benutzerbereich");
+        // history.push("/Benutzerbereich");
+        history.push("/Hauptbereich")
       })
       .catch((e) => {
         console.log(e);
@@ -42,7 +43,8 @@ function ChangeEmail() {
 
   function handleQuitButton(event) {
     event.preventDefault();
-    history.push("/Benutzerbereich");
+    // history.push("/Benutzerbereich");
+    history.push("/Hauptbereich")
   }
 
   return (

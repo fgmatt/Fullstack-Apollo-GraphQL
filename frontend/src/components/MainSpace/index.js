@@ -29,7 +29,7 @@ function MainSpace() {
   }
 
   function handleFlask() {
-    history.push("/science");
+    history.push("/scientists");
   }
 
   function handleStickyNote() {

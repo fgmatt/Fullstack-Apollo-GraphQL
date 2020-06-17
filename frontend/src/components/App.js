@@ -6,6 +6,7 @@ import UserSpace from "./UserSpace";
 import MainSpace from "./MainSpace";
 import ChangeEmail from "./ChangeEmail";
 import ChangePassword from "./ChangePassword";
+import Scientists from "./Scientists";
 import NoMatch from "./NoMatch";
 
 class App extends Component {
@@ -31,6 +32,9 @@ class App extends Component {
             </Route>
             <Route path="/password">
               <ChangePassword />
+            </Route>
+            <Route path="/scientists">
+              <Scientists />
             </Route>
             <Route path="*">
               <NoMatch />
