@@ -21,7 +21,7 @@ function ChangePassword() {
     CHANGE_PASSWORD,
     {
       variables: {
-        _id: "5ebd0951c8499905863987f0",
+        _id: userId,
         password: passwordv,
         newPassword: password,
       },
