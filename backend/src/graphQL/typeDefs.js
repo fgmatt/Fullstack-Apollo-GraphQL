@@ -14,9 +14,25 @@ const typeDefs = gql`
         deluser(_id: String!): User!
         changeCreds(_id: String!, email: String, password: String): User!
         changeEmail(_id: String!, email: String!, password: String!): User!
-        changePassword(_id: String!, password: String!, newPassword: String!): User
-        createScientist(name: String!, lived: String, topics: String, biography: String): Scientist
-        changeScientist(name: String!, lived: String, topics: String, biography: String): Scientist
+        changePassword(
+            _id: String!
+            password: String!
+            newPassword: String!
+        ): User
+        createScientist(
+            name: String!
+            livedIn: String
+            biographicalData: String
+            topics: String
+            biography: String
+        ): Scientist
+        changeScientist(
+            name: String!
+            livedIn: String
+            biographicalData: String
+            topics: String
+            biography: String
+        ): Scientist
     }
     type User {
         _id: String
@@ -26,7 +42,8 @@ const typeDefs = gql`
 
     type Scientist {
         name: String
-        lived: String
+        livedIn: String
+        biographicalData: String
         topics: String
         biography: String
     }

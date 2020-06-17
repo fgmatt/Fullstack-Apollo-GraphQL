@@ -2,7 +2,8 @@ import Scientists from "./scientistsService";
 
 const changeScientist = async (args) => {
     const name = args.name;
-    let lived = args.lived;
+    let livedIn = args.livedIn;
+    let biographicalData = args.biographicalData;
     let topics = args.topics;
     let biography = args.biography;
 
@@ -14,25 +15,46 @@ const changeScientist = async (args) => {
         throw Error("Scientist not found");
     }
 
-    if (lived === "???" || topics === "???" || biography === "???") {
-        throw Error("??? is a placeholder for an empty input");
-    } else if (!lived) {
-        lived = "???";
+    if (
+        livedIn === "???" ||
+        topics === "???" ||
+        biography === "???" ||
+        biographicalData === "???"
+    ) {
+        throw Error(
+            "??? or 000 for numbers is a placeholder for an empty input"
+        );
+    } else if (!livedIn) {
+        livedIn = "???";
     } else if (!topics) {
         topics = "???";
+    } else if (!biographicalData) {
+        biographicalData = "???";
     } else if (!biography) {
         biography = "???";
-    } else if (!(lived === "???" || topics === "???" || biography === "???")) {
-        if (lived === existingScientist.lived) {
-            throw Error("The same lived as before");
+    } else if (
+        !(
+            livedIn === "???" ||
+            topics === "???" ||
+            biography === "???" ||
+            biographicalData == "???"
+        )
+    ) {
+        if (livedIn === existingScientist.livedIn) {
+            console.warn("The same lived as before");
         } else if (topics === existingScientist.topics) {
-            throw Error("The same topic as before");
+            console.warn("The same topic as before");
         } else if (biography === existingScientist.biography) {
-            throw Error("The same biography as before");
+            console.warn("The same biography as before");
+        } else if (biographicalData === existingScientist.biographicalData) {
+            console.warn("The same biographicalData as before");
         }
     }
 
-    await Scientists.updateOne({ name }, { lived, topics, biography });
+    await Scientists.updateOne(
+        { name },
+        { livedIn, topics, biography, biographicalData }
+    );
 
     return Scientists.findOne({ name });
 };
