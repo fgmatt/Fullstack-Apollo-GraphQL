@@ -33,6 +33,7 @@ function Login() {
     signin()
       .then(({ data }) => {
         userId = data.signin._id;
+        sessionStorage.setItem('userId', data.signin._id);
         // history.push("/Benutzerbereich");
         history.push("/Hauptbereich");
       })

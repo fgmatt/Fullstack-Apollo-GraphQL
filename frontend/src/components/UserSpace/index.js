@@ -2,23 +2,32 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { USERFINDBYID } from "../../graphQL/queries";
-import { userId } from "../Login";
 
 function UserSpace() {
   const history = useHistory();
-  if (!userId) {
+
+  const userIdSession = sessionStorage.getItem("userId");
+
+  if (userIdSession === null) {
     history.push("/");
   }
-  
+
   const { loading, error, data } = useQuery(USERFINDBYID, {
-    variables: { _id: userId },
+    variables: { _id: userIdSession },
   });
+
+  function handleLink() {
+    sessionStorage.removeItem("userId");
+  }
+
   return (
     <div>
       <div>
         <h1>Benutzerbereich</h1>
         <p>
-          <Link to="/">Logout</Link>
+          <Link onClick={handleLink} to="/">
+            Logout
+          </Link>
         </p>
       </div>
       <div>

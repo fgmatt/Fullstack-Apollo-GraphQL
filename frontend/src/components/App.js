@@ -8,6 +8,16 @@ import ChangeEmail from "./ChangeEmail";
 import ChangePassword from "./ChangePassword";
 import Scientists from "./Scientists";
 import NoMatch from "./NoMatch";
+import {
+  rHome,
+  rNewLogin,
+  rUserSpace,
+  rMainSpace,
+  rScientists,
+  rEmail,
+  rPassword,
+  rError,
+} from "./RoutesName";
 
 class App extends Component {
   render() {
@@ -15,28 +25,28 @@ class App extends Component {
       <Router>
         <div className="container">
           <Switch>
-            <Route exact path="/">
+            <Route exact path={rHome}>
               <Login />
             </Route>
-            <Route path="/NeuerBenutzer">
+            <Route path={rNewLogin}>
               <NewLogin />
             </Route>
-            <Route path="/Benutzerbereich">
+            <Route path={rUserSpace}>
               <UserSpace />
             </Route>
-            <Route path="/Hauptbereich">
+            <Route path={rMainSpace}>
               <MainSpace />
             </Route>
-            <Route path="/email">
+            <Route path={rEmail}>
               <ChangeEmail />
             </Route>
-            <Route path="/password">
+            <Route path={rPassword}>
               <ChangePassword />
             </Route>
-            <Route path="/scientists">
+            <Route path={rScientists}>
               <Scientists />
             </Route>
-            <Route path="*">
+            <Route path={rError}>
               <NoMatch />
             </Route>
           </Switch>

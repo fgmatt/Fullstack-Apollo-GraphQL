@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFlask,
@@ -7,22 +7,17 @@ import {
   faStickyNote,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useHistory } from "react-router-dom";
-import { userId } from "../Login";
-
-let userIdFake;
 
 function MainSpace() {
   const history = useHistory();
 
-  console.log(userIdFake);
-  
-  if (!userIdFake) {
-    if (!userId) {
-      history.push("/");
-    } else {
-      userIdFake = 1;
-    }
+  const userIdSession = sessionStorage.getItem("userId");
+
+  if (userIdSession === null) {
+    history.push("/");
   }
+
+  console.log(userIdSession);
 
   function handleHouseUser() {
     history.push("/email");
@@ -36,17 +31,18 @@ function MainSpace() {
     history.push("/some");
   }
 
-  const [flask, setFlask] = useState("");
-  const [houseUser, setHouseUser] = useState("");
-  const [userCircle, setUserCircle] = useState("");
-  const [stickyNote, setStickyNote] = useState("");
+  function handleLink() {
+    sessionStorage.removeItem("userId");
+  }
 
   return (
     <div>
       <div>
         <h1>Hauptbereich</h1>
         <p>
-          <Link to="/">Logout</Link>
+          <Link onClick={handleLink} to="/">
+            Logout
+          </Link>
         </p>
       </div>
       <div>
