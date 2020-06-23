@@ -8,10 +8,11 @@ import { SubButton } from "../Elements/Buttons";
 import Email from "../Elements/Email";
 import PasswordInput from "../Elements/Password";
 
-let userId;
-
 function Login() {
   const history = useHistory();
+
+  const preSession = sessionStorage.getItem('userId');
+  console.log(preSession);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +22,7 @@ function Login() {
   });
 
   function handleChangeEmail(event) {
-    setEmail(event.target.value)
+    setEmail(event.target.value);
   }
 
   function handleChangePassword(event) {
@@ -32,8 +33,7 @@ function Login() {
     event.preventDefault();
     signin()
       .then(({ data }) => {
-        userId = data.signin._id;
-        sessionStorage.setItem('userId', data.signin._id);
+        sessionStorage.setItem("userId", data.signin._id);
         // history.push("/Benutzerbereich");
         history.push("/Hauptbereich");
       })
@@ -65,4 +65,4 @@ function Login() {
   );
 }
 
-export { Login, userId };
+export default Login;

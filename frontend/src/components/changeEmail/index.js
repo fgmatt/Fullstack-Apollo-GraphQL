@@ -6,19 +6,20 @@ import Form from "../Elements/Form";
 import Email from "../Elements/Email";
 import PasswordInput from "../Elements/Password";
 import { SubButton, InputButton } from "../Elements/Buttons";
-import { userId } from "../Login";
 
 function ChangeEmail() {
   const history = useHistory();
 
-  if (!userId) {
+  const userIdSession = sessionStorage.getItem("userId");
+
+  if (userIdSession === null) {
     history.push("/");
   }
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [changeEmail, { loading, error, data }] = useMutation(CHANGE_EMAIL, {
-    variables: { _id: userId, email: email, password: password },
+    variables: { _id: userIdSession, email: email, password: password },
   });
 
   function handleChangeEmail(event) {

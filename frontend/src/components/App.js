@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Login } from "./Login";
+import Login from "./Login";
 import NewLogin from "./NewLogin";
 import UserSpace from "./UserSpace";
 import MainSpace from "./MainSpace";
@@ -17,10 +17,19 @@ import {
   rEmail,
   rPassword,
   rError,
+  rArray,
 } from "./RoutesName";
 
 class App extends Component {
   render() {
+    for (let i = 0; i < rArray.length; i++) {
+      let route = "http://localhost:3000" + rArray[i];
+
+      if (window.location.href === route) {
+        console.log(route);
+        break;
+      }
+    }
     return (
       <Router>
         <div className="container">

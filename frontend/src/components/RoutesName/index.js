@@ -6,6 +6,15 @@ const rScientists = "/scientists";
 const rEmail = "/email";
 const rPassword = "/password";
 const rError = "*";
+const rArray = [
+  rHome,
+  rNewLogin,
+  rUserSpace,
+  rMainSpace,
+  rScientists,
+  rEmail,
+  rPassword,
+];
 
 export {
   rHome,
@@ -16,4 +25,5 @@ export {
   rEmail,
   rPassword,
   rError,
+  rArray,
 };

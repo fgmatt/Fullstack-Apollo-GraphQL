@@ -5,12 +5,13 @@ import { CHANGE_PASSWORD } from "../../graphQL/mutations";
 import Form from "../Elements/Form";
 import PasswordInput from "../Elements/Password";
 import { SubButton, InputButton } from "../Elements/Buttons";
-import { userId } from "../Login";
 
 function ChangePassword() {
   const history = useHistory();
 
-  if (!userId) {
+  const userIdSession = sessionStorage.getItem("userId");
+
+  if (userIdSession === null) {
     history.push("/");
   }
 
@@ -21,7 +22,7 @@ function ChangePassword() {
     CHANGE_PASSWORD,
     {
       variables: {
-        _id: userId,
+        _id: userIdSession,
         password: passwordv,
         newPassword: password,
       },
