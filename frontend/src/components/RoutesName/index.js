@@ -2,6 +2,7 @@ const rHome = "/";
 const rNewLogin = "/NeuerBenutzer";
 const rUserSpace = "/Benutzerbereich";
 const rMainSpace = "/Hauptbereich";
+const rUserData = "/Benutzerdaten"
 const rScientists = "/scientists";
 const rEmail = "/email";
 const rPassword = "/password";
@@ -21,6 +22,7 @@ export {
   rNewLogin,
   rUserSpace,
   rMainSpace,
+  rUserData,
   rScientists,
   rEmail,
   rPassword,

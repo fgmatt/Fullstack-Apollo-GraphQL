@@ -7,12 +7,14 @@ import MainSpace from "./MainSpace";
 import ChangeEmail from "./ChangeEmail";
 import ChangePassword from "./ChangePassword";
 import Scientists from "./Scientists";
+import UserData from "./UserData";
 import NoMatch from "./NoMatch";
 import {
   rHome,
   rNewLogin,
   rUserSpace,
   rMainSpace,
+  rUserData,
   rScientists,
   rEmail,
   rPassword,
@@ -45,6 +47,9 @@ class App extends Component {
             </Route>
             <Route path={rMainSpace}>
               <MainSpace />
+            </Route>
+            <Route path={rUserData}>
+              <UserData />
             </Route>
             <Route path={rEmail}>
               <ChangeEmail />

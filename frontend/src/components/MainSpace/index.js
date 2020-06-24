@@ -20,7 +20,7 @@ function MainSpace() {
   console.log(userIdSession);
 
   function handleHouseUser() {
-    history.push("/email");
+    history.push("/Benutzerdaten");
   }
 
   function handleFlask() {

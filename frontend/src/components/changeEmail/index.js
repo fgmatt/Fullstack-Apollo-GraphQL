@@ -35,7 +35,7 @@ function ChangeEmail() {
     changeEmail()
       .then(({ data }) => {
         // history.push("/Benutzerbereich");
-        history.push("/Hauptbereich")
+        history.push("/Benutzerdaten")
       })
       .catch((e) => {
         console.log(e);
@@ -45,7 +45,7 @@ function ChangeEmail() {
   function handleQuitButton(event) {
     event.preventDefault();
     // history.push("/Benutzerbereich");
-    history.push("/Hauptbereich")
+    history.push("/Benutzerdaten")
   }
 
   return (

@@ -49,7 +49,7 @@ function ChangePassword() {
     ChangePassword()
       .then(({ data }) => {
         // history.push("/Benutzerbereich");
-        history.push("/Hauptbereich")
+        history.push("/Benutzerdaten")
       })
       .catch((e) => {
         console.log(e);
@@ -59,7 +59,7 @@ function ChangePassword() {
   function handleQuitButton(event) {
     event.preventDefault();
     // history.push("/Benutzerbereich");
-    history.push("/Hauptbereich")
+    history.push("/Benutzerdaten")
   }
 
   return (
