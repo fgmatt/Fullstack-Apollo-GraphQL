@@ -5,7 +5,7 @@ import { FETCH_ALL_SCIENTISTS } from "../../graphQL/queries";
 
 function Scientists() {
   const history = useHistory();
-  
+
   const userIdSession = sessionStorage.getItem("userId");
 
   if (userIdSession === null) {
@@ -28,7 +28,7 @@ function Scientists() {
       </div>
       <div>
         <p>
-          <Link to="/Hauptbereich"></Link>
+          <Link to="/Hauptbereich">Zurück</Link>
         </p>
       </div>
       {loading && <p>Loading...</p>}
