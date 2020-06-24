@@ -5,6 +5,7 @@ import { CHANGE_PASSWORD } from "../../graphQL/mutations";
 import Form from "../Elements/Form";
 import PasswordInput from "../Elements/Password";
 import { SubButton, InputButton } from "../Elements/Buttons";
+import BlockingMessage from "../Blocking";
 
 function ChangePassword() {
   const history = useHistory();
@@ -15,6 +16,7 @@ function ChangePassword() {
     history.push("/");
   }
 
+  let [isBlocking, setIsBlocking] = useState(false);
   const [passwordv, setPasswordv] = useState("");
   const [password, setPassword] = useState("");
   const [passwordb, setPasswordb] = useState("");
@@ -31,25 +33,29 @@ function ChangePassword() {
 
   function handleChangePasswordv(event) {
     setPasswordv(event.target.value);
+    setIsBlocking(event.target.value.length > 0);
   }
 
   function handleChangePassword(event) {
     setPassword(event.target.value);
+    setIsBlocking(event.target.value.length > 0);
   }
 
   function handleChangePasswordb(event) {
     setPasswordb(event.target.value);
+    setIsBlocking(event.target.value.length > 0);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
+    setIsBlocking(false);
     if (password != passwordb) {
       return null;
     }
     ChangePassword()
       .then(({ data }) => {
         // history.push("/Benutzerbereich");
-        history.push("/Benutzerdaten")
+        history.push("/Benutzerdaten");
       })
       .catch((e) => {
         console.log(e);
@@ -59,11 +65,12 @@ function ChangePassword() {
   function handleQuitButton(event) {
     event.preventDefault();
     // history.push("/Benutzerbereich");
-    history.push("/Benutzerdaten")
+    history.push("/Benutzerdaten");
   }
 
   return (
     <Form onSubmit={(e) => handleSubmit(e)}>
+      <BlockingMessage when={isBlocking} />
       {loading && <p></p>}
       {error && <p>Email oder Passwort inkorrekt.</p>}
       <PasswordInput

@@ -7,13 +7,15 @@ import Form from "../Elements/Form";
 import { SubButton } from "../Elements/Buttons";
 import Email from "../Elements/Email";
 import PasswordInput from "../Elements/Password";
+import BlockingMessage from "../Blocking";
 
 function Login() {
   const history = useHistory();
 
-  const preSession = sessionStorage.getItem('userId');
+  const preSession = sessionStorage.getItem("userId");
   console.log(preSession);
 
+  let [isBlocking, setIsBlocking] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -23,14 +25,17 @@ function Login() {
 
   function handleChangeEmail(event) {
     setEmail(event.target.value);
+    setIsBlocking(event.target.value.length > 0);
   }
 
   function handleChangePassword(event) {
     setPassword(event.target.value);
+    setIsBlocking(event.target.value.length > 0);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
+    setIsBlocking(false);
     signin()
       .then(({ data }) => {
         sessionStorage.setItem("userId", data.signin._id);
@@ -44,6 +49,7 @@ function Login() {
 
   return (
     <Form onSubmit={(e) => handleSubmit(e)}>
+      <BlockingMessage when={isBlocking} />
       <h2>Login</h2>
       {loading && <p></p>}
       {error && <p>Email oder Passwort inkorrekt.</p>}

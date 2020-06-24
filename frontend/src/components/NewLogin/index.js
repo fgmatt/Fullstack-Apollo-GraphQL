@@ -6,10 +6,12 @@ import Form from "../Elements/Form";
 import { SubButton, InputButton } from "../Elements/Buttons";
 import Email from "../Elements/Email";
 import PasswordInput from "../Elements/Password";
+import BlockingMessage from "../Blocking";
 
 function NewLogin() {
   const history = useHistory();
 
+  let [isBlocking, setIsBlocking] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordb, setPasswordb] = useState("");
@@ -17,14 +19,17 @@ function NewLogin() {
 
   function handleChangeEmail(event) {
     setEmail(event.target.value);
+    setIsBlocking(event.target.value.length > 0);
   }
 
   function handleChangePassword(event) {
     setPassword(event.target.value);
+    setIsBlocking(event.target.value.length > 0);
   }
 
   function handleChangePasswordB(event) {
     setPasswordb(event.target.value);
+    setIsBlocking(event.target.value.length > 0);
   }
 
   function handleSubmit(event) {
@@ -40,13 +45,17 @@ function NewLogin() {
 
   function handleButtonClick(event) {
     event.preventDefault();
+    setIsBlocking(false);
     history.push("/");
   }
 
   return (
     <Form onSubmit={(e) => handleSubmit(e)}>
+      <BlockingMessage when={isBlocking} />
       <h2>Login</h2>
-      <Email value={email} onChange={(e) => handleChangeEmail(e)} >E-Mail:</Email>
+      <Email value={email} onChange={(e) => handleChangeEmail(e)}>
+        E-Mail:
+      </Email>
       <PasswordInput
         name="password"
         value={password}

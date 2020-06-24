@@ -6,6 +6,7 @@ import Form from "../Elements/Form";
 import Email from "../Elements/Email";
 import PasswordInput from "../Elements/Password";
 import { SubButton, InputButton } from "../Elements/Buttons";
+import BlockingMessage from "../Blocking";
 
 function ChangeEmail() {
   const history = useHistory();
@@ -16,6 +17,7 @@ function ChangeEmail() {
     history.push("/");
   }
 
+  let [isBlocking, setIsBlocking] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [changeEmail, { loading, error, data }] = useMutation(CHANGE_EMAIL, {
@@ -24,10 +26,12 @@ function ChangeEmail() {
 
   function handleChangeEmail(event) {
     setEmail(event.target.value);
+    setIsBlocking(event.target.value.length > 0);
   }
 
   function handleChangePassword(event) {
     setPassword(event.target.value);
+    setIsBlocking(event.target.value.length > 0);
   }
 
   function handleSubmit(event) {
@@ -35,7 +39,7 @@ function ChangeEmail() {
     changeEmail()
       .then(({ data }) => {
         // history.push("/Benutzerbereich");
-        history.push("/Benutzerdaten")
+        history.push("/Benutzerdaten");
       })
       .catch((e) => {
         console.log(e);
@@ -44,12 +48,14 @@ function ChangeEmail() {
 
   function handleQuitButton(event) {
     event.preventDefault();
+    setIsBlocking(false);
     // history.push("/Benutzerbereich");
-    history.push("/Benutzerdaten")
+    history.push("/Benutzerdaten");
   }
 
   return (
     <Form onSubmit={(e) => handleSubmit(e)}>
+      <BlockingMessage when={isBlocking}/>
       <h2>Email-ändern</h2>
       {loading && <p></p>}
       {error && <p>Email oder Passwort inkorrekt.</p>}
