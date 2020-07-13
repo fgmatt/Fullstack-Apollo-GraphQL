@@ -7,6 +7,7 @@ import {
   faStickyNote,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useHistory } from "react-router-dom";
+import "./style.css";
 
 function MainSpace() {
   const history = useHistory();
@@ -39,7 +40,7 @@ function MainSpace() {
     <div>
       <div>
         <h1>Hauptbereich</h1>
-        <p>
+        <p className="logout">
           <Link onClick={handleLink} to="/">
             Logout
           </Link>
@@ -47,14 +48,21 @@ function MainSpace() {
       </div>
       <div>
         <FontAwesomeIcon
+          className="icons_fa"
           icon={faHouseUser}
-          size="3x"
+          size="4x"
           onClick={handleHouseUser}
         />
-        <FontAwesomeIcon icon={faFlask} size="3x" onClick={handleFlask} />
         <FontAwesomeIcon
+          className="icons_fa"
+          icon={faFlask}
+          size="4x"
+          onClick={handleFlask}
+        />
+        <FontAwesomeIcon
+          className="icons_fa"
           icon={faStickyNote}
-          size="3x"
+          size="4x"
           onClick={handleStickyNote}
         />
       </div>

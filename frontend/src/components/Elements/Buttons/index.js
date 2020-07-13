@@ -1,10 +1,10 @@
 import React from "react";
 import "./style.css"
 
-const SubButton = ({ value = "Bestätigen" }) => {
+const SubButton = ({ value = "Bestätigen", className }) => {
   return (
-    <div className="div_button">
-      <input className="button_login" type="submit" value={value} />
+    <div className={className}>
+      <input type="submit" value={value} />
     </div>
   );
 };

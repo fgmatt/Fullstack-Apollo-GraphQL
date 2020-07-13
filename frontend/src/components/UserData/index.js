@@ -26,7 +26,7 @@ function UserData() {
     <div>
       <div>
         <h1>Benutzerdaten</h1>
-        <p>
+        <p className="logout">
           <Link to="/" onClick={handleLink}>Logout</Link>
         </p>
       </div>

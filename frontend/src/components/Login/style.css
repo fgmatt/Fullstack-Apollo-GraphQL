@@ -1,0 +1,10 @@
+.newLogLink {
+    margin-top: 20px;
+}
+
+.logButton {
+    margin-block-start: -60px;
+    margin-left: 130px;
+    margin-right: 10px;
+    width: 150px;
+}

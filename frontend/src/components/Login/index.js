@@ -8,6 +8,7 @@ import { SubButton } from "../Elements/Buttons";
 import Email from "../Elements/Email";
 import PasswordInput from "../Elements/Password";
 import BlockingMessage from "../Blocking";
+import "./style.css";
 
 function Login() {
   const history = useHistory();
@@ -63,10 +64,10 @@ function Login() {
       >
         Passwort:
       </PasswordInput>
-      <p>
+      <p className="newLogLink">
         <Link to="/NeuerBenutzer">Neuer Benutzer</Link>
       </p>
-      <SubButton value="Login" />
+      <SubButton className="logButton" value="Login" />
     </Form>
   );
 }

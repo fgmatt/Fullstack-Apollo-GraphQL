@@ -7,6 +7,7 @@ import { SubButton, InputButton } from "../Elements/Buttons";
 import Email from "../Elements/Email";
 import PasswordInput from "../Elements/Password";
 import BlockingMessage from "../Blocking";
+import "./style.css";
 
 function NewLogin() {
   const history = useHistory();
@@ -71,7 +72,7 @@ function NewLogin() {
         Passwort B:
       </PasswordInput>
       <InputButton onClick={(e) => handleButtonClick(e)} />
-      <SubButton value="Neuer_Benutzer" />
+      <SubButton className="newUserButton" value="Neuer_Benutzer" />
     </Form>
   );
 }
