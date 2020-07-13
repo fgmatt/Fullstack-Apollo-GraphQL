@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
+import { connUser, connThinker } from '../db/connect';
 import philosophersSchema from "./schemas/philosophers";
 import scientistsSchema from "./schemas/scientists";
 import usersSchema from "./schemas/users";
 
-const Philosophers = mongoose.model("Philosophers", philosophersSchema);
-const Scientists = mongoose.model("Scientists", scientistsSchema);
-const User = mongoose.model("Users", usersSchema);
+const Philosophers = connThinker.model("Philosophers", philosophersSchema);
+const Scientists = connThinker.model("Scientists", scientistsSchema);
+const User = connUser.model("Users", usersSchema);
 
 module.exports = {
     Philosophers,
