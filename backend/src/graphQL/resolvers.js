@@ -1,15 +1,23 @@
-import { auth } from "../services/users/";
-import { findUser } from "../services/users/";
-import { deluser } from "../services/users/";
-import { changeCreds } from "../services/users/";
-import { changeEmail } from "../services/users/";
-import { changePassword } from "../services/users/";
+import {
+    auth,
+    findUser,
+    deluser,
+    changeCreds,
+    changeEmail,
+    changePassword,
+} from "../services/users/";
 import {
     createScientist,
     searchScientistByName,
     fetchAllScientists,
-    changeScientist
+    changeScientist,
 } from "../services/scientists";
+import {
+    createPhilosopher,
+    searchPhilosopherByName,
+    fetchAllPhilosophers,
+    changePhilosopher,
+} from "../services/philosophers";
 
 const resolvers = {
     Query: {
@@ -25,8 +33,14 @@ const resolvers = {
         searchScientistByName: (parent, args) => {
             return searchScientistByName(args);
         },
+        searchPhilosopherByName: (parent, args) => {
+            return searchPhilosopherByName(args);
+        },
         allScientists: (parent, args) => {
             return fetchAllScientists();
+        },
+        allPhilosophers: (parent, args) => {
+            return fetchAllPhilosophers();
         },
     },
     Mutation: {
@@ -53,7 +67,13 @@ const resolvers = {
         },
         changeScientist: (parent, args) => {
             return changeScientist(args);
-        }
+        },
+        createPhilosopher: (parent, args) => {
+            return createPhilosopher(args);
+        },
+        changePhilosopher: (parent, args) => {
+            return changePhilosopher(args);
+        },
     },
 };
 

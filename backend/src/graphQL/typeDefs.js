@@ -6,7 +6,9 @@ const typeDefs = gql`
         userfind(email: String!): User!
         userfindById(_id: String!): User!
         searchScientistByName(name: String!): Scientist!
+        searchPhilosopherByName(name: String!): Philosopher!
         allScientists: [Scientist]
+        allPhilosophers: [Philosopher]
     }
     type Mutation {
         signup(email: String!, password: String!): User!
@@ -33,6 +35,22 @@ const typeDefs = gql`
             topics: String
             biography: String
         ): Scientist
+        createPhilosopher(
+            name: String!
+            livedIn: String
+            biographicalData: String
+            topics: String
+            biography: String
+            works: String
+        ): Philosopher
+        changePhilosopher(
+            name: String!
+            livedIn: String
+            biographicalData: String
+            topics: String
+            biography: String
+            works: String
+        ): Philosopher
     }
     type User {
         _id: String
@@ -46,6 +64,15 @@ const typeDefs = gql`
         biographicalData: String
         topics: String
         biography: String
+    }
+
+    type Philosopher {
+        name: String
+        livedIn: String
+        biographicalData: String
+        topics: String
+        biography: String
+        works: String
     }
 `;
 
