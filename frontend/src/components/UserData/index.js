@@ -31,11 +31,11 @@ function UserData() {
         </p>
       </div>
       <div>
-        <p>
+        <p className="linkData">
           <Link to="/Hauptbereich">Zurück</Link>
         </p>
-        <InputButton onClick={handleEmail} value="Email ändern" />
-        <InputButton onClick={handlePassword} value="Passwort ändern" />
+        <InputButton className="userDataButtonE div_button" onClick={handleEmail} value="Email ändern" />
+        <InputButton className="userDataButtonP div_button" onClick={handlePassword} value="Passwort ändern" />
       </div>
     </div>
   );

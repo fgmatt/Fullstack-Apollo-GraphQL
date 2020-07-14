@@ -9,9 +9,9 @@ const SubButton = ({ value = "Bestätigen", className }) => {
   );
 };
 
-const InputButton = ({ value = "Abbrechen", onClick }) => {
+const InputButton = ({ value = "Abbrechen", onClick, className }) => {
   return (
-    <div className="div_button">
+    <div className={className}>
       <input className="button_login" type="button" value={value} onClick={onClick} />
     </div>
   );

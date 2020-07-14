@@ -21,6 +21,7 @@ import {
   rError,
   rArray,
 } from "./RoutesName";
+import "./style.css"
 
 class App extends Component {
   render() {

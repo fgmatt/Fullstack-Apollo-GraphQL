@@ -7,7 +7,6 @@ import { SubButton, InputButton } from "../Elements/Buttons";
 import Email from "../Elements/Email";
 import PasswordInput from "../Elements/Password";
 import BlockingMessage from "../Blocking";
-import "./style.css";
 
 function NewLogin() {
   const history = useHistory();
@@ -53,7 +52,7 @@ function NewLogin() {
   return (
     <Form onSubmit={(e) => handleSubmit(e)}>
       <BlockingMessage when={isBlocking} />
-      <h2>Login</h2>
+      <h2>New Login</h2>
       <Email value={email} onChange={(e) => handleChangeEmail(e)}>
         E-Mail:
       </Email>
@@ -71,8 +70,8 @@ function NewLogin() {
       >
         Passwort B:
       </PasswordInput>
-      <InputButton onClick={(e) => handleButtonClick(e)} />
-      <SubButton className="newUserButton" value="Neuer_Benutzer" />
+      <InputButton className="div_button" onClick={(e) => handleButtonClick(e)} />
+      <SubButton className="subButton" value="Neuer Benutzer" />
     </Form>
   );
 }

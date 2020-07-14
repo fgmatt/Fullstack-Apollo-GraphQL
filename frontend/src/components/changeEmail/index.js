@@ -71,7 +71,7 @@ function ChangeEmail() {
         Passwort:
       </PasswordInput>
       <InputButton onClick={(e) => handleQuitButton(e)} />
-      <SubButton />
+      <SubButton className="div_button subButtonButton"/>
     </Form>
   );
 }

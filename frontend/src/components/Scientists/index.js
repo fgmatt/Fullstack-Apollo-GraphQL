@@ -14,25 +14,27 @@ function Scientists() {
 
   const { loading, error, data } = useQuery(FETCH_ALL_SCIENTISTS);
 
- function handleLink() {
-   sessionStorage.removeItem("userId");
- }
+  function handleLink() {
+    sessionStorage.removeItem("userId");
+  }
 
   return (
     <div>
       <div>
         <h1>Wissenschaftler</h1>
-        <p>
-          <Link to="/" onClick={handleLink}>Logout</Link>
+        <p className="logout">
+          <Link to="/" onClick={handleLink}>
+            Logout
+          </Link>
         </p>
       </div>
+      {loading && <p>Loading...</p>}
+      {data && <p>{data.allScientists[0].name}</p>}
       <div>
         <p>
           <Link to="/Hauptbereich">Zurück</Link>
         </p>
       </div>
-      {loading && <p>Loading...</p>}
-      {data && <p>{data.allScientists[0].name}</p>}
     </div>
   );
 }

@@ -7,7 +7,7 @@ import {
   faStickyNote,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useHistory } from "react-router-dom";
-import "./style.css";
+//import "./style.css";
 
 function MainSpace() {
   const history = useHistory();
