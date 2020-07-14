@@ -29,7 +29,6 @@ class App extends Component {
       let route = "http://localhost:3000" + rArray[i];
 
       if (window.location.href === route) {
-        console.log(route);
         break;
       }
     }

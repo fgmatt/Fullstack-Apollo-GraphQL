@@ -18,8 +18,6 @@ function MainSpace() {
     history.push("/");
   }
 
-  console.log(userIdSession);
-
   function handleHouseUser() {
     history.push("/Benutzerdaten");
   }

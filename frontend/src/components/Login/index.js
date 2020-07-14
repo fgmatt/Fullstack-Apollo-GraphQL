@@ -13,7 +13,6 @@ function Login() {
   const history = useHistory();
 
   const preSession = sessionStorage.getItem("userId");
-  console.log(preSession);
 
   let [isBlocking, setIsBlocking] = useState(false);
   const [email, setEmail] = useState("");
