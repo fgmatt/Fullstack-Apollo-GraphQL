@@ -37,3 +37,18 @@
     margin-right: 10px;
     width: 150px;
 }
+
+div#root {
+    width: auto;
+    height: 600px;
+    background-image: url('Skyline.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+form {
+    border: solid;
+    border-radius: 30px;
+    padding: 20px;
+    margin-top: 20px;
+}
