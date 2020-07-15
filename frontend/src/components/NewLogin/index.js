@@ -15,7 +15,7 @@ function NewLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordb, setPasswordb] = useState("");
-  const [signup, { data }] = useMutation(SIGNUP);
+  const [signup, { loading, error, data }] = useMutation(SIGNUP);
 
   function handleChangeEmail(event) {
     setEmail(event.target.value);
@@ -53,6 +53,8 @@ function NewLogin() {
     <Form onSubmit={(e) => handleSubmit(e)}>
       <BlockingMessage when={isBlocking} />
       <h2>New Login</h2>
+      {loading && <p></p>}
+      {error && <p className="errorMessage">Email oder Passwort entspricht nicht den Anforderungen.</p>}
       <Email value={email} onChange={(e) => handleChangeEmail(e)}>
         E-Mail:
       </Email>
