@@ -44,7 +44,7 @@ function MainSpace() {
           </Link>
         </p>
       </div>
-      <div>
+      <div className="icons">
         <FontAwesomeIcon
           className="icons_fa"
           icon={faHouseUser}

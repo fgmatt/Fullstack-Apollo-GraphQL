@@ -49,6 +49,16 @@ div#root {
 form {
     border: solid;
     border-radius: 30px;
+    border-width: 2px;
     padding: 20px;
     margin-top: 20px;
+}
+
+.errorMessage {
+    border: solid;
+    border-width: 1px;
+    border-color: orangered;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #fa8072;
 }

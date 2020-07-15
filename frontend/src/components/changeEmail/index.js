@@ -58,7 +58,7 @@ function ChangeEmail() {
       <BlockingMessage when={isBlocking}/>
       <h2>Email-ändern</h2>
       {loading && <p></p>}
-      {error && <p>Email oder Passwort inkorrekt.</p>}
+      {error && <p className="errorMessage">Email oder Passwort inkorrekt.</p>}
       <Email value={email} onChange={(e) => handleChangeEmail(e)}>
         Neue Email:
       </Email>
