@@ -71,6 +71,7 @@ function ChangePassword() {
   return (
     <Form onSubmit={(e) => handleSubmit(e)}>
       <BlockingMessage when={isBlocking} />
+      <h2>Passwort ändern:</h2>
       {loading && <p></p>}
       {error && <p className="errorMessage">Passwort inkorrekt.</p>}
       <PasswordInput
