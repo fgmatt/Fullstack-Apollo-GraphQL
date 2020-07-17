@@ -3,10 +3,16 @@ import { useMutation } from "@apollo/react-hooks";
 import { useHistory } from "react-router-dom";
 import Form from "../Elements/Form";
 import { SubButton, InputButton } from "../Elements/Buttons";
-import TextInput from "../Elements/Inputs/TextInput";
 import BlockingMessage from "../Blocking";
 import { CREATE_SCIENTIST } from "../../graphQL/mutations";
 import { rHome, rScientists } from "../RoutesName";
+import {
+  PNameInput,
+  LivedInInput,
+  BiographicalDataInput,
+  TopicsInput,
+  BiographyInput,
+} from "../Elements/Inputs";
 
 const NewScientist = () => {
   const history = useHistory();
@@ -79,51 +85,37 @@ const NewScientist = () => {
     >
       <BlockingMessage when={isBlocking} />
       <h2>Neuer Wissenschaftler</h2>
-      <TextInput
-        name="name"
+      <PNameInput
         value={name}
         onChange={(e) => {
           handleName(e);
         }}
-      >
-        Name:
-      </TextInput>
-      <TextInput
-        name="livedIn"
+      />
+      <LivedInInput
         value={livedIn}
         onChange={(e) => {
           handleLivedIn(e);
         }}
-      >
-        Wohnorte:
-      </TextInput>
-      <TextInput
-        name="biographicalData"
+      />
+      <BiographicalDataInput
         value={biographicalData}
         onChange={(e) => {
           handleBiogracicalData(e);
         }}
-      >
-        Lebensdaten:
-      </TextInput>
-      <TextInput
-        name="topics"
+      />
+      <TopicsInput
         value={topics}
         onChange={(e) => {
           handleTopics(e);
         }}
-      >
-        Gebiete:
-      </TextInput>
-      <TextInput
-        name="biography"
+      />
+      <BiographyInput
         value={biography}
         onChange={(e) => {
           handleBiography(e);
         }}
-      >
-        Biographie:
-      </TextInput>
+      />
+
       <InputButton
         className="div_button"
         onClick={(e) => handleButtonClick(e)}
