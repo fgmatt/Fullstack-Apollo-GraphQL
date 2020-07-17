@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { FETCH_ALL_SCIENTISTS } from "../../graphQL/queries";
+import { InputButton } from "../Elements/Buttons";
 
 function Scientists() {
   const history = useHistory();
@@ -16,6 +17,10 @@ function Scientists() {
 
   function handleLink() {
     sessionStorage.removeItem("userId");
+  }
+
+  function handleNewScientist() {
+    history.push("/NeuerWissenschaftler");
   }
 
   return (
@@ -34,6 +39,11 @@ function Scientists() {
         <p>
           <Link to="/Hauptbereich">Zurück</Link>
         </p>
+        <InputButton
+          className="userDataButtonE div_button"
+          onClick={handleNewScientist}
+          value="Neuer Wissenschaftler"
+        />
       </div>
     </div>
   );

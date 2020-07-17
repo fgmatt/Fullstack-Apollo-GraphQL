@@ -34,7 +34,8 @@ function NewLogin() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    signup({ variables: { email: email, password: password } })
+    setIsBlocking(false);
+    signup({ variables: { email, password } })
       .then(({ data }) => {
         history.push("/");
       })
@@ -45,7 +46,6 @@ function NewLogin() {
 
   function handleButtonClick(event) {
     event.preventDefault();
-    setIsBlocking(false);
     history.push("/");
   }
 

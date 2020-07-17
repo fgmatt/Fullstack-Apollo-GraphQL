@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TextInput = ({ value, onChange, name, type="email", children }) => {
+const TextInput = ({ value, onChange, name, type="text", children }) => {
     return (
       <div>
         <label>

@@ -19,7 +19,7 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const [signin, { loading, error, data }] = useMutation(SIGNIN, {
-    variables: { email: email, password: password },
+    variables: { email, password },
   });
 
   function handleChangeEmail(event) {

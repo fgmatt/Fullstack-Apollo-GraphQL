@@ -36,6 +36,7 @@ function ChangeEmail() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    setIsBlocking(false);
     changeEmail()
       .then(({ data }) => {
         // history.push("/Benutzerbereich");
@@ -48,7 +49,6 @@ function ChangeEmail() {
 
   function handleQuitButton(event) {
     event.preventDefault();
-    setIsBlocking(false);
     // history.push("/Benutzerbereich");
     history.push("/Benutzerdaten");
   }
