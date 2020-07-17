@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { USERFINDBYID } from "../../graphQL/queries";
+import { rHome, rEmail, rPassword } from "../RoutesName";
 
 function UserSpace() {
   const history = useHistory();
@@ -9,7 +10,7 @@ function UserSpace() {
   const userIdSession = sessionStorage.getItem("userId");
 
   if (userIdSession === null) {
-    history.push("/");
+    history.push(rHome);
   }
 
   const { loading, error, data } = useQuery(USERFINDBYID, {
@@ -25,7 +26,7 @@ function UserSpace() {
       <div>
         <h1>Benutzerbereich</h1>
         <p>
-          <Link onClick={handleLink} to="/">
+          <Link onClick={handleLink} to={rHome}>
             Logout
           </Link>
         </p>
@@ -37,10 +38,10 @@ function UserSpace() {
       </div>
       <div>
         <p>
-          <Link to="/email">E-Mail ändern</Link>
+          <Link to={rEmail}>E-Mail ändern</Link>
         </p>
         <p>
-          <Link to="/password">Passwort ändern</Link>
+          <Link to={rPassword}>Passwort ändern</Link>
         </p>
       </div>
     </div>

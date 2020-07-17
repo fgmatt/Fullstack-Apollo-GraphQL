@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { InputButton } from "../Elements/Buttons";
+import { rHome, rEmail, rMainSpace, rPassword } from "../RoutesName";
 
 function UserData() {
   const history = useHistory();
@@ -8,15 +9,15 @@ function UserData() {
   const userIdSession = sessionStorage.getItem("userId");
 
   if (userIdSession === null) {
-    history.push("/");
+    history.push(rHome);
   }
 
   function handleEmail() {
-    history.push("/email");
+    history.push(rEmail);
   }
 
   function handlePassword() {
-    history.push("/password");
+    history.push(rPassword);
   }
 
   function handleLink() {
@@ -27,12 +28,12 @@ function UserData() {
       <div>
         <h1>Benutzerdaten</h1>
         <p className="logout">
-          <Link to="/" onClick={handleLink}>Logout</Link>
+          <Link to={rHome} onClick={handleLink}>Logout</Link>
         </p>
       </div>
       <div>
         <p className="linkData">
-          <Link to="/Hauptbereich">Zurück</Link>
+          <Link to={rMainSpace}>Zurück</Link>
         </p>
         <InputButton className="userDataButtonE div_button" onClick={handleEmail} value="Email ändern" />
         <InputButton className="userDataButtonP div_button" onClick={handlePassword} value="Passwort ändern" />

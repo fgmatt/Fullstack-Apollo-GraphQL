@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useHistory } from "react-router-dom";
 import IconLegend from "../IconLegend";
+import { rHome, rUserData, rScientists } from "../RoutesName";
 
 function MainSpace() {
   const history = useHistory();
@@ -15,7 +16,7 @@ function MainSpace() {
   const userIdSession = sessionStorage.getItem("userId");
 
   if (userIdSession === null) {
-    history.push("/");
+    history.push(rHome);
   }
 
   let [mouseoverHU, setMouseoverHU] = useState(false);
@@ -47,11 +48,11 @@ function MainSpace() {
   }
 
   function handleHouseUser() {
-    history.push("/Benutzerdaten");
+    history.push(rUserData);
   }
 
   function handleFlask() {
-    history.push("/scientists");
+    history.push(rScientists);
   }
 
   function handleStickyNote() {

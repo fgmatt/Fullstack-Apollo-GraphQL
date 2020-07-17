@@ -8,6 +8,7 @@ import { SubButton } from "../Elements/Buttons";
 import Email from "../Elements/Email";
 import PasswordInput from "../Elements/Password";
 import BlockingMessage from "../Blocking";
+import { rMainSpace, rUserSpace, rNewLogin } from "../RoutesName";
 
 function Login() {
   const history = useHistory();
@@ -38,8 +39,8 @@ function Login() {
     signin()
       .then(({ data }) => {
         sessionStorage.setItem("userId", data.signin._id);
-        // history.push("/Benutzerbereich");
-        history.push("/Hauptbereich");
+        // history.push(rUserSpace);
+        history.push(rMainSpace);
       })
       .catch((e) => {
         console.log(e);
@@ -63,7 +64,7 @@ function Login() {
         Passwort:
       </PasswordInput>
       <p className="newLogLink">
-        <Link to="/NeuerBenutzer">Neuer Benutzer</Link>
+        <Link to={rNewLogin}>Neuer Benutzer</Link>
       </p>
       <SubButton className="subButton" value="Login" />
     </Form>

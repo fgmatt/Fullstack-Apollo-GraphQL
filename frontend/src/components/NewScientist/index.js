@@ -6,6 +6,7 @@ import { SubButton, InputButton } from "../Elements/Buttons";
 import TextInput from "../Elements/Inputs/TextInput";
 import BlockingMessage from "../Blocking";
 import { CREATE_SCIENTIST } from "../../graphQL/mutations";
+import { rHome, rScientists } from "../RoutesName";
 
 const NewScientist = () => {
   const history = useHistory();
@@ -13,7 +14,7 @@ const NewScientist = () => {
   const userIdSession = sessionStorage.getItem("userId");
 
   if (userIdSession === null) {
-    history.push("/");
+    history.push(rHome);
   }
 
   let [isBlocking, setIsBlocking] = useState(false);
@@ -53,9 +54,9 @@ const NewScientist = () => {
 
   function handleButtonClick(event) {
     event.preventDefault();
-    history.push("/scientists");
+    history.push(rScientists);
   }
-  
+
   function handleSubmit(event) {
     event.preventDefault();
     setIsBlocking(false);
@@ -63,7 +64,7 @@ const NewScientist = () => {
       variables: { name, livedIn, biographicalData, topics, biography },
     })
       .then(({ data }) => {
-        history.push("/scientists");
+        history.push(rScientists);
       })
       .catch((e) => {
         console.log(e);

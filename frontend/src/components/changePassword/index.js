@@ -6,6 +6,7 @@ import Form from "../Elements/Form";
 import PasswordInput from "../Elements/Password";
 import { SubButton, InputButton } from "../Elements/Buttons";
 import BlockingMessage from "../Blocking";
+import { rHome, rUserData, rUserSpace } from "../RoutesName";
 
 function ChangePassword() {
   const history = useHistory();
@@ -13,7 +14,7 @@ function ChangePassword() {
   const userIdSession = sessionStorage.getItem("userId");
 
   if (userIdSession === null) {
-    history.push("/");
+    history.push(rHome);
   }
 
   let [isBlocking, setIsBlocking] = useState(false);
@@ -54,8 +55,8 @@ function ChangePassword() {
     }
     ChangePassword()
       .then(({ data }) => {
-        // history.push("/Benutzerbereich");
-        history.push("/Benutzerdaten");
+        // history.push(rUserSpace);
+        history.push(rUserData);
       })
       .catch((e) => {
         console.log(e);
@@ -64,8 +65,8 @@ function ChangePassword() {
 
   function handleQuitButton(event) {
     event.preventDefault();
-    // history.push("/Benutzerbereich");
-    history.push("/Benutzerdaten");
+    // history.push(rUserSpace);
+    history.push(rUserData);
   }
 
   return (

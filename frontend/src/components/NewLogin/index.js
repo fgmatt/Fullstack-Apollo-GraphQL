@@ -7,6 +7,7 @@ import { SubButton, InputButton } from "../Elements/Buttons";
 import Email from "../Elements/Email";
 import PasswordInput from "../Elements/Password";
 import BlockingMessage from "../Blocking";
+import { rHome } from "../RoutesName";
 
 function NewLogin() {
   const history = useHistory();
@@ -37,7 +38,7 @@ function NewLogin() {
     setIsBlocking(false);
     signup({ variables: { email, password } })
       .then(({ data }) => {
-        history.push("/");
+        history.push(rHome);
       })
       .catch((e) => {
         console.log(e);
@@ -46,7 +47,7 @@ function NewLogin() {
 
   function handleButtonClick(event) {
     event.preventDefault();
-    history.push("/");
+    history.push(rHome);
   }
 
   return (
