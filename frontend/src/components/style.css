@@ -97,3 +97,8 @@ form {
     width: 47px;
     margin-left: 205px;
 }
+
+.scientistsButtonCS {
+    margin-block-start: -50px;
+    margin-left: 305px;
+}

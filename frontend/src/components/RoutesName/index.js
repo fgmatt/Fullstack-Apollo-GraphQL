@@ -6,7 +6,8 @@ const rUserData = "/Benutzerdaten"
 const rScientists = "/scientists";
 const rEmail = "/email";
 const rPassword = "/password";
-const rNewScientist = "/NeuerWissenschaftler"
+const rNewScientist = "/NeuerWissenschaftler";
+const rChangeScientist = "/aendereWissenschaftler";
 const rError = "*";
 const rArray = [
   rHome,
@@ -16,7 +17,8 @@ const rArray = [
   rScientists,
   rEmail,
   rPassword,
-  rNewScientist
+  rNewScientist,
+  rChangeScientist
 ];
 
 export {
@@ -27,6 +29,7 @@ export {
   rUserData,
   rScientists,
   rNewScientist,
+  rChangeScientist,
   rEmail,
   rPassword,
   rError,

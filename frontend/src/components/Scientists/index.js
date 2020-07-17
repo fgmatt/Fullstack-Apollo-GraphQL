@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { FETCH_ALL_SCIENTISTS } from "../../graphQL/queries";
 import { InputButton } from "../Elements/Buttons";
-import { rHome, rMainSpace, rNewScientist} from "../RoutesName";
+import { rHome, rMainSpace, rNewScientist, rChangeScientist } from "../RoutesName";
 
 function Scientists() {
   const history = useHistory();
@@ -22,6 +22,10 @@ function Scientists() {
 
   function handleNewScientist() {
     history.push(rNewScientist);
+  }
+
+  function handleChangeScientist() {
+    history.push(rChangeScientist);
   }
 
   return (
@@ -44,6 +48,11 @@ function Scientists() {
           className="userDataButtonE div_button"
           onClick={handleNewScientist}
           value="Neuer Wissenschaftler"
+        />
+        <InputButton
+          className="scientistsButtonCS div_button"
+          onClick={handleChangeScientist}
+          value="Ändere Wissenschaftler"
         />
       </div>
     </div>
