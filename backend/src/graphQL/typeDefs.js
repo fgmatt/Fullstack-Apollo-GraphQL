@@ -35,6 +35,7 @@ const typeDefs = gql`
             topics: String
             biography: String
         ): Scientist
+        deleteScientistByName(name: String!): Scientist
         createPhilosopher(
             name: String!
             livedIn: String
@@ -51,6 +52,7 @@ const typeDefs = gql`
             biography: String
             works: String
         ): Philosopher
+        deletePhilosopherByName(name: String!): Philosopher
     }
     type User {
         _id: String

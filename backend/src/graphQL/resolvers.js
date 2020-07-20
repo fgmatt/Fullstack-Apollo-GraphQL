@@ -11,12 +11,14 @@ import {
     searchScientistByName,
     fetchAllScientists,
     changeScientist,
+    deleteScientistByName,
 } from "../services/scientists";
 import {
     createPhilosopher,
     searchPhilosopherByName,
     fetchAllPhilosophers,
     changePhilosopher,
+    deletePhilosopherByName,
 } from "../services/philosophers";
 
 const resolvers = {
@@ -68,12 +70,18 @@ const resolvers = {
         changeScientist: (parent, args) => {
             return changeScientist(args);
         },
+        deleteScientistByName: (parent, args) => {
+            return deleteScientistByName(args);
+        },
         createPhilosopher: (parent, args) => {
             return createPhilosopher(args);
         },
         changePhilosopher: (parent, args) => {
             return changePhilosopher(args);
         },
+        deletePhilosopherByName: (parent, args) => {
+            return deletePhilosopherByName(args);
+        }
     },
 };
 
