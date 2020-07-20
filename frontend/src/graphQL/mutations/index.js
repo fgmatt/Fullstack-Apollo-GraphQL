@@ -6,6 +6,8 @@ import SIGNIN from "./signin";
 import SIGNUP from "./signup";
 import CHANGE_SCIENTIST from "./changeScientist";
 import CREATE_SCIENTIST from "./createScientist";
+import DELETE_SCIENTIST_BY_NAME from "./deleteScientistByName";
+import DELETE_PHILOSOPHER_BY_NAME from "./deletePhilosopherByName";
 
 export {
   CHANGE_CREDS,
@@ -16,4 +18,6 @@ export {
   SIGNUP,
   CHANGE_SCIENTIST,
   CREATE_SCIENTIST,
+  DELETE_SCIENTIST_BY_NAME,
+  DELETE_PHILOSOPHER_BY_NAME,
 };
