@@ -5,6 +5,7 @@ import LivedInInput from "./LivedInInput";
 import PNameInput from "./PNameInput";
 import TextInput from "./TextInput";
 import TopicsInput from "./TopicsInput";
+import WorksInput from "./WorksInput";
 
 export {
   BiographicalDataInput,
@@ -14,4 +15,5 @@ export {
   PNameInput,
   TextInput,
   TopicsInput,
+  WorksInput,
 };
