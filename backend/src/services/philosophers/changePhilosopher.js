@@ -1,5 +1,10 @@
 import Philosophers from "./philosophersService";
 
+/**
+ * Change philosopher by his name
+ * @param args {object} philosopher object
+ * @returns {Promise<any>} changed philosopher
+ */
 const changePhilosopher = async (args) => {
     const name = args.name;
     let livedIn = args.livedIn;

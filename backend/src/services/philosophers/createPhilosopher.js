@@ -1,5 +1,10 @@
 import Philosophers from "./philosophersService";
 
+/**
+ * Create a philosopher
+ * @param args {object} philosopher object
+ * @returns {any} returns the created philosopher
+ */
 const createPhilosopher = async (args) => {
     const name = args.name;
     let livedIn = args.livedIn;

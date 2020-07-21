@@ -1,5 +1,10 @@
 import Scientists from "./scientistsService";
 
+/**
+ * Create a scientist
+ * @param args {object} scientist object
+ * @returns {Promise<any>} created scientist
+ */
 const createScientist = async (args) => {
     const name = args.name;
     let livedIn = args.livedIn;
