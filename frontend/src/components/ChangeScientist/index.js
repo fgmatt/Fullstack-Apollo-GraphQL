@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation, useQuery } from "@apollo/react-hooks";
 import { useHistory } from "react-router-dom";
 import Form from "../Elements/Form";
 import { SubButton, InputButton } from "../Elements/Buttons";
 import BlockingMessage from "../Blocking";
 import { CHANGE_SCIENTIST } from "../../graphQL/mutations";
+import { FETCH_ALL_SCIENTISTS } from "../../graphQL/queries";
 import { rHome, rScientists } from "../RoutesName";
 import {
   PNameInput,
@@ -13,6 +14,7 @@ import {
   TopicsInput,
   BiographyInput,
 } from "../Elements/Inputs";
+import SelectName from "../Elements/SelectName";
 
 const ChangeScientist = () => {
   const history = useHistory();
@@ -32,6 +34,17 @@ const ChangeScientist = () => {
   const [changeScientist, { loading, error, data }] = useMutation(
     CHANGE_SCIENTIST
   );
+
+  const FetchAllScientists = useQuery(FETCH_ALL_SCIENTISTS);
+
+  let names = [];
+  if (FetchAllScientists.data) {
+    const iterator = FetchAllScientists.data.allScientists.values();
+
+    for (const value of iterator) {
+      names.push(<option>{value.name}</option>);
+    }
+  }
 
   function handleName(event) {
     setName(event.target.value);
@@ -85,12 +98,21 @@ const ChangeScientist = () => {
     >
       <BlockingMessage when={isBlocking} />
       <h2>Ändere Wissenschaftler über Namen</h2>
-      <PNameInput
+      {FetchAllScientists.loading && <p>Loading...</p>}
+      {/* <PNameInput
         value={name}
         onChange={(e) => {
           handleName(e);
         }}
-      />
+      /> */}
+      <SelectName
+        value={name}
+        onChange={(e) => {
+          handleName(e);
+        }}
+      >
+        {names}
+      </SelectName>
       <LivedInInput
         value={livedIn}
         onChange={(e) => {

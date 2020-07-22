@@ -3,7 +3,12 @@ import { Link, useHistory } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { FETCH_ALL_SCIENTISTS } from "../../graphQL/queries";
 import { InputButton } from "../Elements/Buttons";
-import { rHome, rMainSpace, rNewScientist, rChangeScientist } from "../RoutesName";
+import {
+  rHome,
+  rMainSpace,
+  rNewScientist,
+  rChangeScientist,
+} from "../RoutesName";
 
 function Scientists() {
   const history = useHistory();
@@ -15,6 +20,15 @@ function Scientists() {
   }
 
   const { loading, error, data } = useQuery(FETCH_ALL_SCIENTISTS);
+
+  let names = [];
+  if (data) {
+    const iterator = data.allScientists.values();
+
+    for (const value of iterator) {
+      names.push(<p>{value.name}</p>);
+    }
+  }
 
   function handleLink() {
     sessionStorage.removeItem("userId");
@@ -39,7 +53,7 @@ function Scientists() {
         </p>
       </div>
       {loading && <p>Loading...</p>}
-      {data && <p>{data.allScientists[0].name}</p>}
+      {names}
       <div>
         <p>
           <Link to={rMainSpace}>Zurück</Link>
