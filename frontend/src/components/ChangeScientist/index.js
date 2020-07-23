@@ -5,10 +5,12 @@ import Form from "../Elements/Form";
 import { SubButton, InputButton } from "../Elements/Buttons";
 import BlockingMessage from "../Blocking";
 import { CHANGE_SCIENTIST } from "../../graphQL/mutations";
-import { FETCH_ALL_SCIENTISTS } from "../../graphQL/queries";
+import {
+  FETCH_ALL_SCIENTISTS,
+  SEARCH_SCIENTIST_BY_NAME,
+} from "../../graphQL/queries";
 import { rHome, rScientists } from "../RoutesName";
 import {
-  PNameInput,
   LivedInInput,
   BiographicalDataInput,
   TopicsInput,
@@ -25,16 +27,6 @@ const ChangeScientist = () => {
     history.push(rHome);
   }
 
-  let [isBlocking, setIsBlocking] = useState(false);
-  const [name, setName] = useState("");
-  const [livedIn, setLivedIn] = useState("");
-  const [biographicalData, setBiographicalData] = useState("");
-  const [topics, setTopics] = useState("");
-  const [biography, setBiography] = useState("");
-  const [changeScientist, { loading, error, data }] = useMutation(
-    CHANGE_SCIENTIST
-  );
-
   const FetchAllScientists = useQuery(FETCH_ALL_SCIENTISTS);
 
   let names = [];
@@ -45,6 +37,20 @@ const ChangeScientist = () => {
       names.push(<option>{value.name}</option>);
     }
   }
+
+  let [isBlocking, setIsBlocking] = useState(false);
+  const [name, setName] = useState("");
+  const SearchScientistByName = useQuery(SEARCH_SCIENTIST_BY_NAME, {
+    variables: { name },
+  });
+  
+  const [livedIn, setLivedIn] = useState("");
+  const [biographicalData, setBiographicalData] = useState("");
+  const [topics, setTopics] = useState("");
+  const [biography, setBiography] = useState("");
+  const [changeScientist, { loading, error, data }] = useMutation(
+    CHANGE_SCIENTIST
+  );
 
   function handleName(event) {
     setName(event.target.value);
@@ -99,12 +105,6 @@ const ChangeScientist = () => {
       <BlockingMessage when={isBlocking} />
       <h2>Ändere Wissenschaftler über Namen</h2>
       {FetchAllScientists.loading && <p>Loading...</p>}
-      {/* <PNameInput
-        value={name}
-        onChange={(e) => {
-          handleName(e);
-        }}
-      /> */}
       <SelectName
         value={name}
         onChange={(e) => {
