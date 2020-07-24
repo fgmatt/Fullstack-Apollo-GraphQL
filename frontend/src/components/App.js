@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./Login";
 import NewLogin from "./NewLogin";
@@ -23,61 +23,51 @@ import {
   rEmail,
   rPassword,
   rError,
-  rArray,
 } from "./RoutesName";
-import "./style.css"
+import "./style.css";
 
-class App extends Component {
-  render() {
-    for (let i = 0; i < rArray.length; i++) {
-      let route = "http://localhost:3000" + rArray[i];
-
-      if (window.location.href === route) {
-        break;
-      }
-    }
-    return (
-      <Router>
-        <div className="container">
-          <Switch>
-            <Route exact path={rHome}>
-              <Login />
-            </Route>
-            <Route path={rNewLogin}>
-              <NewLogin />
-            </Route>
-            <Route path={rUserSpace}>
-              <UserSpace />
-            </Route>
-            <Route path={rMainSpace}>
-              <MainSpace />
-            </Route>
-            <Route path={rUserData}>
-              <UserData />
-            </Route>
-            <Route path={rEmail}>
-              <ChangeEmail />
-            </Route>
-            <Route path={rPassword}>
-              <ChangePassword />
-            </Route>
-            <Route path={rScientists}>
-              <Scientists />
-            </Route>
-            <Route path={rNewScientist}>
-              <NewScientist />
-            </Route>
-            <Route path={rChangeScientist}>
-              <ChangeScientist />
-            </Route>
-            <Route path={rError}>
-              <NoMatch />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
-    );
-  }
+function App() {
+  return (
+    <Router>
+      <div className="container">
+        <Switch>
+          <Route exact path={rHome}>
+            <Login />
+          </Route>
+          <Route path={rNewLogin}>
+            <NewLogin />
+          </Route>
+          <Route path={rEmail}>
+            <ChangeEmail />
+          </Route>
+          <Route path={rPassword}>
+            <ChangePassword />
+          </Route>
+          <Route path={rNewScientist}>
+            <NewScientist />
+          </Route>
+          <Route path={rChangeScientist}>
+            <ChangeScientist />
+          </Route>
+          <Route path={rScientists}>
+            <Scientists />
+          </Route>
+          <Route path={rUserSpace}>
+            <UserSpace />
+          </Route>
+          <Route path={rUserData}>
+            <UserData />
+          </Route>
+          <Route path={rMainSpace}>
+            <MainSpace />
+          </Route>
+          <Route path={rError}>
+            <NoMatch />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
 }
 
 export default App;

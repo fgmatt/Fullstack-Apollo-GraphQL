@@ -17,6 +17,7 @@ import {
   BiographyInput,
 } from "../Elements/Inputs";
 import SelectName from "../Elements/SelectName";
+import TextareaBiography from "../Elements/Textarea";
 
 const ChangeScientist = () => {
   const history = useHistory();
@@ -131,10 +132,16 @@ const ChangeScientist = () => {
           handleTopics(e);
         }}
       />
-      <BiographyInput
+      {/* <BiographyInput
         value={biography}
         onChange={(e) => {
           handleBiography(e);
+        }}
+      /> */}
+      <TextareaBiography
+        value={biography}
+        onChange={(e) => {
+          handleBiography(e)
         }}
       />
 

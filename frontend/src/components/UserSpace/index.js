@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { USERFINDBYID } from "../../graphQL/queries";
-import { rHome, rEmail, rPassword } from "../RoutesName";
+import { rHome, rEmailUS, rPasswordUS } from "../RoutesName";
 
 function UserSpace() {
   const history = useHistory();
@@ -38,10 +38,10 @@ function UserSpace() {
       </div>
       <div>
         <p>
-          <Link to={rEmail}>E-Mail ändern</Link>
+          <Link to={rEmailUS}>E-Mail ändern</Link>
         </p>
         <p>
-          <Link to={rPassword}>Passwort ändern</Link>
+          <Link to={rPasswordUS}>Passwort ändern</Link>
         </p>
       </div>
     </div>

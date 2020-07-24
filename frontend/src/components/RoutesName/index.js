@@ -2,24 +2,15 @@ const rHome = "/";
 const rNewLogin = "/NeuerBenutzer";
 const rUserSpace = "/Benutzerbereich";
 const rMainSpace = "/Hauptbereich";
-const rUserData = "/Benutzerdaten"
-const rScientists = "/scientists";
-const rEmail = "/email";
-const rPassword = "/password";
-const rNewScientist = "/NeuerWissenschaftler";
-const rChangeScientist = "/aendereWissenschaftler";
+const rUserData = rMainSpace + "/Benutzerdaten";
+const rScientists = rMainSpace + "/Wissenschaftler";
+const rEmail = rUserData + "/aendereEmail";
+const rEmailUS = rUserSpace + "/aendereEmail";
+const rPassword = rUserData + "/aenderePasswort";
+const rPasswordUS = rUserSpace + "/aenderePasswort"
+const rNewScientist = rScientists + "/neuerWissenschaftler";
+const rChangeScientist = rScientists + "/aendereWissenschaftler";
 const rError = "*";
-const rArray = [
-  rHome,
-  rNewLogin,
-  rUserSpace,
-  rMainSpace,
-  rScientists,
-  rEmail,
-  rPassword,
-  rNewScientist,
-  rChangeScientist
-];
 
 export {
   rHome,
@@ -31,7 +22,8 @@ export {
   rNewScientist,
   rChangeScientist,
   rEmail,
+  rEmailUS,
   rPassword,
+  rPasswordUS,
   rError,
-  rArray,
 };
