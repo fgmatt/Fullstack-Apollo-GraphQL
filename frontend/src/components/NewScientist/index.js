@@ -13,6 +13,7 @@ import {
   TopicsInput,
   BiographyInput,
 } from "../Elements/Inputs";
+import TextareaBiography from "../Elements/Textarea";
 
 const NewScientist = () => {
   const history = useHistory();
@@ -109,7 +110,13 @@ const NewScientist = () => {
           handleTopics(e);
         }}
       />
-      <BiographyInput
+      {/* <BiographyInput
+        value={biography}
+        onChange={(e) => {
+          handleBiography(e);
+        }}
+      /> */}
+      <TextareaBiography
         value={biography}
         onChange={(e) => {
           handleBiography(e);
