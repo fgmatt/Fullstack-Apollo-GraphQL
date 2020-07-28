@@ -63,10 +63,12 @@ function Login() {
       >
         Passwort:
       </PasswordInput>
+      <div className="buttonBar">
       <p className="newLogLink">
         <Link to={rNewLogin}>Neuer Benutzer</Link>
       </p>
       <SubButton className="subButton" value="Login" />
+      </div>
     </Form>
   );
 }

@@ -7,8 +7,10 @@ import {
   faStickyNote,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useHistory } from "react-router-dom";
+import { useQuery } from "@apollo/react-hooks";
 import IconLegend from "../IconLegend";
 import { rHome, rUserData, rScientists } from "../RoutesName";
+import { USERFINDBYID } from "../../graphQL/queries";
 
 function MainSpace() {
   const history = useHistory();
@@ -18,6 +20,10 @@ function MainSpace() {
   if (userIdSession === null) {
     history.push(rHome);
   }
+
+  const { loading, error, data } = useQuery(USERFINDBYID, {
+    variables: { _id: userIdSession },
+  });
 
   let [mouseoverHU, setMouseoverHU] = useState(false);
   let [mouseoverF, setMouseoverF] = useState(false);
@@ -43,9 +49,11 @@ function MainSpace() {
     setMouseoverF(false);
   }
 
-  function handleMouseLeaveSN(){
+  function handleMouseLeaveSN() {
     setMouseoverSN(false);
   }
+
+  function handleUserCircle() {}
 
   function handleHouseUser() {
     history.push(rUserData);
@@ -65,13 +73,29 @@ function MainSpace() {
 
   return (
     <div>
-      <div>
-        <h1>Hauptbereich</h1>
-        <p className="logout">
-          <Link onClick={handleLink} to="/">
-            Logout
-          </Link>
-        </p>
+      <div className="header_mainspace">
+        <div className="div_icons_fauc">
+          <FontAwesomeIcon
+            className="icons_fauc"
+            icon={faUserCircle}
+            size="2x"
+            onClick={handleUserCircle}
+          />
+          <div className="div_userfindbyid">
+            {loading && <p>Loading...</p>}
+            {data && <p>{data.userfindById.email}</p>}
+          </div>
+        </div>
+        <div>
+          <h1 id="title_mainspace">Hauptbereich</h1>
+        </div>
+        <div>
+          <p className="logout">
+            <Link onClick={handleLink} to="/">
+              Logout
+            </Link>
+          </p>
+        </div>
       </div>
       <div className="icons">
         <FontAwesomeIcon
@@ -98,9 +122,19 @@ function MainSpace() {
           onMouseOver={handleMouseOverSN}
           onMouseLeave={handleMouseLeaveSN}
         />
-        {mouseoverHU && <IconLegend className="iconLegend iconLegendH">Benutzerdaten</IconLegend>}
-        {mouseoverF && <IconLegend className="iconLegend iconLegendS">Wissenschaftler</IconLegend>}
-        {mouseoverSN && <IconLegend className="iconLegend iconLegendW">Weiteres</IconLegend>}
+        {mouseoverHU && (
+          <IconLegend className="iconLegend iconLegendH">
+            Benutzerdaten
+          </IconLegend>
+        )}
+        {mouseoverF && (
+          <IconLegend className="iconLegend iconLegendS">
+            Wissenschaftler
+          </IconLegend>
+        )}
+        {mouseoverSN && (
+          <IconLegend className="iconLegend iconLegendW">Weiteres</IconLegend>
+        )}
       </div>
     </div>
   );

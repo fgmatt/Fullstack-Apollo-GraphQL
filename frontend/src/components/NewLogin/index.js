@@ -73,8 +73,10 @@ function NewLogin() {
       >
         Passwort B:
       </PasswordInput>
-      <InputButton className="div_button" onClick={(e) => handleButtonClick(e)} />
+      <div className="buttonBar">
+      <InputButton onClick={(e) => handleButtonClick(e)} />
       <SubButton className="subButton" value="Neuer Benutzer" />
+      </div>
     </Form>
   );
 }

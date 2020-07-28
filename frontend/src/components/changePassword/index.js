@@ -98,8 +98,10 @@ function ChangePassword() {
         {" "}
         Passwort Bestätigen:{" "}
       </PasswordInput>
-      <InputButton className="div_button" onClick={(e) => handleQuitButton(e)} />
-      <SubButton className="subButton"/>
+      <div className="buttonBar">
+      <InputButton onClick={(e) => handleQuitButton(e)} />
+      <SubButton className="div_button"/>
+      </div>
     </Form>
   );
 }

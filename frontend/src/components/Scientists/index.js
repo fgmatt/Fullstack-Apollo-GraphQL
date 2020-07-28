@@ -44,27 +44,31 @@ function Scientists() {
 
   return (
     <div>
-      <div>
+      <div className="header_scientists">
         <h1>Wissenschaftler</h1>
-        <p className="logout">
-          <Link to={rHome} onClick={handleLink}>
-            Logout
-          </Link>
-        </p>
+        <div>
+          <p className="logout">
+            <Link to={rHome} onClick={handleLink}>
+              Logout
+            </Link>
+          </p>
+        </div>
       </div>
       {loading && <p>Loading...</p>}
       {names}
-      <div>
-        <p>
-          <Link to={rMainSpace}>Zurück</Link>
-        </p>
+      <div className="div_wlinks">
+        <div>
+          <p className="wBack">
+            <Link to={rMainSpace}>Zurück</Link>
+          </p>
+        </div>
         <InputButton
-          className="userDataButtonE div_button"
+          className=" "
           onClick={handleNewScientist}
           value="Neuer Wissenschaftler"
         />
         <InputButton
-          className="scientistsButtonCS div_button"
+          className=""
           onClick={handleChangeScientist}
           value="Ändere Wissenschaftler"
         />

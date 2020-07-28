@@ -10,32 +10,31 @@
     z-index: 1;
 }
 
+.icons_fauc {
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
 .logout {
-    float: right;
-    margin-block-start: -50px;
+    float: right; 
+    margin-top: 45px;
+    margin-bottom: 0px;
 }
 
-.subButton {
-    margin-block-start: -50px;
-    margin-left: 135px;
-}
-
-.userDataButtonE {
-    margin-block-start: -55px;
-    margin-left: 80px;
-}
-
-.userDataButtonP {
-    margin-top: -50px;
-    margin-left: 230px;
+#title_mainspace {
+    margin-left: 30%;
 }
 
 .linkData {
     margin-top: 200px;
 }
 
+.buttonData {
+    margin-top: 193px;
+}
+
 .newLogLink {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .logButton {
@@ -102,3 +101,55 @@ form {
     margin-block-start: -50px;
     margin-left: 305px;
 }
+
+.div_userfindbyid {
+    width: 250px;
+    padding-left: 20px;
+    padding-top: 35px;
+}
+
+.div_icons_fauc {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.header_mainspace {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.header_userdata {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.header_scientists {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.div_udlinks {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 410px;
+}
+
+.div_wlinks {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 500px;
+    grid-gap: 10px;
+}
+
+.buttonBar {
+    display: grid;
+    width: 260px;
+    height: 50px;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.wBack {
+    margin-top: 10px;
+}
+

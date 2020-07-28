@@ -21,22 +21,36 @@ function UserData() {
   }
 
   function handleLink() {
-      sessionStorage.removeItem("userId")
+    sessionStorage.removeItem("userId");
   }
   return (
     <div>
-      <div>
-        <h1>Benutzerdaten</h1>
-        <p className="logout">
-          <Link to={rHome} onClick={handleLink}>Logout</Link>
-        </p>
+      <div className="header_userdata">
+        <div className="div_userdata">
+          <h1>Benutzerdaten</h1>
+        </div>
+        <div>
+          <p className="logout">
+            <Link to={rHome} onClick={handleLink}>
+              Logout
+            </Link>
+          </p>
+        </div>
       </div>
-      <div>
+      <div className="div_udlinks">
         <p className="linkData">
           <Link to={rMainSpace}>Zurück</Link>
         </p>
-        <InputButton className="userDataButtonE div_button" onClick={handleEmail} value="Email ändern" />
-        <InputButton className="userDataButtonP div_button" onClick={handlePassword} value="Passwort ändern" />
+        <InputButton
+          className="buttonData div_button"
+          onClick={handleEmail}
+          value="Email ändern"
+        />
+        <InputButton
+          className="buttonData div_button"
+          onClick={handlePassword}
+          value="Passwort ändern"
+        />
       </div>
     </div>
   );

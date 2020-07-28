@@ -71,8 +71,10 @@ function ChangeEmail() {
         {" "}
         Passwort:
       </PasswordInput>
+      <div className="buttonBar">
       <InputButton onClick={(e) => handleQuitButton(e)} />
-      <SubButton className="div_button subButton"/>
+      <SubButton className="div_button"/>
+      </div>
     </Form>
   );
 }
