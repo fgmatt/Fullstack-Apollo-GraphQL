@@ -12,11 +12,11 @@ const changeScientist = async (args) => {
     let topics = args.topics;
     let biography = args.biography;
 
-    const existingScientist = await Scientists.findOne({ name });
+    const scientist = await Scientists.findOne({ name });
 
     if (!name) {
         throw Error("You must provide a name");
-    } else if (!existingScientist) {
+    } else if (!scientist) {
         throw Error("Scientist not found");
     }
 
@@ -45,23 +45,25 @@ const changeScientist = async (args) => {
             biographicalData == "???"
         )
     ) {
-        if (livedIn === existingScientist.livedIn) {
+        if (livedIn === scientist.livedIn) {
             console.warn("The same lived as before");
-        } else if (topics === existingScientist.topics) {
+        } else if (topics === scientist.topics) {
             console.warn("The same topic as before");
-        } else if (biography === existingScientist.biography) {
+        } else if (biography === scientist.biography) {
             console.warn("The same biography as before");
-        } else if (biographicalData === existingScientist.biographicalData) {
+        } else if (biographicalData === scientist.biographicalData) {
             console.warn("The same biographicalData as before");
         }
     }
 
-    await Scientists.updateOne(
-        { name },
-        { livedIn, topics, biography, biographicalData }
-    );
+    scientist.livedIn = livedIn;
+    scientist.topics = topics;
+    scientist.biographicalData = biographicalData;
+    scientist.biography = biography;
 
-    return Scientists.findOne({ name });
+    await scientist.save();
+
+    return scientist;
 };
 
 export default changeScientist;

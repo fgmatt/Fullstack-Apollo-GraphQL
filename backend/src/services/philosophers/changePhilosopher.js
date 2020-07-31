@@ -13,11 +13,11 @@ const changePhilosopher = async (args) => {
     let biography = args.biography;
     let works = args.works;
 
-    const existingPhilosopher = await Philosophers.findOne({ name });
+    const philosopher = await Philosophers.findOne({ name });
 
     if (!name) {
         throw Error("You must provide a name");
-    } else if (!existingPhilosopher) {
+    } else if (!philosopher) {
         throw Error("Scientist not found");
     }
 
@@ -48,25 +48,28 @@ const changePhilosopher = async (args) => {
             works === "???"
         )
     ) {
-        if (livedIn === existingPhilosopher.livedIn) {
+        if (livedIn === philosopher.livedIn) {
             console.warn("The same lived as before");
-        } else if (topics === existingPhilosopher.topics) {
+        } else if (topics === philosopher.topics) {
             console.warn("The same topic as before");
-        } else if (biography === existingPhilosopher.biography) {
+        } else if (biography === philosopher.biography) {
             console.warn("The same biography as before");
-        } else if (biographicalData === existingPhilosopher.biographicalData) {
+        } else if (biographicalData === philosopher.biographicalData) {
             console.warn("The same biographicalData as before");
-        } else if (works === existingPhilosopher.works) {
+        } else if (works === philosopher.works) {
             console.warn("The same works as before");
         }
     }
 
-    await Philosophers.updateOne(
-        { name },
-        { livedIn, topics, biography, biographicalData, works }
-    );
+    philosopher.livedIn = livedIn;
+    philosopher.topics = topics;
+    philosopher.biography = biography;
+    philosopher.works = works;
+    philosopher.biographicalData = biographicalData;
 
-    return Philosophers.findOne({ name });
+    await philosopher.save();
+
+    return philosopher;
 };
 
 export default changePhilosopher;

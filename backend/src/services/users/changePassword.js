@@ -15,10 +15,10 @@ const changePassword = async (args) => {
         throw Error("Please provide a id");
     }
 
-    const Creds = await User.findOne({ _id });
+    const user = await User.findOne({ _id });
 
-    const passwordMatches = await Creds.comparePassword(password);
-    const newPasswordMatches = await Creds.comparePassword(newPassword);
+    const passwordMatches = await user.comparePassword(password);
+    const newPasswordMatches = await user.comparePassword(newPassword);
 
     if (!passwordMatches) {
         throw Error("invalid password");
@@ -30,11 +30,11 @@ const changePassword = async (args) => {
 
     passwordValidation(newPassword);
 
-    const query = User.updateOne({ _id }, { password: newPassword });
+    user.password = newPassword;
 
-    await query.exec();
+    await user.save();
 
-    return await User.findOne({ _id });
+    return user;
 };
 
 module.exports = changePassword;

@@ -16,22 +16,23 @@ const changeCreds = async (args) => {
         throw Error("Please provide a id");
     }
 
-    const Creds = await User.findOne({ _id });
+    const user = await User.findOne({ _id });
 
-    const passwordMatches = await Creds.comparePassword(password);
+    const passwordMatches = await user.comparePassword(password);
 
-    if (Creds.email === email && passwordMatches) {
+    if (user.email === email && passwordMatches) {
         throw Error("The same email and password");
     }
 
     emailValidation(email);
     passwordValidation(password);
 
-    const query = User.updateOne({ _id }, { email, password });
+    user.email = email;
+    user.password = password;
 
-    await query.exec();
+    await user.save();
 
-    return await User.findOne({ _id });
+    return user;
 };
 
 module.exports = changeCreds;

@@ -79,20 +79,24 @@ const usersSchema = new mongoose.Schema(
 usersSchema.pre("save", function (next) {
     const user = this;
 
-    bcrypt.genSalt(12, function (error, salt) {
-        if (error) {
-            return next(error);
-        }
-
-        bcrypt.hash(user.password, salt, function (error, hash) {
+    if (user.createdAt === user.updatedAt) {
+        bcrypt.genSalt(12, function (error, salt) {
             if (error) {
                 return next(error);
             }
 
-            user.password = hash;
-            next();
+            bcrypt.hash(user.password, salt, function (error, hash) {
+                if (error) {
+                    return next(error);
+                }
+
+                user.password = hash;
+                next();
+            });
         });
-    });
+    } else {
+        next();
+    }
 });
 
 usersSchema.pre("updateOne", function (next) {

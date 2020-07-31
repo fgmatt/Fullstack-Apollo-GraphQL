@@ -15,11 +15,11 @@ const changeEmail = async (args) => {
         throw Error("Please provide a id");
     }
 
-    const Creds = await User.findOne({ _id });
+    const user = await User.findOne({ _id });
 
-    const passwordMatches = await Creds.comparePassword(password);
+    const passwordMatches = await user.comparePassword(password);
 
-    if (Creds.email === email) {
+    if (user.email === email) {
         throw Error("The same email");
     }
 
@@ -29,9 +29,11 @@ const changeEmail = async (args) => {
 
     emailValidation(email);
 
-    await User.updateOne({ _id }, { email });
+    user.email = email;
 
-    return User.findOne({ _id });
+    await user.save();
+
+    return user;
 };
 
 module.exports = changeEmail;
