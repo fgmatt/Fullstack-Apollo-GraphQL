@@ -6,7 +6,7 @@ import Form from "../Elements/Form";
 import PasswordInput from "../Elements/Password";
 import { SubButton, InputButton } from "../Elements/Buttons";
 import BlockingMessage from "../Blocking";
-import { rHome, rUserData, rUserSpace } from "../RoutesName";
+import { rHome, rUserData } from "../RoutesName";
 
 function ChangePassword() {
   const history = useHistory();
@@ -99,8 +99,8 @@ function ChangePassword() {
         Passwort Bestätigen:{" "}
       </PasswordInput>
       <div className="buttonBar">
-      <InputButton onClick={(e) => handleQuitButton(e)} />
-      <SubButton className="div_button"/>
+        <InputButton onClick={(e) => handleQuitButton(e)} />
+        <SubButton className="div_button" />
       </div>
     </Form>
   );
