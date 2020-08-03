@@ -44,7 +44,7 @@ const ChangeScientist = () => {
   const SearchScientistByName = useQuery(SEARCH_SCIENTIST_BY_NAME, {
     variables: { name },
   });
-  
+
   const [livedIn, setLivedIn] = useState("");
   const [biographicalData, setBiographicalData] = useState("");
   const [topics, setTopics] = useState("");
@@ -141,15 +141,13 @@ const ChangeScientist = () => {
       <TextareaBiography
         value={biography}
         onChange={(e) => {
-          handleBiography(e)
+          handleBiography(e);
         }}
       />
-
-      <InputButton
-        className="div_button"
-        onClick={(e) => handleButtonClick(e)}
-      />
-      <SubButton className="subButton" value="Ändere Wissenschaftler" />
+      <div className="buttonBar">
+        <InputButton onClick={(e) => handleButtonClick(e)} />
+        <SubButton value="Ändere Wissenschaftler" />
+      </div>
     </Form>
   );
 };

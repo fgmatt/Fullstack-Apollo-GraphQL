@@ -122,12 +122,10 @@ const NewScientist = () => {
           handleBiography(e);
         }}
       />
-
-      <InputButton
-        className="div_button"
-        onClick={(e) => handleButtonClick(e)}
-      />
-      <SubButton className="subButton" value="Erstelle Wissenschaftler" />
+      <div className="buttonBar">
+        <InputButton onClick={(e) => handleButtonClick(e)} />
+        <SubButton value="Erstelle Wissenschaftler" />
+      </div>
     </Form>
   );
 };

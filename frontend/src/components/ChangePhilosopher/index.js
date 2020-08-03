@@ -135,12 +135,10 @@ const ChangePhilosopher = () => {
           handleWorks(e);
         }}
       />
-
-      <InputButton
-        className="div_button"
-        onClick={(e) => handleButtonClick(e)}
-      />
-      <SubButton className="subButton" value="Ändere Philosophen" />
+      <div className="buttonBar">
+        <InputButton onClick={(e) => handleButtonClick(e)} />
+        <SubButton value="Ändere Philosophen" />
+      </div>
     </Form>
   );
 };
