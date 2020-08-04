@@ -1,25 +1,25 @@
 import React from "react";
 
-const ContentBoxScientist = ({ children, n }) => {
+const Scientist = ({ name, biographicalData, livedIn, topics, biography}) => {
   return (
-    <div className="ContentBoxScientist">
+    <div className="scientist">
       <div>
-        <p>{children.allScientists[n].name}</p>
+        <p>{name}</p>
       </div>
       <div>
-        <p>{children.allScientists[n].biographicalData}</p>
+        <p>{biographicalData}</p>
       </div>
       <div>
-        <p>{children.allScientists[n].livedIn}</p>
+        <p>{livedIn}</p>
       </div>
       <div>
-        <p>{children.allScientists[n].topics}</p>
+        <p>{topics}</p>
       </div>
       <div>
-        <p>{children.allScientists[n].biography}</p>
+        <p>{biography}</p>
       </div>
     </div>
   );
 };
 
-export default ContentBoxScientist;
+export default Scientist;

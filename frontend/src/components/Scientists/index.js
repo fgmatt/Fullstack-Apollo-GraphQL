@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { FETCH_ALL_SCIENTISTS } from "../../graphQL/queries";
 import { InputButton } from "../Elements/Buttons";
-import ContentBoxScientist from "../Elements/ContentBox";
+import Scientist from "../Elements/ContentBox";
 import {
   rHome,
   rMainSpace,
@@ -22,27 +22,9 @@ function Scientists() {
 
   const { loading, error, data } = useQuery(FETCH_ALL_SCIENTISTS);
 
-  let scientists = [];
+  let scientists;
   if (data) {
-    let count = "";
-    for (let i = 0; i < data.allScientists.length; i++) {
-
-      scientists.push(
-        <ContentBoxScientist n={count}>{data}</ContentBoxScientist>
-      );
-      count++;
-    }
-    console.log(<ContentBoxScientist n={0}>{data}</ContentBoxScientist>)
-    console.log(scientists);
-  }
-
-  let names = [];
-  if (data) {
-    const iterator = data.allScientists.values();
-
-    for (const value of iterator) {
-      names.push(<p>{value.name}</p>);
-    }
+    scientists = data.allScientists;
   }
 
   function handleLink() {
@@ -70,7 +52,17 @@ function Scientists() {
         </div>
       </div>
       {loading && <p>Loading...</p>}
-      {data && <ContentBoxScientist n={1}>{data}</ContentBoxScientist>}
+      <div className="gridScientists">
+      { data && scientists.map((scientist) => (
+        <Scientist
+          name={scientist.name}
+          livedIn={scientist.livedIn}
+          biographicalData={scientist.biographicalData}
+          topics={scientist.topics}
+          biography={scientist.biography}
+        />
+      ))}
+      </div>
       <div className="div_wlinks">
         <div>
           <p className="wBack">
