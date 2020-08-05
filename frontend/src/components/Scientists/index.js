@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { FETCH_ALL_SCIENTISTS } from "../../graphQL/queries";
 import { InputButton } from "../Elements/Buttons";
-import Scientist from "../Elements/ContentBox";
+import Scientist from "../Elements/Scientist";
 import {
   rHome,
   rMainSpace,
@@ -20,11 +20,42 @@ function Scientists() {
     history.push(rHome);
   }
 
+  const [name, setName] = useState("");
+  const [livedIn, setLivedIn] = useState("");
+  const [biographicalData, setBiographicalData] = useState("");
+  const [topics, setTopics] = useState("");
+  const [biography, setBiography] = useState("");
+
   const { loading, error, data } = useQuery(FETCH_ALL_SCIENTISTS);
 
   let scientists;
   if (data) {
     scientists = data.allScientists;
+  }
+
+  let index;
+  useEffect(() => {});
+
+  function handleNameClick(event) {}
+  function handleLivedInClick(event) {}
+  function handleBiographicalDataClick(event) {}
+  function handleTopicsClick(event) {}
+  function handleBiographyClick(event) {}
+
+  function handleNameChange(event) {
+    setName(event.target.value);
+  }
+  function handleLivedInChange(event) {
+    setLivedIn(event.target.value);
+  }
+  function handleBiographicalDataChange(event) {
+    setBiographicalData(event.target.value);
+  }
+  function handleTopicsChange(event) {
+    setTopics(event.target.value);
+  }
+  function handleBiographyChange(event) {
+    setBiography(event.target.value);
   }
 
   function handleLink() {
@@ -53,15 +84,31 @@ function Scientists() {
       </div>
       {loading && <p>Loading...</p>}
       <div className="gridScientists">
-      { data && scientists.map((scientist) => (
-        <Scientist
-          name={scientist.name}
-          livedIn={scientist.livedIn}
-          biographicalData={scientist.biographicalData}
-          topics={scientist.topics}
-          biography={scientist.biography}
-        />
-      ))}
+        {data &&
+          scientists.map((scientist) => (
+            <Scientist
+              name={scientist.name}
+              livedIn={scientist.livedIn}
+              biographicalData={scientist.biographicalData}
+              topics={scientist.topics}
+              biography={scientist.biography}
+              valueName={name}
+              valueLivedIn={livedIn}
+              valueBiographicalData={biographicalData}
+              valueTopics={topics}
+              valueBiography={biography}
+              onClickName={(e) => handleNameClick(e)}
+              onClickLivedIn={(e) => handleLivedInClick(e)}
+              onClickBiographicalData={(e) => handleBiographicalDataClick(e)}
+              onClickTopics={(e) => handleTopicsClick(e)}
+              onClickBiography={(e) => handleBiographyClick(e)}
+              onChangeName={(e) => handleNameChange(e)}
+              onChangeLivedIn={(e) => handleLivedInChange(e)}
+              onChangeBiographicalData={(e) => handleBiographicalDataChange(e)}
+              onChangeTopics={(e) => handleTopicsChange(e)}
+              onChangeBiography={(e) => handleBiographyChange(e)}
+            />
+          ))}
       </div>
       <div className="div_wlinks">
         <div>
