@@ -10,14 +10,23 @@ import {
   rNewScientist,
   rChangeScientist,
 } from "../RoutesName";
+import BlockingMessage from "../Blocking";
 
 function Scientists() {
   const history = useHistory();
 
-  const userIdSession = sessionStorage.getItem("userId");
+  const [useReplUserId, setUseReplUserId] = useState(false);
 
-  if (userIdSession === null) {
+  const userIdSession = sessionStorage.getItem("userId");
+  sessionStorage.setItem("replUserId", userIdSession);
+  const replUserIdSession = sessionStorage.getItem("replUserId");
+
+  if (userIdSession === null && !useReplUserId) {
     history.push(rHome);
+  } else {
+    if (userIdSession === null) {
+      sessionStorage.setItem("userId", replUserIdSession);
+    }
   }
 
   // const [name, setName] = useState("");
@@ -35,6 +44,8 @@ function Scientists() {
   // let [isClickedBiography, setIsClickedBiography] = useState(false);
 
   let [isOneClicked, setIsOneClicked] = useState(false);
+  let [isBlocking, setIsBlocking] = useState(false);
+  let [isUsed, setIsUsed] = useState(false);
 
   const { loading, error, data } = useQuery(FETCH_ALL_SCIENTISTS);
 
@@ -44,7 +55,7 @@ function Scientists() {
   }
 
   let doc = document.getElementsByClassName("scientist");
-  console.log(doc)
+  console.log(doc);
 
   // function handleNameClick(event) {
   //   if (!isOneClicked) {
@@ -125,7 +136,10 @@ function Scientists() {
   // }
 
   function handleLink() {
-    sessionStorage.removeItem("userId");
+    if (!isBlocking || (isUsed && !isBlocking) || (isUsed && isBlocking)) {
+      sessionStorage.removeItem("userId");
+      setUseReplUserId(true);
+    }
   }
 
   function handleNewScientist() {
@@ -139,6 +153,7 @@ function Scientists() {
   return (
     <div>
       <div className="header_scientists">
+        <BlockingMessage when={isBlocking} />
         <h1>Wissenschaftler</h1>
         <div>
           <p className="logout">
@@ -187,6 +202,8 @@ function Scientists() {
               // onKeyDownBiography={(e) => handleKeyDownBiography(e)}
               isOneClicked={isOneClicked}
               setIsOneClicked={setIsOneClicked}
+              setIsBlocking={setIsBlocking}
+              setIsUsed={setIsUsed}
             />
           ))}
       </div>
