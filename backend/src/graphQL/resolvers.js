@@ -12,6 +12,11 @@ import {
     fetchAllScientists,
     changeScientist,
     deleteScientistByName,
+    changeScientistNameByName,
+    changeScientistLivedInByName,
+    changeScientistBiographicalDataByName,
+    changeScientistTopicsByName,
+    changeScientistBiographyByName
 } from "../services/scientists";
 import {
     createPhilosopher,
@@ -69,6 +74,21 @@ const resolvers = {
         },
         changeScientist: (parent, args) => {
             return changeScientist(args);
+        },
+        changeScientistNameByName: (parent, args) => {
+            return changeScientistNameByName(args);
+        },
+        changeScientistLivedInByName: (parent, args) => {
+            return changeScientistLivedInByName(args);
+        },
+        changeScientistBiographicalDataByName: (parent, args) => {
+            return changeScientistBiographicalDataByName(args);
+        },
+        changeScientistTopicsByName: (parent, args) => {
+            return changeScientistTopicsByName(args);
+        },
+        changeScientistBiographyByName: (parent, args) => {
+            return changeScientistBiographyByName(args);
         },
         deleteScientistByName: (parent, args) => {
             return deleteScientistByName(args);

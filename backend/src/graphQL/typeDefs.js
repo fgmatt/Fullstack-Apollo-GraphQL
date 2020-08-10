@@ -35,6 +35,26 @@ const typeDefs = gql`
             topics: String
             biography: String
         ): Scientist
+        changeScientistNameByName(
+            name: String!
+            newName: String
+        ): Scientist
+        changeScientistLivedInByName(
+            name: String!
+            livedIn: String
+        ): Scientist
+        changeScientistBiographicalDataByName(
+            name: String!
+            biographicalData: String
+        ): Scientist
+        changeScientistTopicsByName(
+            name: String!
+            topics: String
+        ): Scientist
+        changeScientistBiographyByName(
+            name: String!
+            biography: String
+        ): Scientist
         deleteScientistByName(name: String!): Scientist
         createPhilosopher(
             name: String!
