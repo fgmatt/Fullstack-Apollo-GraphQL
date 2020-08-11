@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
-const CREATE_PHILOSOPHER = gql`
-  mutation CreatePhilospher(
+const CHANGE_PHILOSOPHER = gql`
+  mutation ChangePhilosopher(
     $name: String!
     $livedIn: String
     $biographicalData: String
@@ -9,7 +9,7 @@ const CREATE_PHILOSOPHER = gql`
     $biography: String
     $works: String
   ) {
-    createPhilosopher(
+    ChangePhilosopher(
       name: $name
       livedIn: $livedIn
       biographicalData: $biographicalData
@@ -27,4 +27,4 @@ const CREATE_PHILOSOPHER = gql`
   }
 `;
 
-export default CREATE_SCIENTIST;
+export default CHANGE_PHILOSOPHER;

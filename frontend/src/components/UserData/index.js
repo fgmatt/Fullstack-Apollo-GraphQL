@@ -7,6 +7,7 @@ function UserData() {
   const history = useHistory();
 
   const userIdSession = sessionStorage.getItem("userId");
+  console.log(userIdSession);
 
   if (userIdSession === null) {
     history.push(rHome);
