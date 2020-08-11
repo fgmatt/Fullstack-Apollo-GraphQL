@@ -7,31 +7,6 @@ const Scientist = ({
   livedIn,
   topics,
   biography,
-  // valueName,
-  // onChangeName,
-  // onClickName,
-  // isClickedName,
-  // onKeyDownName,
-  // valueBiographialData,
-  // onChangeBiographicalData,
-  // onClickBiographicalData,
-  // isClickedBiographicalData,
-  // onKeyDownBiographicalData,
-  // valueLivedIn,
-  // onChangeLivedIn,
-  // onClickLivedIn,
-  // isClickedLivedIn,
-  // onKeyDownLivedIn,
-  // valueTopics,
-  // onChangeTopics,
-  // onClickTopics,
-  // isClickedTopics,
-  // onKeyDownTopics,
-  // valueBiography,
-  // onChangeBiography,
-  // onClickBiography,
-  // isClickedBiography,
-  // onKeyDownBiography,
   isOneClicked,
   setIsOneClicked,
   setIsBlocking,
@@ -50,8 +25,6 @@ const Scientist = ({
   );
   let [isClickedTopics, setIsClickedTopics] = useState(false);
   let [isClickedBiography, setIsClickedBiography] = useState(false);
-
-  //let [isOneClicked, setIsOneClicked] = useState(false);
 
   function handleNameClick(event) {
     if (!isOneClicked) {
@@ -153,30 +126,23 @@ const Scientist = ({
 
   return (
     <div className="scientist">
-      <div onClick={/*onClickName*/ (e) => handleNameClick(e)}>
-        <div
-          onKeyDown={/*onKeyDownName*/ (e) => handleKeyDownName(e)}
-          tabIndex="1"
-        >
+      <div onClick={(e) => handleNameClick(e)}>
+        <div onKeyDown={(e) => handleKeyDownName(e)} tabIndex="1">
           {!isClickedName ? (
             <div>
               <p>{name}</p>
             </div>
           ) : (
             <ScientistInput
-              value={/*valueName*/ vName}
-              onChange={/*onChangeName*/ (e) => handleNameChange(e)}
+              value={vName}
+              onChange={(e) => handleNameChange(e)}
             />
           )}
         </div>
       </div>
       <div
-        onClick={
-          /*onClickBiographicalData*/ (e) => handleBiographicalDataClick(e)
-        }
-        onKeyDown={
-          /*onKeyDownBiographicalData*/ (e) => handleKeyDownBiographicalData(e)
-        }
+        onClick={(e) => handleBiographicalDataClick(e)}
+        onKeyDown={(e) => handleKeyDownBiographicalData(e)}
         tabIndex={0}
       >
         {!isClickedBiographicalData ? (
@@ -185,17 +151,14 @@ const Scientist = ({
           </div>
         ) : (
           <ScientistInput
-            value={/*valueBiographialData*/ vBiographicalData}
-            onChange={
-              /*onChangeBiographicalData*/ (e) =>
-                handleBiographicalDataChange(e)
-            }
+            value={vBiographicalData}
+            onChange={(e) => handleBiographicalDataChange(e)}
           />
         )}
       </div>
       <div
-        onClick={/*onClickLivedIn*/ (e) => handleLivedInClick(e)}
-        onKeyDown={/*onKeyDownLivedIn*/ (e) => handleKeyDownLivedIn(e)}
+        onClick={(e) => handleLivedInClick(e)}
+        onKeyDown={(e) => handleKeyDownLivedIn(e)}
         tabIndex={0}
       >
         {!isClickedLivedIn ? (
@@ -204,14 +167,14 @@ const Scientist = ({
           </div>
         ) : (
           <ScientistInput
-            value={/*valueLivedIn*/ vLivedIn}
-            onChange={/*onChangeLivedIn*/ (e) => handleLivedInChange(e)}
+            value={vLivedIn}
+            onChange={(e) => handleLivedInChange(e)}
           />
         )}
       </div>
       <div
-        onClick={/*onClickTopics*/ (e) => handleTopicsClick(e)}
-        onKeyDown={/*onKeyDownTopics*/ (e) => handleKeyDownTopics(e)}
+        onClick={(e) => handleTopicsClick(e)}
+        onKeyDown={(e) => handleKeyDownTopics(e)}
         tabIndex={0}
       >
         {!isClickedTopics ? (
@@ -220,14 +183,14 @@ const Scientist = ({
           </div>
         ) : (
           <ScientistInput
-            value={/*valueTopics*/ vTopics}
-            onChange={/*onChangeTopics*/ (e) => handleTopicsChange(e)}
+            value={vTopics}
+            onChange={(e) => handleTopicsChange(e)}
           />
         )}
       </div>
       <div
-        onClick={/*onClickBiography*/ (e) => handleBiographyClick(e)}
-        onKeyDown={/*onKeyDownBiography*/ (e) => handleKeyDownBiography(e)}
+        onClick={(e) => handleBiographyClick(e)}
+        onKeyDown={(e) => handleKeyDownBiography(e)}
         tabIndex={0}
       >
         {!isClickedBiography ? (
@@ -236,8 +199,8 @@ const Scientist = ({
           </div>
         ) : (
           <ScientistInput
-            value={/*valueBiography*/ vBiography}
-            onChange={/*onChangeBiography*/ (e) => handleBiographyChange(e)}
+            value={vBiography}
+            onChange={(e) => handleBiographyChange(e)}
           />
         )}
       </div>
