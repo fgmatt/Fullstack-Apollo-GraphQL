@@ -81,6 +81,7 @@ const typeDefs = gql`
     }
 
     type Scientist {
+        _id: String
         name: String
         livedIn: String
         biographicalData: String
