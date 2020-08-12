@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
+import { NetworkStatus } from "@apollo/client";
+import { v4 as uuidv4 } from "uuid";
 import { FETCH_ALL_SCIENTISTS } from "../../graphQL/queries";
 import { InputButton } from "../Elements/Buttons";
 import Scientist from "../Elements/Scientist";
@@ -33,7 +35,15 @@ function Scientists() {
   let [isBlocking, setIsBlocking] = useState(false);
   let [isUsed, setIsUsed] = useState(false);
 
-  const { loading, error, data } = useQuery(FETCH_ALL_SCIENTISTS);
+  const {
+    loading,
+    error,
+    data,
+    refetch,
+    networkStatus,
+  } = useQuery(FETCH_ALL_SCIENTISTS, { notifyOnNetworkStatusChange: true });
+
+  if (networkStatus === NetworkStatus.refetch) return "Refetching!";
 
   let scientists;
   if (data) {
@@ -54,6 +64,7 @@ function Scientists() {
   function handleChangeScientist() {
     history.push(rChangeScientist);
   }
+  console.log(1);
 
   return (
     <div>
@@ -73,6 +84,7 @@ function Scientists() {
         {data &&
           scientists.map((scientist) => (
             <Scientist
+              key={scientist._id}
               name={scientist.name}
               livedIn={scientist.livedIn}
               biographicalData={scientist.biographicalData}
@@ -82,6 +94,7 @@ function Scientists() {
               setIsOneClicked={setIsOneClicked}
               setIsBlocking={setIsBlocking}
               setIsUsed={setIsUsed}
+              refetch={() => refetch()}
             />
           ))}
       </div>

@@ -1,10 +1,10 @@
 import React from "react";
 
-const TextareaBiography = ({ onChange, value }) => {
+const TextareaBiography = ({ onChange, value, hasLabel=true }) => {
   return (
     <div>
       <label>
-        Kurzbiographie:
+        {hasLabel && <div>Kurzbiographie:</div>}
         <textarea
           name="biography"
           value={value}

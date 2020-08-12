@@ -7,7 +7,7 @@ import SIGNUP from "./User/signup";
 import CHANGE_SCIENTIST from "./Scientists/changeScientist";
 import CHANGE_SCIENTIST_NAME_BY_NAME from "./Scientists/changeScientistNameByName";
 import CHANGE_SCIENTIST_LIVED_IN_BY_NAME from "./Scientists/changeScientistLivedInByName";
-import CHANGE_SCIENTIST_BIOGRAPHICAL_DATAT_BY_NAME from "./Scientists/changeScientistBiographicalDataByName";
+import CHANGE_SCIENTIST_BIOGRAPHICAL_DATA_BY_NAME from "./Scientists/changeScientistBiographicalDataByName";
 import CHANGE_SCIENTIST_TOPICS_BY_NAME from "./Scientists/changeScientistTopicsByName";
 import CHANGE_SCIENTIST_BIOGRAPHY_BY_NAME from "./Scientists/changeScientistBiographyByName";
 import CHANGE_PHILOSOPHER from "./Philosophers/changePhilosopher";
@@ -26,7 +26,7 @@ export {
   CHANGE_SCIENTIST,
   CHANGE_SCIENTIST_NAME_BY_NAME,
   CHANGE_SCIENTIST_LIVED_IN_BY_NAME,
-  CHANGE_SCIENTIST_BIOGRAPHICAL_DATAT_BY_NAME,
+  CHANGE_SCIENTIST_BIOGRAPHICAL_DATA_BY_NAME,
   CHANGE_SCIENTIST_TOPICS_BY_NAME,
   CHANGE_SCIENTIST_BIOGRAPHY_BY_NAME,
   CHANGE_PHILOSOPHER,
