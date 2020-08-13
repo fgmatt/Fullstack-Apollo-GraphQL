@@ -76,7 +76,7 @@ const Scientist = ({
   let [isMutatedBiography, setIsMutatedBiography] = useState(false);
 
   if (resChangeScientistNameByName) {
-    console.log(resChangeScientistNameByName);
+  
   }
 
   function handleNameClick(event) {

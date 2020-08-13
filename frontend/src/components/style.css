@@ -46,7 +46,8 @@
 
 div#root {
     width: auto;
-    height: 1500px;
+    height: auto;
+    min-height: 1600px;
     background-image: url('Skyline.jpg');
     background-size: cover;
     background-attachment: fixed;

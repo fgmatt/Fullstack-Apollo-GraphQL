@@ -19,9 +19,15 @@ function Scientists() {
 
   const [useReplUserId, setUseReplUserId] = useState(false);
 
+
   const userIdSession = sessionStorage.getItem("userId");
+  if(!useReplUserId) {
   sessionStorage.setItem("replUserId", userIdSession);
+  }
   const replUserIdSession = sessionStorage.getItem("replUserId");
+
+  console.log(userIdSession);
+  console.log(replUserIdSession);
 
   if (userIdSession === null && !useReplUserId) {
     history.push(rHome);
@@ -64,7 +70,6 @@ function Scientists() {
   function handleChangeScientist() {
     history.push(rChangeScientist);
   }
-  console.log(1);
 
   return (
     <div>
