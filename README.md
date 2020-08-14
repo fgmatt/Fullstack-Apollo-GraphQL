@@ -44,6 +44,39 @@ The endpoint in *helloWorld.js* returns *Hello World!*
 
 **End
 
+### GraphQL-Objects
+
+**User**
+
+| Field | Type   |
+|-------|--------|
+| _id   | String |
+| email | String |
+| token | String |
+
+**Scientist**
+
+| Field            | Type   |
+|------------------|--------|
+| _id              | String |
+| name             | String |
+| livedIn          | String |
+| biographicalData | String |
+| topics           | String |
+| biography        | String |
+
+
+**Philosopher**
+
+| Field            | Type   |
+|------------------|--------|
+| name             | String |
+| livedIn          | String |
+| biographicalData | String |
+| topics           | String |
+| biography        | String |
+| works            | String |
+
 ### GraphQL-Queries
 In *src/graphQL* are the resolvers, schema definitions and the apolloServer configuration.
 The GraphQl-Query hello defined in *typeDefs* and *resolvers* queries a hello world string. 
@@ -51,45 +84,266 @@ The GraphQl-Query userfind has
 
 **hello**
 
-| Property  | PropertyType | Type   | Explanation                       |
-|-----------|--------------|--------|-----------------------------------|
-| none      | none         | String | It returns a HelloWorld! string   |
+| Type   | Explanation                       |
+|--------|-----------------------------------|
+| String | It returns a HelloWorld! string   |
 
 **userfind**
 
-| Property  | PropertyType | Type   | Explanation                               |
-|-----------|--------------|--------|-------------------------------------------|
-| email     | String!      | User!  | It returns the user of the provided email |
+| Type   | Explanation                               |
+|--------|-------------------------------------------|
+| User!  | It returns the user of the provided email |
+
+| Property  | PropertyType | 
+|-----------|--------------|
+| email     | String!      |
+
+**userfindById**
+
+| Type   | Explanation                  |
+|--------|------------------------------|
+| User!  | It returns a user by his id  |
+
+| Property  | PropertyType | 
+|-----------|--------------|
+| _id       | String!      |
+
+**searchScientistByName**
+
+| Type       | Explanation                            |
+|------------|----------------------------------------|
+| Scientist! | Returns a scientist object by his name |
+
+| Property  | PropertyType | 
+|-----------|--------------|
+| name      | String!      |
+
+**searchPhilosopherByName**
+
+| Type         | Explanation                              |
+|--------------|------------------------------------------|
+| Philosopher! | Returns a philosopher object by his name |
+
+| Property  | PropertyType | 
+|-----------|--------------|
+| name      | String!      |
+
+**allScientists**
+
+| Type           | Explanation                               |
+|----------------|-------------------------------------------|
+| \[Scientist\]  | Returns an array of all scientist objects |
+
+**allPhilosophers**
+
+| Type             | Explanation                                 |
+|------------------|---------------------------------------------|
+| \[Philosopher\]  | Returns an array of all philosopher objects |
+
+
 
 ### GraphQL-Mutations
 
 **signup**
 
-| Property  | PropertyType | Type   | Explanation                               |
-|-----------|--------------|--------|-------------------------------------------|
-| email     | String!      | User!  | It creates a user with email and password |
-| password  | String!      |        |                                           |
+| Type   | Explanation                               |
+|--------|-------------------------------------------|
+| User!  | It creates a user with email and password |
+
+| Property  | PropertyType |
+|-----------|--------------|
+| email     | String!      |
+| password  | String!      |  
 
 **signin**
 
-| Property  | PropertyType | Type   | Explanation                                                                   |
-|-----------|--------------|--------|-------------------------------------------------------------------------------|
-| email     | String!      | User!  | This mutation is to signin with a existing user whith email and password      |
-| password  | String!      |        |                                                                               |
+| Type   | Explanation                                                                   |
+|--------|-------------------------------------------------------------------------------|
+| User!  | This mutation is to signin with a existing user whith email and password      |
+
+| Property  | PropertyType |
+|-----------|--------------|
+| email     | String!      |
+| password  | String!      |                                                                              
 
 **deluser**
 
-| Property  | PropertyType | Type   | Explanation                                       |
-|-----------|--------------|--------|---------------------------------------------------|
-| _id       | String!      | User!  | This mutation allows to delete a user with the id |
+| Type   | Explanation                                       |
+|--------|---------------------------------------------------|
+| User!  | This mutation allows to delete a user with the id |
+
+| Property  | PropertyType |
+|-----------|--------------|
+| _id       | String!      |
 
 **changeCreds**
 
-| Property  | PropertyType | Type   | Explanation                                        |
-|-----------|--------------|--------|----------------------------------------------------|
-| _id       | String!      | User!  | This mutation allows you to change a existing user |
-| email     | String       |        |                                                    |
-| password  | String       |        |                                                    |
+| Type   | Explanation                                        |
+|--------|----------------------------------------------------|
+| User!  | This mutation allows you to change a existing user |
+
+| Property  | PropertyType |
+|-----------|--------------|
+| _id       | String!      |
+| email     | String       |
+| password  | String       |
+
+**changeEmail**
+
+| Type   | Explanation                                      |
+|--------|--------------------------------------------------|
+| User!  | This mutation changes the email of an user by id |
+
+| Property  | PropertyType |
+|-----------|--------------|
+| _id       | String!      |
+| email     | String       |
+| password  | String       |
+
+**changePassword**
+
+| Type   | Explanation                                         |
+|--------|-----------------------------------------------------|
+| User   | This mutation changes the password of an user by id |
+
+| Property    | PropertyType |
+|-------------|--------------|
+| _id         | String!      |
+| password    | String!      |
+| newPassword | String!      |
+
+**createScientist**
+
+| Type      | Explanation                                    |
+|-----------|------------------------------------------------|
+| Scientist | This mutation create a new scientist object    |
+
+| Property         | PropertyType |
+|------------------|--------------|
+| name             | String!      |
+| livedIn          | String       |
+| biographicalData | String       |
+| topics           | String       |
+| biography        | String       |
+
+**changeScientist**
+
+| Type      | Explanation                                                     |
+|-----------|-----------------------------------------------------------------|
+| Scientist | This mutation change a scientist object excluding name by name  |
+
+| Property         | PropertyType |
+|------------------|--------------|
+| name             | String!      |
+| livedIn          | String       |
+| biographicalData | String       |
+| topics           | String       |
+| biography        | String       |
+
+**changeScientistNameByName**
+
+| Type      | Explanation                                                  |
+|-----------|--------------------------------------------------------------|
+| Scientist | This mutation change the name of a scientist object by name  |
+
+| Property    | PropertyType |
+|-------------|--------------|
+| name        | String!      |
+| newName     | String       |
+
+**changeScientistLivedInByName**
+
+| Type      | Explanation                                                  |
+|-----------|--------------------------------------------------------------|
+| Scientist | This mutation change livedIn of a scientist object by name   |
+
+| Property    | PropertyType |
+|-------------|--------------|
+| name        | String!      |
+| livedIn     | String       |
+
+**changeScientistBiographicalDataByName**
+
+| Type      | Explanation                                                          |
+|-----------|----------------------------------------------------------------------|
+| Scientist | This mutation change biographicalData of a scientist object by name  |
+
+| Property          | PropertyType |
+|-------------------|--------------|
+| name              | String!      |
+| biographicalData  | String       |
+
+**changeScientistTopicsByName**
+
+| Type      | Explanation                                                |
+|-----------|------------------------------------------------------------|
+| Scientist | This mutation change topics of a scientist object by name  |
+
+| Property     | PropertyType |
+|--------------|--------------|
+| name         | String!      |
+| topics       | String       |
+
+**changeScientistBiographyByName**
+
+| Type      | Explanation                                                   |
+|-----------|---------------------------------------------------------------|
+| Scientist | This mutation change biography of a scientist object by name  |
+
+| Property      | PropertyType |
+|---------------|--------------|
+| name          | String!      |
+| biography     | String       |
+
+**deleteScientistByName**
+
+| Type      | Explanation                                      |
+|-----------|--------------------------------------------------|
+| Scientist | This mutation delete a scientist object by name  |
+
+| Property         | PropertyType |
+|------------------|--------------|
+| name             | String!      |
+
+**createPhilosopher**
+
+| Type        | Explanation                                      |
+|-------------|--------------------------------------------------|
+| Philosopher | This mutation create a new philosopher object    |
+
+| Property         | PropertyType |
+|------------------|--------------|
+| name             | String!      |
+| livedIn          | String       |
+| biographicalData | String       |
+| topics           | String       |
+| biography        | String       |
+| works            | String       |
+
+**changePhilosopher**
+
+| Type        | Explanation                                                        |
+|-------------|--------------------------------------------------------------------|
+| Philosopher | This mutation change a philosopher object by name excluding name   |
+
+| Property         | PropertyType |
+|------------------|--------------|
+| name             | String!      |
+| livedIn          | String       |
+| biographicalData | String       |
+| topics           | String       |
+| biography        | String       |
+| works            | String       |
+
+**deletePhilosopher**
+
+| Type        | Explanation                                      |
+|-------------|--------------------------------------------------|
+| Philosopher | This mutation delete a scientist object by name  |
+
+| Property         | PropertyType |
+|------------------|--------------|
+| name             | String!      |
 
 ## Testing
 The Testing section explains how to run the tests and describe in short the tests
