@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ButtonInput = ({ value, type="submit" }) => {
+const ButtonInput = ({ value, type="submit", disabled=false, onClick }) => {
     return (
         <div>
-            <input type={type} value={value} />
+            <input onClick={onClick} type={type} value={value} disabled={disabled}/>
         </div>
     )
 }

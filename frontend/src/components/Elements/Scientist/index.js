@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ScientistInput from "../Inputs/ScientistInput";
 import TextareaBiography from "../Textarea";
+import ButtonInput from "../Inputs/ButtonInput";
 import { useMutation } from "@apollo/react-hooks";
 import {
   CHANGE_SCIENTIST_NAME_BY_NAME,
@@ -8,6 +9,7 @@ import {
   CHANGE_SCIENTIST_BIOGRAPHICAL_DATA_BY_NAME,
   CHANGE_SCIENTIST_TOPICS_BY_NAME,
   CHANGE_SCIENTIST_BIOGRAPHY_BY_NAME,
+  DELETE_SCIENTIST_BY_NAME,
 } from "../../../graphQL/mutations";
 
 const Scientist = ({
@@ -35,6 +37,10 @@ const Scientist = ({
   );
   let [isClickedTopics, setIsClickedTopics] = useState(false);
   let [isClickedBiography, setIsClickedBiography] = useState(false);
+
+  let [isDisabled, setIsDisabled] = useState(false);
+
+  let [isDeleted, setIsDeleted] = useState(false);
 
   const [changeScientistNameByName, resChangeScientistNameByName] = useMutation(
     CHANGE_SCIENTIST_NAME_BY_NAME,
@@ -67,6 +73,11 @@ const Scientist = ({
     variables: { name, biography: vBiography },
   });
 
+  const [
+    deleteScientistByName,
+    resDeleteScientistByName,
+  ] = useMutation(DELETE_SCIENTIST_BY_NAME, { variables: { name } });
+
   let [isMutatedName, setIsMutatedName] = useState(false);
   let [isMutatedLivedIn, setIsMutatedLivedIn] = useState(false);
   let [isMutatedBiographicalData, setIsMutatedBiographicalData] = useState(
@@ -76,7 +87,6 @@ const Scientist = ({
   let [isMutatedBiography, setIsMutatedBiography] = useState(false);
 
   if (resChangeScientistNameByName) {
-  
   }
 
   function handleNameClick(event) {
@@ -84,6 +94,7 @@ const Scientist = ({
       setIsClickedName(true);
       setIsOneClicked(true);
       setIsUsed(true);
+      setIsDisabled(true);
     }
   }
   function handleLivedInClick(event) {
@@ -91,6 +102,7 @@ const Scientist = ({
       setIsClickedLivedIn(true);
       setIsOneClicked(true);
       setIsUsed(true);
+      setIsDisabled(true);
     }
   }
   function handleBiographicalDataClick(event) {
@@ -98,6 +110,7 @@ const Scientist = ({
       setIsClickedBiographicalData(true);
       setIsOneClicked(true);
       setIsUsed(true);
+      setIsDisabled(true);
     }
   }
   function handleTopicsClick(event) {
@@ -105,6 +118,7 @@ const Scientist = ({
       setIsClickedTopics(true);
       setIsOneClicked(true);
       setIsUsed(true);
+      setIsDisabled(true);
     }
   }
   function handleBiographyClick(event) {
@@ -112,6 +126,7 @@ const Scientist = ({
       setIsClickedBiography(true);
       setIsOneClicked(true);
       setIsUsed(true);
+      setIsDisabled(true);
     }
   }
 
@@ -142,6 +157,7 @@ const Scientist = ({
       setIsOneClicked(false);
       setVName("");
       setIsBlocking(false);
+      setIsDisabled(false);
     }
     if (event.key === "Enter") {
       changeScientistNameByName();
@@ -151,6 +167,7 @@ const Scientist = ({
       setIsBlocking(false);
       setIsMutatedName(true);
       refetch();
+      setIsDisabled(false);
     }
   }
   function handleKeyDownLivedIn(event) {
@@ -159,6 +176,7 @@ const Scientist = ({
       setIsOneClicked(false);
       setVLivedIn("");
       setIsBlocking(false);
+      setIsDisabled(false);
     }
     if (event.key === "Enter") {
       changeScientistLivedInByName();
@@ -168,6 +186,7 @@ const Scientist = ({
       setIsBlocking(false);
       setIsMutatedLivedIn(true);
       refetch();
+      setIsDisabled(false);
     }
   }
   function handleKeyDownBiographicalData(event) {
@@ -176,6 +195,7 @@ const Scientist = ({
       setIsOneClicked(false);
       setVBiographicalData("");
       setIsBlocking(false);
+      setIsDisabled(false);
     }
     if (event.key === "Enter") {
       changeScientistBiographicalDataByName();
@@ -185,6 +205,7 @@ const Scientist = ({
       setIsBlocking(false);
       setIsMutatedBiographicalData(true);
       refetch();
+      setIsDisabled(false);
     }
   }
   function handleKeyDownTopics(event) {
@@ -193,6 +214,7 @@ const Scientist = ({
       setIsOneClicked(false);
       setVTopics("");
       setIsBlocking(false);
+      setIsDisabled(false);
     }
     if (event.key === "Escape") {
       changeScientistTopicsByName();
@@ -202,6 +224,7 @@ const Scientist = ({
       setIsBlocking(false);
       setIsMutatedTopics(true);
       refetch();
+      setIsDisabled(false);
     }
   }
   function handleKeyDownBiography(event) {
@@ -210,6 +233,7 @@ const Scientist = ({
       setIsOneClicked(false);
       setVBiography("");
       setIsBlocking(false);
+      setIsDisabled(false);
     }
     if (event.key === "Enter") {
       changeScientistBiographyByName();
@@ -219,97 +243,112 @@ const Scientist = ({
       setIsBlocking(false);
       setIsMutatedBiography(true);
       refetch();
+      setIsDisabled(false);
     }
   }
 
-  return (
-    <div className="scientist">
-      {resChangeScientistNameByName.loading && <p></p>}
-      {resChangeScientistLivedInByName.loading && <p></p>}
-      {resChangeScientistBiographicalDataByName.loading && <p></p>}
-      {resChangeScientistTopicsByName.loading && <p></p>}
-      {resChangeScientistBiographyByName.loading && <p></p>}
-      <div onClick={(e) => handleNameClick(e)}>
-        <div onKeyDown={(e) => handleKeyDownName(e)} tabIndex="1">
-          {!isClickedName ? (
+  function handleDeleteButton(event) {
+    deleteScientistByName();
+    setIsDeleted(true);
+  }
+  if (isDeleted) {
+    return null;
+  } else {
+    return (
+      <div className="scientist">
+        {resChangeScientistNameByName.loading && <p></p>}
+        {resChangeScientistLivedInByName.loading && <p></p>}
+        {resChangeScientistBiographicalDataByName.loading && <p></p>}
+        {resChangeScientistTopicsByName.loading && <p></p>}
+        {resChangeScientistBiographyByName.loading && <p></p>}
+        <div onClick={(e) => handleNameClick(e)}>
+          <div onKeyDown={(e) => handleKeyDownName(e)} tabIndex="1">
+            {!isClickedName ? (
+              <div>
+                <p id="scientistName">{name}</p>
+              </div>
+            ) : (
+              <ScientistInput
+                value={vName}
+                onChange={(e) => handleNameChange(e)}
+              />
+            )}
+          </div>
+        </div>
+        <div
+          onClick={(e) => handleBiographicalDataClick(e)}
+          onKeyDown={(e) => handleKeyDownBiographicalData(e)}
+          tabIndex={0}
+        >
+          {!isClickedBiographicalData ? (
             <div>
-              <p id="scientistName">{name}</p>
+              <p id="scientistBiographicalData">{biographicalData}</p>
             </div>
           ) : (
             <ScientistInput
-              value={vName}
-              onChange={(e) => handleNameChange(e)}
+              value={vBiographicalData}
+              onChange={(e) => handleBiographicalDataChange(e)}
             />
           )}
         </div>
+        <div
+          onClick={(e) => handleLivedInClick(e)}
+          onKeyDown={(e) => handleKeyDownLivedIn(e)}
+          tabIndex={0}
+        >
+          {!isClickedLivedIn ? (
+            <div>
+              <p id="scientistLivedIn">{livedIn}</p>
+            </div>
+          ) : (
+            <ScientistInput
+              value={vLivedIn}
+              onChange={(e) => handleLivedInChange(e)}
+            />
+          )}
+        </div>
+        <div
+          onClick={(e) => handleTopicsClick(e)}
+          onKeyDown={(e) => handleKeyDownTopics(e)}
+          tabIndex={0}
+        >
+          {!isClickedTopics ? (
+            <div>
+              <p id="scientistTopics">{topics}</p>
+            </div>
+          ) : (
+            <ScientistInput
+              value={vTopics}
+              onChange={(e) => handleTopicsChange(e)}
+            />
+          )}
+        </div>
+        <div
+          onClick={(e) => handleBiographyClick(e)}
+          onKeyDown={(e) => handleKeyDownBiography(e)}
+          tabIndex={0}
+        >
+          {!isClickedBiography ? (
+            <div>
+              <p id="scientistBiography">{biography}</p>
+            </div>
+          ) : (
+            <TextareaBiography
+              hasLabel={false}
+              value={vBiography}
+              onChange={(e) => handleBiographyChange(e)}
+            />
+          )}
+        </div>
+        <ButtonInput
+          type="button"
+          value="Löschen"
+          disabled={isDisabled}
+          onClick={(e) => handleDeleteButton(e)}
+        />
       </div>
-      <div
-        onClick={(e) => handleBiographicalDataClick(e)}
-        onKeyDown={(e) => handleKeyDownBiographicalData(e)}
-        tabIndex={0}
-      >
-        {!isClickedBiographicalData ? (
-          <div>
-            <p id="scientistBiographicalData">{biographicalData}</p>
-          </div>
-        ) : (
-          <ScientistInput
-            value={vBiographicalData}
-            onChange={(e) => handleBiographicalDataChange(e)}
-          />
-        )}
-      </div>
-      <div
-        onClick={(e) => handleLivedInClick(e)}
-        onKeyDown={(e) => handleKeyDownLivedIn(e)}
-        tabIndex={0}
-      >
-        {!isClickedLivedIn ? (
-          <div>
-            <p id="scientistLivedIn">{livedIn}</p>
-          </div>
-        ) : (
-          <ScientistInput
-            value={vLivedIn}
-            onChange={(e) => handleLivedInChange(e)}
-          />
-        )}
-      </div>
-      <div
-        onClick={(e) => handleTopicsClick(e)}
-        onKeyDown={(e) => handleKeyDownTopics(e)}
-        tabIndex={0}
-      >
-        {!isClickedTopics ? (
-          <div>
-            <p id="scientistTopics">{topics}</p>
-          </div>
-        ) : (
-          <ScientistInput
-            value={vTopics}
-            onChange={(e) => handleTopicsChange(e)}
-          />
-        )}
-      </div>
-      <div
-        onClick={(e) => handleBiographyClick(e)}
-        onKeyDown={(e) => handleKeyDownBiography(e)}
-        tabIndex={0}
-      >
-        {!isClickedBiography ? (
-          <div>
-            <p id="scientistBiography">{biography}</p>
-          </div>
-        ) : (
-          <TextareaBiography
-            hasLabel={false}
-            value={vBiography}
-            onChange={(e) => handleBiographyChange(e)}
-          />
-        )}
-      </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default Scientist;
