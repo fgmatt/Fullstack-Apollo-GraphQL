@@ -3,7 +3,7 @@ import React from "react";
 const ScientistInput = ({ value, onChange }) => {
     return (
         <div className="divScientistInput">
-            <input onChange={onChange} value={value} className="scientistInput"/>
+            <input type="text" onChange={onChange} value={value} className="scientistInput"/>
         </div>
     )
 }
