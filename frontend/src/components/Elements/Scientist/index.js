@@ -42,6 +42,8 @@ const Scientist = ({
 
   let [isDeleted, setIsDeleted] = useState(false);
 
+  const [cursor, setCursor] = useState("pointer");
+
   const [changeScientistNameByName, resChangeScientistNameByName] = useMutation(
     CHANGE_SCIENTIST_NAME_BY_NAME,
     {
@@ -155,7 +157,7 @@ const Scientist = ({
     if (event.key === "Escape") {
       setIsClickedName(false);
       setIsOneClicked(false);
-      setVName("");
+      setVName(name);
       setIsBlocking(false);
       setIsDisabled(false);
     }
@@ -163,7 +165,6 @@ const Scientist = ({
       changeScientistNameByName();
       setIsClickedName(false);
       setIsOneClicked(false);
-      setVName("");
       setIsBlocking(false);
       setIsMutatedName(true);
       refetch();
@@ -174,7 +175,7 @@ const Scientist = ({
     if (event.key === "Escape") {
       setIsClickedLivedIn(false);
       setIsOneClicked(false);
-      setVLivedIn("");
+      setVLivedIn(livedIn);
       setIsBlocking(false);
       setIsDisabled(false);
     }
@@ -182,7 +183,6 @@ const Scientist = ({
       changeScientistLivedInByName();
       setIsClickedLivedIn(false);
       setIsOneClicked(false);
-      setVLivedIn("");
       setIsBlocking(false);
       setIsMutatedLivedIn(true);
       refetch();
@@ -193,7 +193,7 @@ const Scientist = ({
     if (event.key === "Escape") {
       setIsClickedBiographicalData(false);
       setIsOneClicked(false);
-      setVBiographicalData("");
+      setVBiographicalData(biographicalData);
       setIsBlocking(false);
       setIsDisabled(false);
     }
@@ -201,7 +201,6 @@ const Scientist = ({
       changeScientistBiographicalDataByName();
       setIsClickedBiographicalData(false);
       setIsOneClicked(false);
-      setVBiographicalData("");
       setIsBlocking(false);
       setIsMutatedBiographicalData(true);
       refetch();
@@ -212,15 +211,14 @@ const Scientist = ({
     if (event.key === "Escape") {
       setIsClickedTopics(false);
       setIsOneClicked(false);
-      setVTopics("");
+      setVTopics(topics);
       setIsBlocking(false);
       setIsDisabled(false);
     }
-    if (event.key === "Escape") {
+    if (event.key === "Enter") {
       changeScientistTopicsByName();
       setIsClickedTopics(false);
       setIsOneClicked(false);
-      setVTopics("");
       setIsBlocking(false);
       setIsMutatedTopics(true);
       refetch();
@@ -231,7 +229,7 @@ const Scientist = ({
     if (event.key === "Escape") {
       setIsClickedBiography(false);
       setIsOneClicked(false);
-      setVBiography("");
+      setVBiography(biography);
       setIsBlocking(false);
       setIsDisabled(false);
     }
@@ -239,7 +237,6 @@ const Scientist = ({
       changeScientistBiographyByName();
       setIsClickedBiography(false);
       setIsOneClicked(false);
-      setVBiography("");
       setIsBlocking(false);
       setIsMutatedBiography(true);
       refetch();
@@ -247,10 +244,19 @@ const Scientist = ({
     }
   }
 
-  function handleDeleteButton(event) {
+  function handleDeleteButtonClick(event) {
     deleteScientistByName();
     setIsDeleted(true);
   }
+
+  function handleDeleteButtonMouseOver(event) {
+    if (isOneClicked) {
+      setCursor("not-allowed");
+    } else {
+      setCursor("pointer");
+    }
+  }
+
   if (isDeleted) {
     return null;
   } else {
@@ -341,10 +347,14 @@ const Scientist = ({
           )}
         </div>
         <ButtonInput
+          id="scientistDeleteButton"
+          className="scientistDeleteButton"
+          style={{ cursor: cursor }}
           type="button"
           value="Löschen"
           disabled={isDisabled}
-          onClick={(e) => handleDeleteButton(e)}
+          onClick={(e) => handleDeleteButtonClick(e)}
+          onMouseOver={(e) => handleDeleteButtonMouseOver(e)}
         />
       </div>
     );
