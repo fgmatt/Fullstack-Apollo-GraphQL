@@ -347,7 +347,6 @@ const Scientist = ({
           )}
         </div>
         <ButtonInput
-          id="scientistDeleteButton"
           className="scientistDeleteButton"
           style={{ cursor: cursor }}
           type="button"
