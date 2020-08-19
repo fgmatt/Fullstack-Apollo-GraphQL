@@ -9,7 +9,16 @@ import {
 } from "@material-ui/core";
 import ButtonInput from "../Inputs/ButtonInput";
 
-const ConfirmDialog = ({ style, disabled, onMouseOver, onClick, open, onClose, onClickDisagree, onClickAgree }) => {
+const ConfirmDialog = ({
+  style,
+  disabled,
+  onMouseOver,
+  onClick,
+  open,
+  onClose,
+  onClickDisagree,
+  onClickAgree,
+}) => {
   return (
     <div>
       <ButtonInput
@@ -21,7 +30,7 @@ const ConfirmDialog = ({ style, disabled, onMouseOver, onClick, open, onClose, o
         onClick={onClick}
         onMouseOver={onMouseOver}
       />
-      <Dialog open={open} onClose={onClose} >
+      <Dialog open={open} onClose={onClose}>
         <DialogTitle>{"Delete Scientist"}</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -29,12 +38,12 @@ const ConfirmDialog = ({ style, disabled, onMouseOver, onClick, open, onClose, o
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-            <Button onClick={onClickDisagree} color="primary">
-                Abbrechen
-            </Button>
-            <Button onClick={onClickAgree} color="primary">
-                Bestätgen
-            </Button>
+          <Button onClick={onClickDisagree} color="primary">
+            Abbrechen
+          </Button>
+          <Button onClick={onClickAgree} color="primary">
+            Bestätgen
+          </Button>
         </DialogActions>
       </Dialog>
     </div>
