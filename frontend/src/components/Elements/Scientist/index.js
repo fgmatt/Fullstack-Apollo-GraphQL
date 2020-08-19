@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ScientistInput from "../Inputs/ScientistInput";
 import TextareaBiography from "../Textarea";
 import ButtonInput from "../Inputs/ButtonInput";
+import ConfirmDialog from "../ConfirmDialog";
 import { useMutation } from "@apollo/react-hooks";
 import {
   CHANGE_SCIENTIST_NAME_BY_NAME,
@@ -43,6 +44,8 @@ const Scientist = ({
   let [isDeleted, setIsDeleted] = useState(false);
 
   const [cursor, setCursor] = useState("pointer");
+
+  const [open, setOpen] = useState(false);
 
   const [changeScientistNameByName, resChangeScientistNameByName] = useMutation(
     CHANGE_SCIENTIST_NAME_BY_NAME,
@@ -245,8 +248,8 @@ const Scientist = ({
   }
 
   function handleDeleteButtonClick(event) {
-    deleteScientistByName();
-    setIsDeleted(true);
+    setOpen(true)
+    
   }
 
   function handleDeleteButtonMouseOver(event) {
@@ -255,6 +258,20 @@ const Scientist = ({
     } else {
       setCursor("pointer");
     }
+  }
+
+  function handleCloseConfirmDialog(){
+    setOpen(false);
+  };
+
+  function handleClickDisagree() {
+    handleCloseConfirmDialog();
+  }
+
+  function handleClickAgree() {
+    handleCloseConfirmDialog();
+    deleteScientistByName();
+    setIsDeleted(true);
   }
 
   if (isDeleted) {
@@ -346,13 +363,17 @@ const Scientist = ({
             />
           )}
         </div>
-        <ButtonInput
+        <ConfirmDialog
           className="scientistDeleteButton"
           style={{ cursor: cursor }}
           type="button"
           value="Löschen"
           disabled={isDisabled}
+          open={open}
           onClick={(e) => handleDeleteButtonClick(e)}
+          onClickDisagree={() => handleClickDisagree()}
+          onClickAgree={() => handleClickAgree()}
+          onClose={() => handleCloseConfirmDialog()}
           onMouseOver={(e) => handleDeleteButtonMouseOver(e)}
         />
       </div>
