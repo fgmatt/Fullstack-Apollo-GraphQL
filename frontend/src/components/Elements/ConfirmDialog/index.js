@@ -31,10 +31,10 @@ const ConfirmDialog = ({
         onMouseOver={onMouseOver}
       />
       <Dialog open={open} onClose={onClose}>
-        <DialogTitle>{"Delete Scientist"}</DialogTitle>
+        <DialogTitle>{"Lösche WissenschaftlerIn"}</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Do you want to delete this scientist?
+            Willst du dieseN WissenschaftlerIn löschen?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
