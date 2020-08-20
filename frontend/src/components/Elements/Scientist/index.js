@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import ScientistInput from "../Inputs/ScientistInput";
 import TextareaBiography from "../Textarea";
-import ButtonInput from "../Inputs/ButtonInput";
 import ConfirmDialog from "../ConfirmDialog";
 import { useMutation } from "@apollo/react-hooks";
 import {
@@ -25,6 +25,8 @@ const Scientist = ({
   setIsUsed,
   refetch,
 }) => {
+  const history = useHistory();
+
   const [vName, setVName] = useState(name);
   const [vLivedIn, setVLivedIn] = useState(livedIn);
   const [vBiographicalData, setVBiographicalData] = useState(biographicalData);
@@ -172,6 +174,7 @@ const Scientist = ({
       setIsMutatedName(true);
       refetch();
       setIsDisabled(false);
+      window.location.reload(true);
     }
   }
   function handleKeyDownLivedIn(event) {
@@ -190,6 +193,7 @@ const Scientist = ({
       setIsMutatedLivedIn(true);
       refetch();
       setIsDisabled(false);
+      window.location.reload(true);
     }
   }
   function handleKeyDownBiographicalData(event) {
@@ -208,6 +212,7 @@ const Scientist = ({
       setIsMutatedBiographicalData(true);
       refetch();
       setIsDisabled(false);
+      window.location.reload(true)
     }
   }
   function handleKeyDownTopics(event) {
@@ -226,6 +231,7 @@ const Scientist = ({
       setIsMutatedTopics(true);
       refetch();
       setIsDisabled(false);
+      window.location.reload(true);
     }
   }
   function handleKeyDownBiography(event) {
@@ -244,6 +250,7 @@ const Scientist = ({
       setIsMutatedBiography(true);
       refetch();
       setIsDisabled(false);
+      window.location.reload(true);
     }
   }
 

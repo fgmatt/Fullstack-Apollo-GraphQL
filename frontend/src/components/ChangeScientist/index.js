@@ -91,6 +91,7 @@ const ChangeScientist = () => {
     })
       .then(({ data }) => {
         history.push(rScientists);
+        window.location.reload(true);
       })
       .catch((e) => {
         console.log(e);
