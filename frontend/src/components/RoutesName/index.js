@@ -10,6 +10,8 @@ const rPassword = rUserData + "/aenderePasswort";
 const rPasswordUS = rUserSpace + "/aenderePasswort"
 const rNewScientist = rScientists + "/neuerWissenschaftler";
 const rChangeScientist = rScientists + "/aendereWissenschaftler";
+const rMiscelleanous = rMainSpace + "/Sonstiges";
+const rPhilosophers = rMiscelleanous + "/Philosphen";
 const rError = "*";
 
 export {
@@ -25,5 +27,7 @@ export {
   rEmailUS,
   rPassword,
   rPasswordUS,
+  rMiscelleanous,
+  rPhilosophers,
   rError,
 };

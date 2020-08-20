@@ -10,6 +10,7 @@ import Scientists from "./Scientists";
 import NewScientist from "./NewScientist";
 import ChangeScientist from "./ChangeScientist";
 import UserData from "./UserData";
+import Miscellaneous from "./Miscellaneous";
 import NoMatch from "./NoMatch";
 import {
   rHome,
@@ -22,6 +23,7 @@ import {
   rChangeScientist,
   rEmail,
   rPassword,
+  rMiscelleanous,
   rError,
 } from "./RoutesName";
 import "./style.css";
@@ -57,6 +59,9 @@ function App() {
           </Route>
           <Route path={rUserData}>
             <UserData />
+          </Route>
+          <Route path={rMiscelleanous}>
+            <Miscellaneous />
           </Route>
           <Route path={rMainSpace}>
             <MainSpace />

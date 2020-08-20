@@ -9,7 +9,7 @@ import {
 import { Link, useHistory } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import IconLegend from "../IconLegend";
-import { rHome, rUserData, rScientists } from "../RoutesName";
+import { rHome, rUserData, rScientists, rMiscelleanous } from "../RoutesName";
 import { USERFINDBYID } from "../../graphQL/queries";
 
 function MainSpace() {
@@ -64,7 +64,7 @@ function MainSpace() {
   }
 
   function handleStickyNote() {
-    history.push("/some");
+    history.push(rMiscelleanous);
   }
 
   function handleLink() {

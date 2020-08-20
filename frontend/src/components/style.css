@@ -129,6 +129,12 @@ form {
     grid-template-columns: 1fr 1fr;
 }
 
+.headerMiscellaneous {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 100px;
+}
+
 .div_udlinks {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -143,6 +149,12 @@ form {
     margin-top: 30px;
 }
 
+.div_mlinks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 200px;
+}
+
 .buttonBar {
     display: grid;
     width: 260px;
@@ -152,6 +164,10 @@ form {
 }
 
 .wBack {
+    margin-top: 10px;
+}
+
+.mBack {
     margin-top: 10px;
 }
 
