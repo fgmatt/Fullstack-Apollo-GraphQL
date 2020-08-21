@@ -24,6 +24,12 @@ import {
     fetchAllPhilosophers,
     changePhilosopher,
     deletePhilosopherByName,
+    changePhilosopherNameByName,
+    changePhilosopherLivedInByName,
+    changePhilosopherBiographicalDataByName,
+    changePhilosopherTopicsByName,
+    changePhilosopherBiographyByName,
+    changePhilosopherWorksByName,
 } from "../services/philosophers";
 
 const resolvers = {
@@ -98,6 +104,24 @@ const resolvers = {
         },
         changePhilosopher: (parent, args) => {
             return changePhilosopher(args);
+        },
+        changePhilosopherNameByName: (parent, args) => {
+            return changePhilosopherNameByName(args);
+        },
+        changePhilosopherLivedInByName: (parent, args) => {
+            return changePhilosopherLivedInByName(args);
+        },
+        changePhilosopherBiographicalDataByName: (parent, args) => {
+            return changePhilosopherBiographicalDataByName(args);
+        },
+        changePhilosopherTopicsByName: (parent, args) => {
+            return changePhilosopherTopicsByName(args);
+        },
+        changePhilosopherBiographyByName: (parent, args) => {
+            return changePhilosopherBiographyByName(args);
+        },
+        changePhilosopherWorksByName: (parent, args) => {
+            return changePhilosopherWorksByName(args);
         },
         deletePhilosopherByName: (parent, args) => {
             return deletePhilosopherByName(args);
