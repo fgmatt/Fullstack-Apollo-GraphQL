@@ -114,6 +114,7 @@ const typeDefs = gql`
     }
 
     type Philosopher {
+        _id: String
         name: String
         livedIn: String
         biographicalData: String
