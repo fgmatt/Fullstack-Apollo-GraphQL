@@ -335,6 +335,72 @@ The GraphQl-Query userfind has
 | biography        | String       |
 | works            | String       |
 
+**changePhilosopherNameByName**
+
+| Type        | Explanation                                               |
+|-------------|-----------------------------------------------------------|
+| Philosopher | This mutation change the name of a philosopher by name    |
+
+| Property    | PropertyType |
+|-------------|--------------|
+| name        | String!      |
+| newName     | String       |
+
+**changePhilosopherLivedInByName**
+
+| Type        | Explanation                                                  |
+|-------------|--------------------------------------------------------------|
+| Philosopher | This mutation change the livedIn of a philosopher by name    |
+
+| Property    | PropertyType |
+|-------------|--------------|
+| name        | String!      |
+| livedIn     | String       |
+
+**changePhilosopherBiographicalDataByName**
+
+| Type        | Explanation                                                        |
+|-------------|--------------------------------------------------------------------|
+| Philosopher | This mutation change the biographicalData of a philosopher by name |
+
+| Property          | PropertyType |
+|-------------------|--------------|
+| name              | String!      |
+| biographicalData  | String       |
+
+**changePhilosopherTopicsByName**
+
+| Type        | Explanation                                                 |
+|-------------|-------------------------------------------------------------|
+| Philosopher | This mutation change the topics of a philosopher by name    |
+
+| Property     | PropertyType |
+|--------------|--------------|
+| name         | String!      |
+| topics       | String       |
+
+**changePhilosopherBiographyByName**
+
+| Type        | Explanation                                                 |
+|-------------|-------------------------------------------------------------|
+| Philosopher | This mutation change the biography of a philosopher by name |
+
+| Property      | PropertyType |
+|---------------|--------------|
+| name          | String!      |
+| biography     | String       |
+
+**changePhilosopherWorksByName**
+
+| Type        | Explanation                                                 |
+|-------------|-------------------------------------------------------------|
+| Philosopher | This mutation change the works of a philosopher by name     |
+
+| Property  | PropertyType |
+|-----------|--------------|
+| name      | String!      |
+| works     | String       |
+
 **deletePhilosopher**
 
 | Type        | Explanation                                      |
