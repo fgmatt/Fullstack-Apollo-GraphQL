@@ -5,20 +5,22 @@ import TextareaBiography from "../Textarea";
 import ConfirmDialog from "../ConfirmDialog";
 import { useMutation } from "@apollo/react-hooks";
 import {
-  CHANGE_SCIENTIST_NAME_BY_NAME,
-  CHANGE_SCIENTIST_LIVED_IN_BY_NAME,
-  CHANGE_SCIENTIST_BIOGRAPHICAL_DATA_BY_NAME,
-  CHANGE_SCIENTIST_TOPICS_BY_NAME,
-  CHANGE_SCIENTIST_BIOGRAPHY_BY_NAME,
-  DELETE_SCIENTIST_BY_NAME,
+  CHANGE_PHILOSOPHER_NAME_BY_NAME,
+  CHANGE_PHILOSOPHER_LIVED_IN_BY_NAME,
+  CHANGE_PHILOSOPHER_BIOGRAPHICAL_DATA_BY_NAME,
+  CHANGE_PHILOSOPHER_TOPICS_BY_NAME,
+  CHANGE_PHILOSOPHER_BIOGRAPHY_BY_NAME,
+  CHANGE_PHILOSOPHER_WORKS_BY_NAME,
+  DELETE_PHILOSOPHER_BY_NAME,
 } from "../../../graphQL/mutations";
 
-const Scientist = ({
+const Philosopher = ({
   name,
   biographicalData,
   livedIn,
   topics,
   biography,
+  works,
   isOneClicked,
   setIsOneClicked,
   setIsBlocking,
@@ -32,6 +34,7 @@ const Scientist = ({
   const [vBiographicalData, setVBiographicalData] = useState(biographicalData);
   const [vTopics, setVTopics] = useState(topics);
   const [vBiography, setVBiography] = useState(biography);
+  const [vWorks, setVWorks] = useState(works);
 
   let [isClickedName, setIsClickedName] = useState(false);
   let [isClickedLivedIn, setIsClickedLivedIn] = useState(false);
@@ -40,6 +43,7 @@ const Scientist = ({
   );
   let [isClickedTopics, setIsClickedTopics] = useState(false);
   let [isClickedBiography, setIsClickedBiography] = useState(false);
+  let [isClickedWorks, setIsClickedWorks] = useState(false);
 
   let [isDisabled, setIsDisabled] = useState(false);
 
@@ -49,41 +53,47 @@ const Scientist = ({
 
   const [open, setOpen] = useState(false);
 
-  const [changeScientistNameByName, resChangeScientistNameByName] = useMutation(
-    CHANGE_SCIENTIST_NAME_BY_NAME,
-    {
-      variables: { name, newName: vName },
-    }
-  );
   const [
-    changeScientistLivedInByName,
-    resChangeScientistLivedInByName,
-  ] = useMutation(CHANGE_SCIENTIST_LIVED_IN_BY_NAME, {
+    changePhilosopherNameByName,
+    resChangePhilosopherNameByName,
+  ] = useMutation(CHANGE_PHILOSOPHER_NAME_BY_NAME, {
+    variables: { name, newName: vName },
+  });
+  const [
+    changePhilosopherLivedInByName,
+    resChangePhilsopherLivedInByName,
+  ] = useMutation(CHANGE_PHILOSOPHER_LIVED_IN_BY_NAME, {
     variables: { name, livedIn: vLivedIn },
   });
   const [
-    changeScientistBiographicalDataByName,
-    resChangeScientistBiographicalDataByName,
-  ] = useMutation(CHANGE_SCIENTIST_BIOGRAPHICAL_DATA_BY_NAME, {
+    changePhilosopherBiographicalDataByName,
+    resChangePhilosopherBiographicalDataByName,
+  ] = useMutation(CHANGE_PHILOSOPHER_BIOGRAPHICAL_DATA_BY_NAME, {
     variables: { name, biographicalData: vBiographicalData },
   });
   const [
-    changeScientistTopicsByName,
-    resChangeScientistTopicsByName,
-  ] = useMutation(CHANGE_SCIENTIST_TOPICS_BY_NAME, {
+    changePhilosopherTopicsByName,
+    resChangePhilosopherTopicsByName,
+  ] = useMutation(CHANGE_PHILOSOPHER_TOPICS_BY_NAME, {
     variables: { name, topics: vTopics },
   });
   const [
-    changeScientistBiographyByName,
-    resChangeScientistBiographyByName,
-  ] = useMutation(CHANGE_SCIENTIST_BIOGRAPHY_BY_NAME, {
+    changePhilosopherBiographyByName,
+    resChangePhilsopherBiographyByName,
+  ] = useMutation(CHANGE_PHILOSOPHER_BIOGRAPHY_BY_NAME, {
     variables: { name, biography: vBiography },
+  });
+  const [
+    changePhilosopherWorksByName,
+    resChangePhilosopherWorksByName,
+  ] = useMutation(CHANGE_PHILOSOPHER_WORKS_BY_NAME, {
+    variables: { works: vWorks },
   });
 
   const [
-    deleteScientistByName,
-    resDeleteScientistByName,
-  ] = useMutation(DELETE_SCIENTIST_BY_NAME, { variables: { name } });
+    deletePhilosopherByName,
+    resDeletePhilsopherByName,
+  ] = useMutation(DELETE_PHILOSOPHER_BY_NAME, { variables: { name } });
 
   function handleClickBlock() {
     setIsOneClicked(true);
@@ -133,6 +143,12 @@ const Scientist = ({
       handleClickBlock();
     }
   }
+  function handleWorksClick(event) {
+    if (!isOneClicked) {
+      setIsClickedWorks(true);
+      handleClickBlock();
+    }
+  }
 
   function handleNameChange(event) {
     setVName(event.target.value);
@@ -154,6 +170,10 @@ const Scientist = ({
     setVBiography(event.target.value);
     setIsBlocking(event.target.value.length > 0);
   }
+  function handleWorksChange(event) {
+    setVWorks(event.target.value);
+    setIsBlocking(event.target.value.length > 0);
+  }
 
   function handleKeyDownName(event) {
     if (event.key === "Escape") {
@@ -162,7 +182,7 @@ const Scientist = ({
       handleKeyDownBlock();
     }
     if (event.key === "Enter") {
-      changeScientistNameByName();
+      changePhilosopherNameByName();
       setIsClickedName(false);
       handleKeyDownBlockEnter();
     }
@@ -174,7 +194,7 @@ const Scientist = ({
       handleKeyDownBlock();
     }
     if (event.key === "Enter") {
-      changeScientistLivedInByName();
+      changePhilosopherLivedInByName();
       setIsClickedLivedIn(false);
       handleKeyDownBlockEnter();
     }
@@ -186,7 +206,7 @@ const Scientist = ({
       handleKeyDownBlock();
     }
     if (event.key === "Enter") {
-      changeScientistBiographicalDataByName();
+      changePhilosopherBiographicalDataByName();
       setIsClickedBiographicalData(false);
       handleKeyDownBlockEnter();
     }
@@ -199,7 +219,7 @@ const Scientist = ({
       handleKeyDownBlock();
     }
     if (event.key === "Enter") {
-      changeScientistTopicsByName();
+      changePhilosopherTopicsByName();
       setIsClickedTopics(false);
       handleKeyDownBlockEnter();
     }
@@ -212,8 +232,21 @@ const Scientist = ({
       handleKeyDownBlock();
     }
     if (event.key === "Enter") {
-      changeScientistBiographyByName();
+      changePhilosopherBiographyByName();
       setIsClickedBiography(false);
+      handleKeyDownBlockEnter();
+    }
+  }
+  function handleKeyDownWorks(event) {
+    if (event.key === "Escape") {
+      setIsClickedWorks(false);
+
+      setVWorks(works);
+      handleKeyDownBlock();
+    }
+    if (event.key === "Enter") {
+      changePhilosopherWorksByName();
+      setIsClickedWorks(false);
       handleKeyDownBlockEnter();
     }
   }
@@ -240,7 +273,7 @@ const Scientist = ({
 
   function handleClickAgree() {
     handleCloseConfirmDialog();
-    deleteScientistByName();
+    deletePhilosopherByName();
     setIsDeleted(true);
   }
 
@@ -248,17 +281,12 @@ const Scientist = ({
     return null;
   } else {
     return (
-      <div className="scientist">
-        {resChangeScientistNameByName.loading && <p></p>}
-        {resChangeScientistLivedInByName.loading && <p></p>}
-        {resChangeScientistBiographicalDataByName.loading && <p></p>}
-        {resChangeScientistTopicsByName.loading && <p></p>}
-        {resChangeScientistBiographyByName.loading && <p></p>}
+      <div className="philosopher">
         <div onClick={(e) => handleNameClick(e)}>
           <div onKeyDown={(e) => handleKeyDownName(e)} tabIndex="1">
             {!isClickedName ? (
               <div>
-                <p id="scientistName">{name}</p>
+                <p id="philospherName">{name}</p>
               </div>
             ) : (
               <ScientistInput
@@ -275,7 +303,7 @@ const Scientist = ({
         >
           {!isClickedBiographicalData ? (
             <div>
-              <p id="scientistBiographicalData">{biographicalData}</p>
+              <p id="philosopherBiographicalData">{biographicalData}</p>
             </div>
           ) : (
             <ScientistInput
@@ -291,7 +319,7 @@ const Scientist = ({
         >
           {!isClickedLivedIn ? (
             <div>
-              <p id="scientistLivedIn">{livedIn}</p>
+              <p id="philosopherLivedIn">{livedIn}</p>
             </div>
           ) : (
             <ScientistInput
@@ -307,7 +335,7 @@ const Scientist = ({
         >
           {!isClickedTopics ? (
             <div>
-              <p id="scientistTopics">{topics}</p>
+              <p id="philosopherTopics">{topics}</p>
             </div>
           ) : (
             <ScientistInput
@@ -323,7 +351,7 @@ const Scientist = ({
         >
           {!isClickedBiography ? (
             <div>
-              <p id="scientistBiography">{biography}</p>
+              <p id="philosopherBiography">{biography}</p>
             </div>
           ) : (
             <TextareaBiography
@@ -333,8 +361,24 @@ const Scientist = ({
             />
           )}
         </div>
+        <div
+          onClick={(e) => handleWorksClick(e)}
+          onKeyDown={(e) => handleKeyDownWorks(e)}
+          tabIndex={0}
+        >
+          {!isClickedWorks ? (
+            <div>
+              <p id="philosopherWorks">{works}</p>
+            </div>
+          ) : (
+            <ScientistInput
+              value={vWorks}
+              onChange={(e) => handleWorksChange(e)}
+            />
+          )}
+        </div>
         <ConfirmDialog
-          className="scientistDeleteButton"
+          className="philosopherDeleteButton"
           style={{ cursor: cursor }}
           type="button"
           value="Löschen"
@@ -351,4 +395,4 @@ const Scientist = ({
   }
 };
 
-export default Scientist;
+export default Philosopher;

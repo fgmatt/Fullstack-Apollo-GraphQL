@@ -9,6 +9,7 @@ import ChangePassword from "./ChangePassword";
 import Scientists from "./Scientists";
 import NewScientist from "./NewScientist";
 import ChangeScientist from "./ChangeScientist";
+import Philosophers from "./Philosophers";
 import UserData from "./UserData";
 import Miscellaneous from "./Miscellaneous";
 import NoMatch from "./NoMatch";
@@ -24,9 +25,11 @@ import {
   rEmail,
   rPassword,
   rMiscelleanous,
+  rPhilosophers,
   rError,
 } from "./RoutesName";
 import "./style.css";
+import Philosopher from "./Elements/Philosopher";
 
 function App() {
   return (
@@ -59,6 +62,9 @@ function App() {
           </Route>
           <Route path={rUserData}>
             <UserData />
+          </Route>
+          <Route path={rPhilosophers}>
+            <Philosophers />
           </Route>
           <Route path={rMiscelleanous}>
             <Miscellaneous />
