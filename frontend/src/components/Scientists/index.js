@@ -73,7 +73,7 @@ function Scientists() {
 
   return (
     <div>
-      <div className="header_scientists">
+      <div className="header_usp">
         <BlockingMessage when={isBlocking} />
         <h1>Wissenschaftler</h1>
         <div>
@@ -105,7 +105,7 @@ function Scientists() {
       </div>
       <div className="div_wlinks">
         <div>
-          <p className="wBack">
+          <p className="back">
             <Link to={rMainSpace}>Zurück</Link>
           </p>
         </div>

@@ -26,7 +26,7 @@ function UserData() {
   }
   return (
     <div>
-      <div className="header_userdata">
+      <div className="header_usp">
         <div className="div_userdata">
           <h1>Benutzerdaten</h1>
         </div>

@@ -37,7 +37,7 @@ export default function Miscellaneous() {
       </div>
       <div className="div_mlinks">
         <div>
-          <p className="mBack">
+          <p className="back">
             <Link to={rMainSpace}>Zurück</Link>
           </p>
         </div>

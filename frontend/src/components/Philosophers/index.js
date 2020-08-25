@@ -55,7 +55,7 @@ export default function Philosophers() {
 
   return (
     <div>
-      <div className="header_philosophers">
+      <div className="header_usp">
         <BlockingMessage when={isBlocking} />
         <h1>Philosophen</h1>
         <div>
@@ -88,7 +88,7 @@ export default function Philosophers() {
       </div>
       <div className="div_wlinks">
         <div>
-          <p className="wBack">
+          <p className="back">
             <Link to={rMainSpace}>Zurück</Link>
           </p>
         </div>
