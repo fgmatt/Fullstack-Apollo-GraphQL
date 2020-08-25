@@ -11,7 +11,7 @@ const rPasswordUS = rUserSpace + "/aenderePasswort"
 const rNewScientist = rScientists + "/neuerWissenschaftler";
 const rChangeScientist = rScientists + "/aendereWissenschaftler";
 const rMiscelleanous = rMainSpace + "/Sonstiges";
-const rPhilosophers = rMiscelleanous + "/Philosphen";
+const rPhilosophers = rMiscelleanous + "/Philosophen";
 const rError = "*";
 
 export {
