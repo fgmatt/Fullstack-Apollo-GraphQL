@@ -6,6 +6,8 @@ import { FETCH_ALL_PHILOSOPHERS } from "../../graphQL/queries";
 import Philosopher from "../Elements/Philosopher";
 import { rHome, rMainSpace } from "../RoutesName";
 import BlockingMessage from "../Blocking";
+import NewPhilosopherDialog from "../Elements/NewPhilosopherDialog";
+import AltNewPhilosopherDialog from "../Elements/AltNewPhilosopherDialog";
 
 export default function Philosophers() {
   const history = useHistory();
@@ -43,7 +45,6 @@ export default function Philosophers() {
   let philosophers;
   if (data) {
     philosophers = data.allPhilosophers;
-    console.log(philosophers);
   }
 
   function handleLink() {
@@ -92,6 +93,8 @@ export default function Philosophers() {
             <Link to={rMainSpace}>Zurück</Link>
           </p>
         </div>
+        <NewPhilosopherDialog />
+        <AltNewPhilosopherDialog />
       </div>
     </div>
   );

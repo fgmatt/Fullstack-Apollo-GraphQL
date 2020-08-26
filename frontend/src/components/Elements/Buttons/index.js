@@ -1,10 +1,10 @@
 import React from "react";
 import "./style.css"
 
-const SubButton = ({ value = "Bestätigen", className }) => {
+const SubButton = ({ value = "Bestätigen", className, onClick }) => {
   return (
     <div className={className}>
-      <input type="submit" value={value} />
+      <input onClick={onClick} type="submit" value={value} />
     </div>
   );
 };
