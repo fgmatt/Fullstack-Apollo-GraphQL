@@ -87,7 +87,7 @@ const Philosopher = ({
     changePhilosopherWorksByName,
     resChangePhilosopherWorksByName,
   ] = useMutation(CHANGE_PHILOSOPHER_WORKS_BY_NAME, {
-    variables: { works: vWorks },
+    variables: { name, works: vWorks },
   });
 
   const [
@@ -374,6 +374,7 @@ const Philosopher = ({
             <ScientistInput
               value={vWorks}
               onChange={(e) => handleWorksChange(e)}
+              tabIndex={0}
             />
           )}
         </div>
