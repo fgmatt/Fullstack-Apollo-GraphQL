@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/react-hooks";
 import { NetworkStatus } from "@apollo/client";
 import { FETCH_ALL_PHILOSOPHERS } from "../../graphQL/queries";
 import Philosopher from "../Elements/Philosopher";
-import { rHome, rMainSpace } from "../RoutesName";
+import { rHome, rMiscelleanous } from "../RoutesName";
 import BlockingMessage from "../Blocking";
 import NewPhilosopherDialog from "../Elements/NewPhilosopherDialog";
 import AltNewPhilosopherDialog from "../Elements/AltNewPhilosopherDialog";
@@ -90,7 +90,7 @@ export default function Philosophers() {
       <div className="div_wlinks">
         <div>
           <p className="back">
-            <Link to={rMainSpace}>Zurück</Link>
+            <Link to={rMiscelleanous}>Zurück</Link>
           </p>
         </div>
         <NewPhilosopherDialog />

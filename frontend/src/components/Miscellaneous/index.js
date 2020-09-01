@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { InputButton } from "../Elements/Buttons";
-import { rMainSpace, rHome, rPhilosophers } from "../RoutesName";
+import { rMainSpace, rHome, rPhilosophers, rCountries } from "../RoutesName";
 
 export default function Miscellaneous() {
   const history = useHistory();
@@ -16,9 +16,14 @@ export default function Miscellaneous() {
     sessionStorage.removeItem("userId");
   }
 
-  function handleButtonClick(event) {
+  function handleButtonClickPhilosophen(event) {
     event.preventDefault();
     history.push(rPhilosophers);
+  }
+
+  function handleButtonClickLaender(event) {
+    event.preventDefault();
+    history.push(rCountries);
   }
 
   return (
@@ -43,7 +48,12 @@ export default function Miscellaneous() {
         </div>
         <InputButton
           value="Philosophen"
-          onClick={(e) => handleButtonClick(e)}
+          onClick={(e) => handleButtonClickPhilosophen(e)}
+        />
+         <InputButton
+          className="countriesButton"
+          value="Länder"
+          onClick={(e) => handleButtonClickLaender(e)}
         />
       </div>
     </div>

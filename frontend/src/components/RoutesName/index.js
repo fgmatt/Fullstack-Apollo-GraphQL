@@ -7,12 +7,14 @@ const rScientists = rMainSpace + "/Wissenschaftler";
 const rEmail = rUserData + "/aendereEmail";
 const rEmailUS = rUserSpace + "/aendereEmail";
 const rPassword = rUserData + "/aenderePasswort";
-const rPasswordUS = rUserSpace + "/aenderePasswort"
+const rPasswordUS = rUserSpace + "/aenderePasswort";
 const rNewScientist = rScientists + "/neuerWissenschaftler";
 const rChangeScientist = rScientists + "/aendereWissenschaftler";
 const rMiscelleanous = rMainSpace + "/Sonstiges";
 const rPhilosophers = rMiscelleanous + "/Philosophen";
+const rCountries = rMiscelleanous + "/Länder";
 const rError = "*";
+
 
 export {
   rHome,
@@ -29,5 +31,6 @@ export {
   rPasswordUS,
   rMiscelleanous,
   rPhilosophers,
+  rCountries,
   rError,
 };

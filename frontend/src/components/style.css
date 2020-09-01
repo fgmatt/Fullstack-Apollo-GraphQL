@@ -146,8 +146,8 @@ form {
 
 .div_mlinks {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 200px;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 300px;
 }
 
 .buttonBar {
@@ -196,4 +196,8 @@ form {
 .scientistDeleteButton {
     float: right;
     margin-right: -10px;
+}
+
+.countriesButton {
+    margin-left: 10px;
 }
