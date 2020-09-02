@@ -1,9 +1,9 @@
 import React from "react";
 
-const SearchInput = ({ value, onChange, onClick }) => {
+const SearchInput = ({ value, onChange, onKeyDown, tI }) => {
     return (
         <div className="divSearchInput">
-            <input type="search" onChange={onChange} onClick={onClick} value={value} className="searchInput"/>
+            <input type="search" onChange={onChange} onKeyDown={onKeyDown} value={value} tabIndex={tI} className="searchInput"/>
         </div>
     )
 }

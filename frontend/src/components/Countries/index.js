@@ -15,7 +15,9 @@ const Countries = () => {
   }
 
   let [isBlocking, setIsBlocking] = useState(false);
+  let [isClickSearch, setIsClickSearch] = useState(false);
   const [search, setSearch] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const useFetch = (url, init, options) => {
     const [response, setResponse] = useState(null);
@@ -34,7 +36,7 @@ const Countries = () => {
         }
       };
       fetchData();
-    }, []);
+    }, [init]);
     return { response, error, isLoading };
   };
 
@@ -45,21 +47,23 @@ const Countries = () => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       query: FETCH_COUNTRY,
-      variables: { name: "Switzerland" },
+      variables: { name: searchTerm },
     }),
   };
-  const res = useFetch(url, init, {});
-  const con = res.response !== null;
 
-  if (con) {
-    console.log(search);
-  }
+  const res = useFetch(url, init, {});
 
   function handleChangeSearch(event) {
     setSearch(event.target.value);
+    setIsBlocking(true);
   }
 
-  function handleClickSearch(event) {}
+  function handleKeyDownSearch(event) {
+    if(event.key === "Enter") {
+    setIsClickSearch(true);
+    setSearchTerm(event.target.value);
+    }
+  }
 
   function handleLink() {
     sessionStorage.removeItem("userId");
@@ -81,7 +85,8 @@ const Countries = () => {
       <SearchInput
         value={search}
         onChange={(e) => handleChangeSearch(e)}
-        onClick={(e) => handleClickSearch(e)}
+        onKeyDown={(e) => handleKeyDownSearch(e)}
+        tI={0}
       />
       <div>
         {res.response !== null ? (
