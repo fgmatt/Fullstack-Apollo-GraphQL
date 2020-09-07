@@ -13,6 +13,7 @@ const rChangeScientist = rScientists + "/aendereWissenschaftler";
 const rMiscelleanous = rMainSpace + "/Sonstiges";
 const rPhilosophers = rMiscelleanous + "/Philosophen";
 const rCountries = rMiscelleanous + "/Länder";
+const rMemoryGames = rMiscelleanous + "/Gedächtnisspiel";
 const rError = "*";
 
 
@@ -32,5 +33,6 @@ export {
   rMiscelleanous,
   rPhilosophers,
   rCountries,
+  rMemoryGames,
   rError,
 };

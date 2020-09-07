@@ -1,203 +1,207 @@
 * {
-    margin: 0;
-    padding: 0;
-    z-index: unset;
+  margin: 0;
+  padding: 0;
+  z-index: unset;
 }
 
 .icons_fa {
-    margin-right: 40px;
-    margin-top: 100px;
-    z-index: 1;
+  margin-right: 40px;
+  margin-top: 100px;
+  z-index: 1;
 }
 
 .icons_fauc {
-    margin-top: 30px;
-    margin-bottom: 0px;
+  margin-top: 30px;
+  margin-bottom: 0px;
 }
 
 .logout {
-    float: right; 
-    margin-top: 45px;
-    margin-bottom: 0px;
+  float: right;
+  margin-top: 45px;
+  margin-bottom: 0px;
 }
 
 #title_mainspace {
-    margin-left: 30%;
+  margin-left: 30%;
 }
 
 .linkData {
-    margin-top: 200px;
+  margin-top: 200px;
 }
 
 .buttonData {
-    margin-top: 193px;
+  margin-top: 193px;
 }
 
 .newLogLink {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .logButton {
-    margin-block-start: -60px;
-    margin-left: 130px;
-    margin-right: 10px;
-    width: 150px;
+  margin-block-start: -60px;
+  margin-left: 130px;
+  margin-right: 10px;
+  width: 150px;
 }
 
 div#root {
-    width: auto;
-    height: auto;
-    min-height: 1600px;
-    background-image: url('Skyline.jpg');
-    background-size: cover;
-    background-attachment: fixed;
+  width: auto;
+  height: auto;
+  min-height: 1600px;
+  background-image: url("Skyline.jpg");
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 form {
-    border: solid;
-    border-radius: 30px;
-    border-width: 2px;
-    padding: 20px;
-    margin-top: 50px;
-    max-width: 600px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  border: solid;
+  border-radius: 30px;
+  border-width: 2px;
+  padding: 20px;
+  margin-top: 50px;
+  max-width: 600px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .errorMessage {
-    border: solid;
-    border-width: 1px;
-    border-color: orangered;
-    border-radius: 5px;
-    padding: 5px;
-    background-color: #fa8072;
+  border: solid;
+  border-width: 1px;
+  border-color: orangered;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #fa8072;
 }
 
 .iconLegend {
-    border: solid;
-    border-width: 1px;
-    background-color: #dddddc;
-    padding: 3px;
-    font-size: 9px;
-    z-index: 2;
+  border: solid;
+  border-width: 1px;
+  background-color: #dddddc;
+  padding: 3px;
+  font-size: 9px;
+  z-index: 2;
 }
 
 .iconLegendH {
-    width: 72px;
-    margin-top: 0px;
+  width: 72px;
+  margin-top: 0px;
 }
 
 .iconLegendS {
-    width: 78px;
-    margin-left: 100px;
+  width: 78px;
+  margin-left: 100px;
 }
 
 .iconLegendW {
-    width: 47px;
-    margin-left: 205px;
+  width: 47px;
+  margin-left: 205px;
 }
 
 .scientistsButtonCS {
-    margin-block-start: -50px;
-    margin-left: 305px;
+  margin-block-start: -50px;
+  margin-left: 305px;
 }
 
 .div_userfindbyid {
-    width: 250px;
-    padding-left: 20px;
-    padding-top: 35px;
+  width: 250px;
+  padding-left: 20px;
+  padding-top: 35px;
 }
 
 .div_icons_fauc {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
 }
 
 .header_mainspace {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
 }
 
 .header_usp {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .headerMiscellaneous {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-bottom: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 100px;
 }
 
 .div_udlinks {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 410px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 410px;
 }
 
 .div_wlinks {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 500px;
-    grid-gap: 10px;
-    margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 500px;
+  grid-gap: 10px;
+  margin-top: 30px;
 }
 
 .div_mlinks {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 300px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 300px;
 }
 
 .buttonBar {
-    display: grid;
-    width: 260px;
-    height: 50px;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
+  display: grid;
+  width: 260px;
+  height: 50px;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
 }
 
 .back {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .scientist {
-    border: solid;
-    border-radius: 10px;
-    border-width: 1px;
-    padding: 10px;
-    box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, .1);
+  border: solid;
+  border-radius: 10px;
+  border-width: 1px;
+  padding: 10px;
+  box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.1);
 }
 
 .philosopher {
-    border: solid;
-    border-radius: 10% / 5px;
-    border-width: 1px;
-    padding: 10px;
-    box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, .1);
+  border: solid;
+  border-radius: 10% / 5px;
+  border-width: 1px;
+  padding: 10px;
+  box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.1);
 }
 
 .gridScientists {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: min-content;
-    grid-gap: 30px;
-    grid-auto-rows: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: min-content;
+  grid-gap: 30px;
+  grid-auto-rows: auto;
 }
 
 .gridPhilosophers {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 50px;
-    grid-auto-rows: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 50px;
+  grid-auto-rows: auto;
 }
 
 .scientistDeleteButton {
-    float: right;
-    margin-right: -10px;
+  float: right;
+  margin-right: -10px;
 }
 
 .countriesButton {
-    margin-left: 10px;
+  margin-left: 10px;
+}
+
+.divSearchInput {
+  width: 50%;
 }

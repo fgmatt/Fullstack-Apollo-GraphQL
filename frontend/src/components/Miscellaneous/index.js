@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { InputButton } from "../Elements/Buttons";
-import { rMainSpace, rHome, rPhilosophers, rCountries } from "../RoutesName";
+import {
+  rMainSpace,
+  rHome,
+  rPhilosophers,
+  rCountries,
+  rMemoryGames,
+} from "../RoutesName";
 
 export default function Miscellaneous() {
   const history = useHistory();
@@ -26,6 +32,10 @@ export default function Miscellaneous() {
     history.push(rCountries);
   }
 
+  function handleButtonClickMemoryGame(event) {
+    event.preventDefault();
+    history.push(rMemoryGames);
+  }
   return (
     <div>
       <div className="headerMiscellaneous">
@@ -47,13 +57,19 @@ export default function Miscellaneous() {
           </p>
         </div>
         <InputButton
+          className="countriesButton"
           value="Philosophen"
           onClick={(e) => handleButtonClickPhilosophen(e)}
         />
-         <InputButton
+        <InputButton
           className="countriesButton"
           value="Länder"
           onClick={(e) => handleButtonClickLaender(e)}
+        />
+        <InputButton
+          className="countriesButton"
+          value="Gedächtnisspiel"
+          onClick={(e) => handleButtonClickMemoryGame(e)}
         />
       </div>
     </div>

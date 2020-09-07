@@ -13,6 +13,7 @@ import Philosophers from "./Philosophers";
 import UserData from "./UserData";
 import Miscellaneous from "./Miscellaneous";
 import Countries from "./Countries";
+import MemoryGame from "./MemoryGame";
 import NoMatch from "./NoMatch";
 import {
   rHome,
@@ -28,6 +29,7 @@ import {
   rMiscelleanous,
   rPhilosophers,
   rCountries,
+  rMemoryGames,
   rError,
 } from "./RoutesName";
 import "./style.css";
@@ -63,6 +65,9 @@ function App() {
           </Route>
           <Route path={rUserData}>
             <UserData />
+          </Route>
+          <Route path={rMemoryGames}>
+            <MemoryGame />
           </Route>
           <Route path={rCountries}>
             <Countries/>
