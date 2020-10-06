@@ -1,7 +1,133 @@
 import React, { useState, useEffect } from "react";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 import { rHome, rMiscelleanous } from "../RoutesName";
 import { Link, useHistory } from "react-router-dom";
-import { InputButton } from "../Elements/Buttons";
+
+function DialogScore({ count }) {
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <div>
+      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+        Ok
+      </Button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="score-dialog-title"
+      >
+        <DialogTitle id="score-dialog-title"></DialogTitle>
+        <DialogContent>
+          <DialogContentText>Your Score is {count}</DialogContentText>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+}
+
+function DialogMemoryGame({ setDigits, digits }) {
+  const [open, setOpen] = useState(false);
+  const [count, setCount] = useState(2);
+  const [chunks, setChunks] = useState("");
+  const [mismatch, setMismatch] = useState(false);
+
+  function handleStartButton() {
+    setCount(count + 1);
+    let prevDigits = "";
+
+    for (let i = 0; i <= count; i++) {
+      let aktDigit = Math.floor(10 * Math.random()).toString();
+      prevDigits = prevDigits + aktDigit;
+    }
+    setDigits(prevDigits);
+  }
+
+  const handleClickOpen = () => {
+    handleStartButton();
+    setOpen(true);
+  };
+
+  const handleOnChange = (event) => {
+    setChunks(event.target.value);
+    if (digits === chunks) {
+      console.log(1);
+    } else {
+      setMismatch(true);
+    }
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleCloseCanceled = () => {
+    setCount(2);
+    handleClose();
+  };
+
+  const handleCloseOk = () => {
+    handleClose();
+    // if (digits === chunks) {
+    //   console.log(1);
+    // } else {
+    //   setMismatch(true);
+    // }
+    setChunks("");
+  };
+
+  return (
+    <div>
+      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+        Start
+      </Button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="dialog-memoryGame-title"
+      >
+        <DialogTitle id="dialog-memoryGame-title">Eingabefenster</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Bitte gebe die Ziffernfolge ein.
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            value={chunks}
+            onChange={(e) => handleOnChange(e)}
+            label=""
+            type="text"
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseCanceled} color="primary">
+            Abbrechen
+          </Button>
+          {/* <Button onClick={handleCloseOk} color="primary">
+            Ok
+          </Button> */}
+          <DialogScore count={count}/>
+        </DialogActions>
+      </Dialog>
+    </div>
+  );
+}
 
 export default function MemoryGame() {
   const history = useHistory();
@@ -12,37 +138,10 @@ export default function MemoryGame() {
     history.push(rHome);
   }
 
-  const [count, setCount] = useState(2);
-  const [digits, setDigits] = useState([]);
-  const [digit, setDigit] = useState(undefined);
-
-  const arr = [1, 4, 6, 7, 8, 0];
-  console.log(arr.length);
-
-  console.log(digits.length);
-
-  useEffect(() => {
-    if (document.getElementById("memNumber") !== null) {
-      document.getElementById("memNumber").innerHTML = `${digit}`;
-    }
-  });
+  const [digits, setDigits] = useState("");
 
   function handleLink() {
     sessionStorage.removeItem("userId");
-  }
-
-  function handleStartButton() {
-    setTimeout(function test() {
-      digits.splice(0, count);
-      setCount(count + 1);
-      for (let i = 0; i <= count; i++) {
-        setTimeout(function test1() {
-          let aktDigit = Math.floor(10 * Math.random());
-          setDigit(aktDigit);
-          digits.push(aktDigit);
-        }, 1000);
-      }
-    }, 1000);
   }
 
   return (
@@ -59,12 +158,9 @@ export default function MemoryGame() {
           </p>
         </div>
         <div>
-          {digit && <h1 id="memNumber">{digit}</h1>}
-          <InputButton
-            className="startButton"
-            value="Start"
-            onClick={handleStartButton}
-          />
+          {digits && <h1 id="memNumber">{digits}</h1>}
+
+          <DialogMemoryGame setDigits={setDigits} digits={digits} />
         </div>
       </div>
       <div>

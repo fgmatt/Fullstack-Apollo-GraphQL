@@ -13,6 +13,7 @@ import MuiDialogActions from "@material-ui/core/DialogActions";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
+import { InputButton } from "../Buttons";
 
 const styles = (theme) => ({
   root: {
@@ -121,9 +122,10 @@ export default function NewPhilosopherDialogs() {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         +
-      </Button>
+      </Button> */}
+      <InputButton onClick={handleClickOpen} value="+" />
       <Dialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"

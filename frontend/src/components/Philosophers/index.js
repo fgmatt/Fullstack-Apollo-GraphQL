@@ -94,7 +94,7 @@ export default function Philosophers() {
           </p>
         </div>
         <NewPhilosopherDialog />
-        <AltNewPhilosopherDialog />
+        {/* <AltNewPhilosopherDialog /> */}
       </div>
     </div>
   );
