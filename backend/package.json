@@ -1,50 +1,52 @@
 {
-  "name": "backend-grundstruktur",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dump": "nodemon --exec babel-node dump.js",
-    "test": "jest --watch --runInBand",
-    "dev": "nodemon --exec babel-node src/index.js",
-    "db": "/Users/florinmattmuller/mongodb/bin/mongod -dbpath=/Users/florinmattmuller/mongodb-data"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "apollo-server-express": "^2.14.1",
-    "bcrypt": "^4.0.1",
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "glob": "^7.1.6",
-    "graphql": "^15.0.0",
-    "graphql-tools": "^5.0.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongodb": "^3.5.8",
-    "mongoose": "^5.9.16",
-    "mongoose-bcrypt": "^1.8.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.10.1",
-    "@babel/node": "^7.10.1",
-    "@babel/preset-env": "^7.10.1",
-    "env-cmd": "^10.1.0",
-    "jest": "^26.0.1",
-    "nodemon": "^2.0.4",
-    "supertest": "^4.0.2"
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "coveragePathIgnorePatterns": [
-      "/node_modules"
-    ]
-  },
-  "prettier": {
-    "trailingComma": "es5",
-    "tabWidth": 4,
-    "semi": true,
-    "singleQuote": false
-  }
+    "name": "backend-grundstruktur",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dump": "nodemon --exec babel-node dump.js",
+        "test": "jest --watch --runInBand",
+        "start:dev": "nodemon --exec babel-node src/index.js",
+        "start:db": "/Users/florinmattmuller/mongodb/bin/mongod -dbpath=/Users/florinmattmuller/mongodb-data",
+        "start": "concurrently npm:start:*"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "apollo-server-express": "^2.14.1",
+        "bcrypt": "^4.0.1",
+        "body-parser": "^1.19.0",
+        "concurrently": "^5.3.0",
+        "cors": "^2.8.5",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "glob": "^7.1.6",
+        "graphql": "^15.0.0",
+        "graphql-tools": "^5.0.0",
+        "jsonwebtoken": "^8.5.1",
+        "mongodb": "^3.5.8",
+        "mongoose": "^5.9.16",
+        "mongoose-bcrypt": "^1.8.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.10.1",
+        "@babel/node": "^7.10.1",
+        "@babel/preset-env": "^7.10.1",
+        "env-cmd": "^10.1.0",
+        "jest": "^26.0.1",
+        "nodemon": "^2.0.4",
+        "supertest": "^4.0.2"
+    },
+    "jest": {
+        "testEnvironment": "node",
+        "coveragePathIgnorePatterns": [
+            "/node_modules"
+        ]
+    },
+    "prettier": {
+        "trailingComma": "es5",
+        "tabWidth": 4,
+        "semi": true,
+        "singleQuote": false
+    }
 }
