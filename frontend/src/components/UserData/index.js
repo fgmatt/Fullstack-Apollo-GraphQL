@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { InputButton } from "../Elements/Buttons";
-import { rHome, rEmail, rMainSpace, rPassword } from "../RoutesName";
+import { rHome, rEmail, rStartSite, rPassword } from "../RoutesName";
 
 function UserData() {
   const history = useHistory();
@@ -40,7 +40,7 @@ function UserData() {
       </div>
       <div className="div_udlinks">
         <p className="linkData">
-          <Link to={rMainSpace}>Zurück</Link>
+          <Link to={rStartSite}>Zurück</Link>
         </p>
         <InputButton
           className="buttonData div_button"

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { InputButton } from "../Elements/Buttons";
 import {
-  rMainSpace,
+  rStartSite,
   rHome,
   rPhilosophers,
   rCountries,
@@ -53,7 +53,7 @@ export default function Miscellaneous() {
       <div className="div_mlinks">
         <div>
           <p className="back">
-            <Link to={rMainSpace}>Zurück</Link>
+            <Link to={rStartSite}>Zurück</Link>
           </p>
         </div>
         <InputButton

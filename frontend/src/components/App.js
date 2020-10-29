@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./Login";
 import NewLogin from "./NewLogin";
 import UserSpace from "./UserSpace";
-import MainSpace from "./MainSpace";
+import StartSite from "./StartSite";
 import ChangeEmail from "./ChangeEmail";
 import ChangePassword from "./ChangePassword";
 import Scientists from "./Scientists";
@@ -19,7 +19,7 @@ import {
   rHome,
   rNewLogin,
   rUserSpace,
-  rMainSpace,
+  rStartSite,
   rUserData,
   rScientists,
   rNewScientist,
@@ -70,7 +70,7 @@ function App() {
             <MemoryGame />
           </Route>
           <Route path={rCountries}>
-            <Countries/>
+            <Countries />
           </Route>
           <Route path={rPhilosophers}>
             <Philosophers />
@@ -78,8 +78,8 @@ function App() {
           <Route path={rMiscelleanous}>
             <Miscellaneous />
           </Route>
-          <Route path={rMainSpace}>
-            <MainSpace />
+          <Route path={rStartSite}>
+            <StartSite />
           </Route>
           <Route path={rError}>
             <NoMatch />

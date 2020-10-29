@@ -8,7 +8,7 @@ import { InputButton } from "../Elements/Buttons";
 import Scientist from "../Elements/Scientist";
 import {
   rHome,
-  rMainSpace,
+  rStartSite,
   rNewScientist,
   rChangeScientist,
 } from "../RoutesName";
@@ -19,10 +19,9 @@ function Scientists() {
 
   const [useReplUserId, setUseReplUserId] = useState(false);
 
-
   const userIdSession = sessionStorage.getItem("userId");
-  if(!useReplUserId) {
-  sessionStorage.setItem("replUserId", userIdSession);
+  if (!useReplUserId) {
+    sessionStorage.setItem("replUserId", userIdSession);
   }
   const replUserIdSession = sessionStorage.getItem("replUserId");
 
@@ -106,7 +105,7 @@ function Scientists() {
       <div className="div_wlinks">
         <div>
           <p className="back">
-            <Link to={rMainSpace}>Zurück</Link>
+            <Link to={rStartSite}>Zurück</Link>
           </p>
         </div>
         <InputButton

@@ -12,7 +12,7 @@ import IconLegend from "../IconLegend";
 import { rHome, rUserData, rScientists, rMiscelleanous } from "../RoutesName";
 import { USERFINDBYID } from "../../graphQL/queries";
 
-function MainSpace() {
+function StartSite() {
   const history = useHistory();
 
   const userIdSession = sessionStorage.getItem("userId");
@@ -73,7 +73,7 @@ function MainSpace() {
 
   return (
     <div>
-      <div className="header_mainspace">
+      <div className="header_startsite">
         <div className="div_icons_fauc">
           <FontAwesomeIcon
             className="icons_fauc"
@@ -87,7 +87,7 @@ function MainSpace() {
           </div>
         </div>
         <div>
-          <h1 id="title_mainspace">Hauptbereich</h1>
+          <h1 id="title_startsite">Startseite</h1>
         </div>
         <div>
           <p className="logout">
@@ -140,4 +140,4 @@ function MainSpace() {
   );
 }
 
-export default MainSpace;
+export default StartSite;
