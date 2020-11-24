@@ -1,16 +1,37 @@
+import jwt from "jsonwebtoken";
 import User from "./userService";
+import { jwt_secret } from "../../keys/keys";
 
 /**
  * find user by email
  * @param args {object} user object
  * @returns {Promise<any>} found user
  */
-const findByUsername = async (args) => {
-    return await User.findOne({ email: args.email }).exec();
+
+const findUser = async (token, filter) => {
+    await jwt.verify(token, jwt_secret);
+
+    const user = await User.findOne(filter).exec();
+
+    if (token !== user.token) {
+        throw Error("invalid token");
+    }
+
+    return await user;
 };
 
-const userfindById = async (args) => {
-    return await User.findOne({ _id: args._id }).exec();
+const findByUsername = async ({ token, email }) => {
+    const filterEmail = {
+        email: email,
+    };
+    return await findUser(token, filterEmail);
+};
+
+const userfindById = async ({ token, _id }) => {
+    const filterId = {
+        _id: _id,
+    };
+    return await findUser(token, filterId);
 };
 
 module.exports = { findByUsername, userfindById };

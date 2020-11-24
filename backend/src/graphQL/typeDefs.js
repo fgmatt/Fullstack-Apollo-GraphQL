@@ -3,7 +3,7 @@ import { gql } from "apollo-server-express";
 const typeDefs = gql`
     type Query {
         hello: String
-        userfind(email: String!): User!
+        userfind(email: String!, token: String!): User!
         userfindById(_id: String!): User!
         searchScientistByName(name: String!): Scientist!
         searchPhilosopherByName(name: String!): Philosopher!
@@ -35,22 +35,13 @@ const typeDefs = gql`
             topics: String
             biography: String
         ): Scientist
-        changeScientistNameByName(
-            name: String!
-            newName: String
-        ): Scientist
-        changeScientistLivedInByName(
-            name: String!
-            livedIn: String
-        ): Scientist
+        changeScientistNameByName(name: String!, newName: String): Scientist
+        changeScientistLivedInByName(name: String!, livedIn: String): Scientist
         changeScientistBiographicalDataByName(
             name: String!
             biographicalData: String
         ): Scientist
-        changeScientistTopicsByName(
-            name: String!
-            topics: String
-        ): Scientist
+        changeScientistTopicsByName(name: String!, topics: String): Scientist
         changeScientistBiographyByName(
             name: String!
             biography: String
@@ -72,10 +63,7 @@ const typeDefs = gql`
             biography: String
             works: String
         ): Philosopher
-        changePhilosopherNameByName(
-            name: String!
-            newName: String
-        ): Philosopher
+        changePhilosopherNameByName(name: String!, newName: String): Philosopher
         changePhilosopherLivedInByName(
             name: String!
             livedIn: String
@@ -92,10 +80,7 @@ const typeDefs = gql`
             name: String!
             biography: String
         ): Philosopher
-        changePhilosopherWorksByName(
-            name: String!
-            works: String
-        ): Philosopher
+        changePhilosopherWorksByName(name: String!, works: String): Philosopher
         deletePhilosopherByName(name: String!): Philosopher
     }
     type User {
