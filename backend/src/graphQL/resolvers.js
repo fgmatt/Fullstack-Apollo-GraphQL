@@ -1,3 +1,4 @@
+import fs from "fs";
 import {
     auth,
     findUser,
@@ -16,7 +17,7 @@ import {
     changeScientistLivedInByName,
     changeScientistBiographicalDataByName,
     changeScientistTopicsByName,
-    changeScientistBiographyByName
+    changeScientistBiographyByName,
 } from "../services/scientists";
 import {
     createPhilosopher,
@@ -125,7 +126,7 @@ const resolvers = {
         },
         deletePhilosopherByName: (parent, args) => {
             return deletePhilosopherByName(args);
-        }
+        },
     },
 };
 

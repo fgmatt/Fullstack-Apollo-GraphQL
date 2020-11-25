@@ -13,7 +13,7 @@ const typeDefs = gql`
     type Mutation {
         signup(email: String!, password: String!): User!
         signin(email: String!, password: String!): User!
-        deluser(_id: String!): User!
+        deluser(_id: String!, password: String!): User!
         changeCreds(_id: String!, email: String, password: String): User!
         changeEmail(_id: String!, email: String!, password: String!): User!
         changePassword(
