@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useQuery } from "@apollo/react-hooks";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -7,7 +9,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { rHome, rMiscelleanous } from "../RoutesName";
-import { Link, useHistory } from "react-router-dom";
+import { USERFINDBYID } from "../../graphQL/queries";
 
 function DialogScore({ count }) {
   const [open, setOpen] = useState(false);
@@ -122,7 +124,7 @@ function DialogMemoryGame({ setDigits, digits }) {
           {/* <Button onClick={handleCloseOk} color="primary">
             Ok
           </Button> */}
-          <DialogScore count={count}/>
+          <DialogScore count={count} />
         </DialogActions>
       </Dialog>
     </div>
@@ -133,8 +135,13 @@ export default function MemoryGame() {
   const history = useHistory();
 
   const userIdSession = sessionStorage.getItem("userId");
+  const userIdToken = sessionStorage.getItem("token");
 
-  if (userIdSession === null) {
+  const userfindById = useQuery(USERFINDBYID, {
+    variables: { _id: userIdSession, token: userIdToken },
+  });
+
+  if (userfindById.error) {
     history.push(rHome);
   }
 

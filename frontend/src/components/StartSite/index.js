@@ -16,14 +16,15 @@ function StartSite() {
   const history = useHistory();
 
   const userIdSession = sessionStorage.getItem("userId");
-
-  if (userIdSession === null) {
-    history.push(rHome);
-  }
+  const tokenSession = sessionStorage.getItem("token");
 
   const { loading, error, data } = useQuery(USERFINDBYID, {
-    variables: { _id: userIdSession },
+    variables: { _id: userIdSession, token: tokenSession },
   });
+
+  if (error) {
+    history.push(rHome);
+  }
 
   let [mouseoverHU, setMouseoverHU] = useState(false);
   let [mouseoverF, setMouseoverF] = useState(false);
@@ -69,6 +70,7 @@ function StartSite() {
 
   function handleLink() {
     sessionStorage.removeItem("userId");
+    sessionStorage.removeItem("token");
   }
 
   return (

@@ -39,6 +39,8 @@ function Login() {
     signin()
       .then(({ data }) => {
         sessionStorage.setItem("userId", data.signin._id);
+        sessionStorage.setItem("token", data.signin.token);
+        console.log(data.signin);
         // history.push(rUserSpace);
         history.push(rStartSite);
       })

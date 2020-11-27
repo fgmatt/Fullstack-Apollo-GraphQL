@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { FETCH_COUNTRY } from "../../graphQL/queries";
+import { useQuery } from "@apollo/react-hooks";
+import { FETCH_COUNTRY, USERFINDBYID } from "../../graphQL/queries";
 import { rHome, rMiscelleanous } from "../RoutesName";
 import { SearchInput } from "../Elements/Inputs";
 import BlockingMessage from "../Blocking";
@@ -9,8 +10,13 @@ const Countries = () => {
   const history = useHistory();
 
   const userIdSession = sessionStorage.getItem("userId");
+  const userIdToken = sessionStorage.getItem("token");
 
-  if (userIdSession === null) {
+  const userfindById = useQuery(USERFINDBYID, {
+    variables: { _id: userIdSession, token: userIdToken },
+  });
+
+  if (userfindById.error) {
     history.push(rHome);
   }
 
@@ -59,9 +65,9 @@ const Countries = () => {
   }
 
   function handleKeyDownSearch(event) {
-    if(event.key === "Enter") {
-    setIsClickSearch(true);
-    setSearchTerm(event.target.value);
+    if (event.key === "Enter") {
+      setIsClickSearch(true);
+      setSearchTerm(event.target.value);
     }
   }
 

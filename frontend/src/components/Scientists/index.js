@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { NetworkStatus } from "@apollo/client";
 import { v4 as uuidv4 } from "uuid";
-import { FETCH_ALL_SCIENTISTS } from "../../graphQL/queries";
+import { FETCH_ALL_SCIENTISTS, USERFINDBYID } from "../../graphQL/queries";
 import { InputButton } from "../Elements/Buttons";
 import Scientist from "../Elements/Scientist";
 import {
@@ -19,21 +19,25 @@ function Scientists() {
 
   const [useReplUserId, setUseReplUserId] = useState(false);
 
-  const userIdSession = sessionStorage.getItem("userId");
+  let userIdSession = sessionStorage.getItem("userId");
+  let userIdToken = sessionStorage.getItem("token");
+
   if (!useReplUserId) {
     sessionStorage.setItem("replUserId", userIdSession);
+    sessionStorage.setItem("replIdToken", userIdToken);
   }
-  const replUserIdSession = sessionStorage.getItem("replUserId");
 
-  console.log(userIdSession);
-  console.log(replUserIdSession);
+  if (useReplUserId) {
+    userIdSession = sessionStorage.getItem("replUserId");
+    userIdToken = sessionStorage.getItem("replToken");
+  }
 
-  if (userIdSession === null && !useReplUserId) {
+  const userfindById = useQuery(USERFINDBYID, {
+    variables: { _id: userIdSession, token: userIdToken },
+  });
+
+  if (userfindById.error) {
     history.push(rHome);
-  } else {
-    if (userIdSession === null) {
-      sessionStorage.setItem("userId", replUserIdSession);
-    }
   }
 
   let [isOneClicked, setIsOneClicked] = useState(false);
@@ -58,6 +62,7 @@ function Scientists() {
   function handleLink() {
     if (!isBlocking || (isUsed && !isBlocking) || (isUsed && isBlocking)) {
       sessionStorage.removeItem("userId");
+      sessionStorage.removeItem("token");
       setUseReplUserId(true);
     }
   }

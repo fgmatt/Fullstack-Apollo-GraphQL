@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
 const USERFINDBYID = gql`
-  query UserfindById($_id: String!) {
-    userfindById(_id: $_id) {
+  query UserfindById($_id: String!, $token: String!) {
+    userfindById(_id: $_id, token: $token) {
       _id
       email
       token

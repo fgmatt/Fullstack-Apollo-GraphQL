@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
+import { useQuery } from "@apollo/react-hooks";
+import { USERFINDBYID } from "../../graphQL/queries";
 import { InputButton } from "../Elements/Buttons";
 import { rHome, rEmail, rStartSite, rPassword } from "../RoutesName";
 
@@ -7,9 +9,13 @@ function UserData() {
   const history = useHistory();
 
   const userIdSession = sessionStorage.getItem("userId");
-  console.log(userIdSession);
+  const userIdToken = sessionStorage.getItem("token");
 
-  if (userIdSession === null) {
+  const userfindById = useQuery(USERFINDBYID, {
+    variables: { _id: userIdSession, token: userIdToken },
+  });
+
+  if (userfindById.error) {
     history.push(rHome);
   }
 

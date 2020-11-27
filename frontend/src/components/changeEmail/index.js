@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation, useQuery } from "@apollo/react-hooks";
 import { CHANGE_EMAIL } from "../../graphQL/mutations";
+import { USERFINDBYID } from "../../graphQL/queries";
 import Form from "../Elements/Form";
 import Email from "../Elements/Email";
 import PasswordInput from "../Elements/Password";
@@ -13,8 +14,13 @@ function ChangeEmail() {
   const history = useHistory();
 
   const userIdSession = sessionStorage.getItem("userId");
+  const userIdToken = sessionStorage.getItem("token");
 
-  if (userIdSession === null) {
+  const userfindById = useQuery(USERFINDBYID, {
+    variables: { _id: userIdSession, token: userIdToken },
+  });
+
+  if (userfindById.error) {
     history.push(rHome);
   }
 
@@ -56,7 +62,7 @@ function ChangeEmail() {
 
   return (
     <Form onSubmit={(e) => handleSubmit(e)}>
-      <BlockingMessage when={isBlocking}/>
+      <BlockingMessage when={isBlocking} />
       <h2>Email-ändern</h2>
       {loading && <p></p>}
       {error && <p className="errorMessage">Email oder Passwort inkorrekt.</p>}
@@ -72,8 +78,8 @@ function ChangeEmail() {
         Passwort:
       </PasswordInput>
       <div className="buttonBar">
-      <InputButton onClick={(e) => handleQuitButton(e)} />
-      <SubButton className="div_button"/>
+        <InputButton onClick={(e) => handleQuitButton(e)} />
+        <SubButton className="div_button" />
       </div>
     </Form>
   );
