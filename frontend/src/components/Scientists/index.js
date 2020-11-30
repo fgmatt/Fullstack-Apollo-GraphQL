@@ -24,12 +24,18 @@ function Scientists() {
 
   if (!useReplUserId) {
     sessionStorage.setItem("replUserId", userIdSession);
-    sessionStorage.setItem("replIdToken", userIdToken);
+    sessionStorage.setItem("replToken", userIdToken);
   }
 
   if (useReplUserId) {
     userIdSession = sessionStorage.getItem("replUserId");
     userIdToken = sessionStorage.getItem("replToken");
+
+    sessionStorage.setItem("userId", userIdSession);
+    sessionStorage.setItem("token", userIdToken);
+
+    sessionStorage.removeItem("replUserId");
+    sessionStorage.removeItem("replToken");
   }
 
   const userfindById = useQuery(USERFINDBYID, {

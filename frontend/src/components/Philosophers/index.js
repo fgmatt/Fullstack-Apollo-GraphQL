@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { NetworkStatus } from "@apollo/client";
-import { FETCH_ALL_PHILOSOPHERS } from "../../graphQL/queries";
+import { FETCH_ALL_PHILOSOPHERS, USERFINDBYID } from "../../graphQL/queries";
 import Philosopher from "../Elements/Philosopher";
 import { rHome, rMiscelleanous } from "../RoutesName";
 import BlockingMessage from "../Blocking";
@@ -14,18 +14,31 @@ export default function Philosophers() {
 
   const [useReplUserId, setUseReplUserId] = useState(false);
 
-  const userIdSession = sessionStorage.getItem("userId");
+  let userIdSession = sessionStorage.getItem("userId");
+  let userIdToken = sessionStorage.getItem("token");
+
   if (!useReplUserId) {
     sessionStorage.setItem("replUserId", userIdSession);
+    sessionStorage.setItem("replToken", userIdToken);
   }
-  const replUserIdSession = sessionStorage.getItem("replUserId");
 
-  if (userIdSession === null && !useReplUserId) {
+  if (useReplUserId) {
+    userIdSession = sessionStorage.getItem("replUserId");
+    userIdToken = sessionStorage.getItem("replToken");
+
+    sessionStorage.setItem("userId", userIdSession);
+    sessionStorage.setItem("token", userIdToken);
+
+    sessionStorage.removeItem("replUserId");
+    sessionStorage.removeItem("replToken");
+  }
+
+  const userfindById = useQuery(USERFINDBYID, {
+    variables: { _id: userIdSession, token: userIdToken },
+  });
+
+  if (userfindById.error) {
     history.push(rHome);
-  } else {
-    if (userIdSession === null) {
-      sessionStorage.setItem("userId", replUserIdSession);
-    }
   }
 
   let [isOneClicked, setIsOneClicked] = useState(false);
@@ -50,6 +63,7 @@ export default function Philosophers() {
   function handleLink() {
     if (!isBlocking || (isUsed && !isBlocking) || (isUsed && isBlocking)) {
       sessionStorage.removeItem("userId");
+      sessionStorage.removeItem("token");
       setUseReplUserId(true);
     }
   }
