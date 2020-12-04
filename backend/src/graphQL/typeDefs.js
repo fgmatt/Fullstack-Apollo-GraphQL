@@ -4,7 +4,7 @@ const typeDefs = gql`
     type Query {
         hello: String
         userfind(email: String!, token: String!): User!
-        userfindById(_id: String!): User!
+        userfindById(_id: String!, token: String!): User!
         searchScientistByName(name: String!): Scientist!
         searchPhilosopherByName(name: String!): Philosopher!
         allScientists: [Scientist]

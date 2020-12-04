@@ -1,5 +1,4 @@
-import mongoose from "mongoose";
-import { connUser, connThinker } from '../db/connect';
+import { connUser, connThinker } from "../db/connect";
 import philosophersSchema from "./schemas/philosophers";
 import scientistsSchema from "./schemas/scientists";
 import usersSchema from "./schemas/users";
