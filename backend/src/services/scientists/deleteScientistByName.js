@@ -1,3 +1,4 @@
+import { UserInputError, ApolloError } from "apollo-server-express";
 import Scientists from "./scientistsService";
 
 /**
@@ -9,7 +10,13 @@ const deleteScientistByName = async (args) => {
     const name = args.name;
 
     if (!name) {
-        throw Error("You must provide a name");
+        throw UserInputError("You must provide a name");
+    }
+
+    const scientist = await Scientists.findOne({ name });
+
+    if (!scientist) {
+        throw ApolloError("Scientist not found");
     }
 
     return await Scientists.findOneAndDelete({ name });

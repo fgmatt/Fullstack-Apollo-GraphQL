@@ -1,3 +1,4 @@
+import { UserInputError, ApolloError } from "apollo-server-express";
 import Philosophers from "./philosophersService";
 
 /**
@@ -9,10 +10,16 @@ const searchPhilosopherByName = async (args) => {
     const name = args.name;
 
     if (!name) {
-        throw Error("You have not provided a name");
+        throw UserInputError("You have not provided a name");
     }
 
-    return await Philosophers.findOne({ name });
+    const philosopher = await Philosophers.findOne({ name });
+
+    if (!philosopher) {
+        throw ApolloError("Philosopher not found");
+    }
+
+    return await philosopher;
 };
 
 export default searchPhilosopherByName;

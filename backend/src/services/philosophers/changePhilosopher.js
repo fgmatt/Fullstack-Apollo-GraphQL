@@ -1,3 +1,4 @@
+import { UserInputError, ApolloError } from "apollo-server-express";
 import Philosophers from "./philosophersService";
 
 /**
@@ -16,9 +17,9 @@ const changePhilosopher = async (args) => {
     const philosopher = await Philosophers.findOne({ name });
 
     if (!name) {
-        throw Error("You must provide a name");
+        throw UserInputError("You must provide a name");
     } else if (!philosopher) {
-        throw Error("Scientist not found");
+        throw ApolloError("Scientist not found");
     }
 
     if (
@@ -28,7 +29,7 @@ const changePhilosopher = async (args) => {
         biographicalData === "???" ||
         works === "???"
     ) {
-        throw Error("??? is a placeholder for an empty input");
+        throw UserInputError("??? is a placeholder for an empty input");
     } else if (!livedIn) {
         livedIn = "???";
     } else if (!topics) {

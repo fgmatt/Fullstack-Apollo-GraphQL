@@ -1,3 +1,4 @@
+import { UserInputError, ApolloError } from "apollo-server-express";
 import Scientists from "./scientistsService";
 
 /**
@@ -15,9 +16,9 @@ const changeScientist = async (args) => {
     const scientist = await Scientists.findOne({ name });
 
     if (!name) {
-        throw Error("You must provide a name");
+        throw UserInputError("You must provide a name");
     } else if (!scientist) {
-        throw Error("Scientist not found");
+        throw ApolloError("Scientist not found");
     }
 
     if (
@@ -26,7 +27,7 @@ const changeScientist = async (args) => {
         biography === "???" ||
         biographicalData === "???"
     ) {
-        throw Error(
+        throw UserInputError(
             "??? or 000 for numbers is a placeholder for an empty input"
         );
     } else if (!livedIn) {

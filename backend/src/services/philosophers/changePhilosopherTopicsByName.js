@@ -1,3 +1,4 @@
+import { UserInputError, ApolloError } from "apollo-server-express";
 import Philosophers from "./PhilosophersService";
 
 const changePhilosopherTopicsByName = async (args) => {
@@ -7,13 +8,13 @@ const changePhilosopherTopicsByName = async (args) => {
     const philosopher = await Philosophers.findOne({ name });
 
     if (!name) {
-        throw Error("You must provide a name");
+        throw UserInputError("You must provide a name");
     } else if (!philosopher) {
-        throw Error("Philosopher not found");
+        throw ApolloError("Philosopher not found");
     }
 
     if (topics === "???") {
-        throw Error(
+        throw UserInputError(
             "??? or 000 for numbers is a placeholder for an empty input"
         );
     } else if (!topics) {

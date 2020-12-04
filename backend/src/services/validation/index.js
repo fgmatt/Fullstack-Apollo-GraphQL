@@ -1,3 +1,5 @@
+import { UserInputError } from "apollo-server-express";
+
 const passwordValidation = (p) => {
     const regexL = /^.{8,20}$/;
     const regexN = /\d/;
@@ -12,25 +14,25 @@ const passwordValidation = (p) => {
     const vPasswordS = p.match(regexS);
 
     if (vPasswordL === null) {
-        throw Error(
+        throw UserInputError(
             "password must have 8 to 20 charakters or has a not allowed charakter"
         );
     }
 
     if (vPasswordN === null) {
-        throw Error("password must have a number");
+        throw UserInputError("password must have a number");
     }
 
     if (vPasswordA === null) {
-        throw Error("password must have a letter");
+        throw UserInputError("password must have a letter");
     }
 
     if (vPasswordAc === null) {
-        throw Error("password must have a capital letter");
+        throw UserInputError("password must have a capital letter");
     }
 
     if (vPasswordS === null) {
-        throw Error("password must have a special character");
+        throw UserInputError("password must have a special character");
     }
 };
 
@@ -42,11 +44,11 @@ const emailValidation = (e) => {
     const vEmailE = e.match(regexE);
 
     if (vEmailL === null) {
-        throw Error("email must have 5 to 998 characters");
+        throw UserInputError("email must have 5 to 998 characters");
     }
 
     if (vEmailE === null) {
-        throw Error("email has not the right format");
+        throw UserInputError("email has not the right format");
     }
 };
 

@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import { ForbiddenError } from "apollo-server-express";
 import User from "./userService";
 import { jwt_secret } from "../../keys/keys";
 
@@ -14,7 +15,7 @@ const findUser = async (token, filter) => {
     const user = await User.findOne(filter).exec();
 
     if (token !== user.token) {
-        throw Error("invalid token");
+        throw ForbiddenError("invalid token");
     }
 
     return await user;

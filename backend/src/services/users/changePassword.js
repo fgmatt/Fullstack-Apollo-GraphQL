@@ -1,3 +1,4 @@
+import { UserInputError } from "apollo-server-express";
 import User from "./userService";
 import { passwordValidation } from "../validation";
 
@@ -12,7 +13,7 @@ const changePassword = async (args) => {
     const newPassword = args.newPassword;
 
     if (!_id) {
-        throw Error("Please provide a id");
+        throw UserInputError("Please provide a id");
     }
 
     const user = await User.findOne({ _id });
@@ -21,11 +22,11 @@ const changePassword = async (args) => {
     const newPasswordMatches = await user.comparePassword(newPassword);
 
     if (!passwordMatches) {
-        throw Error("invalid password");
+        throw UserInputError("invalid password");
     }
 
     if (newPasswordMatches) {
-        throw Error("the same password");
+        throw UserInputError("the same password");
     }
 
     passwordValidation(newPassword);

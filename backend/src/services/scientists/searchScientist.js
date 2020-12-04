@@ -1,3 +1,4 @@
+import { UserInputError, ApolloError } from "apollo-server-express";
 import Scientists from "./scientistsService";
 
 /**
@@ -9,10 +10,16 @@ const searchScientistByName = async (args) => {
     const name = args.name;
 
     if (!name) {
-        throw Error("You have not provided a name");
+        throw UserInputError("You have not provided a name");
     }
 
-    return await Scientists.findOne({ name });
+    const scientist = await Scientists.findOne({ name });
+
+    if (!scientist) {
+        throw ApolloError("Scientist not found");
+    }
+
+    return await scientist;
 };
 
 export default searchScientistByName;
