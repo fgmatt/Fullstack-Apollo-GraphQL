@@ -3,7 +3,7 @@ import Philosophers from "./philosophersService";
 
 /**
  * delete philosopher by name
- * @param args {object} philosopher object
+ * @param {object} args philosopher object
  * @returns {Promise<any>} deleted philosopher
  */
 const deletePhilosopherByName = async (args) => {

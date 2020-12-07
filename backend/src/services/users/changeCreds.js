@@ -5,7 +5,7 @@ import { passwordValidation } from "../validation";
 
 /**
  * to change Creds of an existing user
- * @param args {object} user object
+ * @param {object} args user object
  * @returns {Promise<void>} updated user
  */
 const changeCreds = async (args) => {

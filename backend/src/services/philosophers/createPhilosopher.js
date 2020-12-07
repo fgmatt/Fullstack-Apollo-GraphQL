@@ -3,7 +3,7 @@ import Philosophers from "./philosophersService";
 
 /**
  * Create a philosopher
- * @param args {object} philosopher object
+ * @param {object} args philosopher object
  * @returns {any} returns the created philosopher
  */
 const createPhilosopher = async (args) => {

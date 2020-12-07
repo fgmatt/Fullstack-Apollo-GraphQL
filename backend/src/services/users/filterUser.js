@@ -4,11 +4,11 @@ import User from "./userService";
 import { jwt_secret } from "../../keys/keys";
 
 /**
- * find user by email
- * @param args {object} user object
+ * find user by a filter
+ * @param {object} token user jwt token
+ * @param {object} filter given filter
  * @returns {Promise<any>} found user
  */
-
 const findUser = async (token, filter) => {
     await jwt.verify(token, jwt_secret);
 
@@ -21,6 +21,11 @@ const findUser = async (token, filter) => {
     return await user;
 };
 
+/**
+ * find user by username
+ * @param {object} args user object
+ * @returns {Promise<any>} found user
+ */
 const findByUsername = async ({ token, email }) => {
     const filterEmail = {
         email: email,
@@ -28,6 +33,11 @@ const findByUsername = async ({ token, email }) => {
     return await findUser(token, filterEmail);
 };
 
+/**
+ * find user by id
+ * @param {object} args user object
+ * @returns {Promise<any>} found user
+ */
 const userfindById = async ({ token, _id }) => {
     const filterId = {
         _id: _id,

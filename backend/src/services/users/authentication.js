@@ -1,12 +1,12 @@
 import { AuthenticationError, UserInputError } from "apollo-server-express";
 import User from "./userService";
-import tokenSign from "../../jwt/jwt";
+import { tokenSign } from "../../jwt/jwt";
 import { emailValidation } from "../validation";
 import { passwordValidation } from "../validation";
 
 /**
  * Sigin up a new user.
- * @param args {object} user object
+ * @param {object} args user object
  * @returns {Promise<void>} JWT for user
  */
 const signup = async (args) => {
@@ -54,7 +54,7 @@ const signup = async (args) => {
 
 /**
  * Sigin in an existing user.
- * @param args {object}
+ * @param {object} args
  * @returns {Promise<void>} JWT for user
  */
 const signin = async (args) => {

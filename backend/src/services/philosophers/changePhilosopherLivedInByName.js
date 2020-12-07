@@ -1,6 +1,11 @@
 import { UserInputError, ApolloError } from "apollo-server-express";
 import Philosophers from "./philosophersService";
 
+/**
+ * Change philosopher livedIn by his name
+ * @param {object} args philosopher object
+ * @returns {Promise<any>} changed philosopher
+ */
 const changePhilosopherLivedInByName = async (args) => {
     const name = args.name;
     let livedIn = args.livedIn;

@@ -3,7 +3,7 @@ import Philosophers from "./philosophersService";
 
 /**
  * Change philosopher by his name
- * @param args {object} philosopher object
+ * @param {object} args philosopher object
  * @returns {Promise<any>} changed philosopher
  */
 const changePhilosopher = async (args) => {

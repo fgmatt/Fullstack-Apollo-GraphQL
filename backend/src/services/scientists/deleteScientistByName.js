@@ -3,7 +3,7 @@ import Scientists from "./scientistsService";
 
 /**
  * delete scientist by name
- * @param args {object} scientist object
+ * @param {object} args scientist object
  * @returns {Promise<any>} deleted scientist
  */
 const deleteScientistByName = async (args) => {

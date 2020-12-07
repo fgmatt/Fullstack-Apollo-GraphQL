@@ -3,7 +3,7 @@ import Philosophers from "./philosophersService";
 
 /**
  * Search a philosopher by his name
- * @param args {object} philosopher object
+ * @param {object} args philosopher object
  * @returns {any} searched philosopher
  */
 const searchPhilosopherByName = async (args) => {

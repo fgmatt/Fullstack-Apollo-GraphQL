@@ -3,7 +3,7 @@ import Scientists from "./scientistsService";
 
 /**
  * Create a scientist
- * @param args {object} scientist object
+ * @param {object} args scientist object
  * @returns {Promise<any>} created scientist
  */
 const createScientist = async (args) => {

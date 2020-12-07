@@ -3,7 +3,7 @@ import User from "./userService";
 
 /**
  * delete user by id
- * @param args {object} user object
+ * @param {object} args user object
  * @returns {Promise<any>} deleted user
  */
 const deluser = async (args) => {
