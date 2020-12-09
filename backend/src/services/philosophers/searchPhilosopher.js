@@ -1,6 +1,5 @@
 import { UserInputError, ApolloError } from "apollo-server-express";
 import { Philosophers } from "./philosophersService";
-import { thinkerTokenValidation } from "../validation";
 
 /**
  * Search a philosopher by his name
@@ -8,10 +7,7 @@ import { thinkerTokenValidation } from "../validation";
  * @returns {any} searched philosopher
  */
 const searchPhilosopherByName = async (args) => {
-    const userId = args.userId;
     const name = args.name;
-
-    await thinkerTokenValidation(userId);
 
     if (!name) {
         throw new UserInputError("You have not provided a name");
