@@ -1,5 +1,6 @@
 import { UserInputError, ApolloError } from "apollo-server-express";
-import Scientists from "./scientistsService";
+import { Scientists, TokenThinkers } from "./scientistsService";
+import { jwt_secret_thinker } from "../../keys/keys";
 
 /**
  * Create a scientist
@@ -7,11 +8,16 @@ import Scientists from "./scientistsService";
  * @returns {Promise<any>} created scientist
  */
 const createScientist = async (args) => {
+    const userId = args.userId;
     const name = args.name;
     let livedIn = args.livedIn;
     let biographicalData = args.biographicalData;
     let topics = args.topics;
     let biography = args.biography;
+
+    const tokenThinkers = await TokenThinkers.findOne({ userId });
+
+    await jwt.verify(token, jwt_secret_thinker);
 
     const existingScientist = await Scientists.findOne({ name });
 

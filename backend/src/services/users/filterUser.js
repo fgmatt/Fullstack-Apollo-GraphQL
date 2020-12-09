@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import { ForbiddenError } from "apollo-server-express";
-import User from "./userService";
+import { User } from "./userService";
 import { jwt_secret } from "../../keys/keys";
 
 /**

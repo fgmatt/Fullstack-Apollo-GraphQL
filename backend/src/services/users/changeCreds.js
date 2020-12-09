@@ -1,5 +1,5 @@
 import { UserInputError } from "apollo-server-express";
-import User from "./userService";
+import { User } from "./userService";
 import { emailValidation } from "../validation";
 import { passwordValidation } from "../validation";
 

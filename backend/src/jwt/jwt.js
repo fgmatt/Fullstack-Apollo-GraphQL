@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { jwt_secret, private_key_thinker } from "../keys/keys";
+import { jwt_secret, jwt_secret_thinker } from "../keys/keys";
 
 const timestamp = Math.floor(new Date().getTime() / 1000);
 const expires = Math.floor(Date.now() / 1000) + 60 * 60 * 24;
@@ -24,7 +24,7 @@ const tokenSign = (email) => {
 /**
  * Create a JWT for the thinker database
  * @param {object} user the user the JWT is for
- * @returns {{token: *, expires: *}} JWT
+ * @returns {token: *} JWT
  */
 const tokenThinker = () => {
     const payload = {
@@ -32,9 +32,7 @@ const tokenThinker = () => {
         exp: expires,
     };
 
-    const token = jwt.sign(payload, private_key_thinker, {
-        algorithm: "RS256",
-    });
+    const token = jwt.sign(payload, jwt_secret_thinker);
 
     return token;
 };

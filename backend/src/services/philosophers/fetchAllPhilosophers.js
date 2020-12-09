@@ -1,4 +1,4 @@
-import Philosophers from "./philosophersService";
+import { Philosophers } from "./philosophersService";
 
 /**
  * fetch all Philosophers

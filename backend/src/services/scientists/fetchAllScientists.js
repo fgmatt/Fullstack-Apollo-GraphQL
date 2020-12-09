@@ -1,4 +1,4 @@
-import Scientists from "./scientistsService";
+import { Scientists } from "./scientistsService";
 
 /**
  * fetch all scientists

@@ -1,5 +1,5 @@
 import { UserInputError } from "apollo-server-express";
-import User from "./userService";
+import { User } from "./userService";
 
 /**
  * delete user by id
@@ -11,7 +11,7 @@ const deluser = async (args) => {
     const password = args.password;
 
     if (!_id) {
-        throw UserInputError("You must provide a id");
+        throw UserInputError("You must provide an id");
     }
 
     const user = await User.findOne({ _id });

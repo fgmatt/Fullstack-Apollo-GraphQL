@@ -22,6 +22,7 @@ const typeDefs = gql`
             newPassword: String!
         ): User
         createScientist(
+            userId: String!
             name: String!
             livedIn: String
             biographicalData: String

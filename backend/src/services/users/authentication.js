@@ -1,6 +1,6 @@
 import { AuthenticationError, UserInputError } from "apollo-server-express";
-import User from "./userService";
-import { tokenSign } from "../../jwt/jwt";
+import { User, TokenThinkers } from "./userService";
+import { tokenSign, tokenThinker } from "../../jwt/jwt";
 import { emailValidation } from "../validation";
 import { passwordValidation } from "../validation";
 
@@ -85,6 +85,13 @@ const signin = async (args) => {
     if (!passwordMatches) {
         throw new AuthenticationError("Incorrect email, username or password");
     }
+
+    const acessToken = new TokenThinkers({
+        token: tokenThinker(),
+        userId: userByEmailFind._id,
+    });
+
+    await acessToken.save();
 
     const Signin = await User.findOneAndUpdate(
         { email },

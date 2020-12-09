@@ -1,5 +1,5 @@
 import { UserInputError, ApolloError } from "apollo-server-express";
-import Philosophers from "./philosophersService";
+import { Philosophers, TokenThinkers } from "./philosophersService";
 
 /**
  * Change philosopher by his name

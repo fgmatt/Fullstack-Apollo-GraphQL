@@ -1,5 +1,5 @@
 import { UserInputError, ApolloError } from "apollo-server-express";
-import Scientists from "./scientistsService";
+import { Scientists, TokenThinkers } from "./scientistsService";
 
 /**
  * change scientist biographical data by his name

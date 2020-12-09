@@ -1,3 +1,3 @@
-import { Scientists } from "../../models/";
+import { Scientists, TokenThinkers } from "../../models/";
 
-export default Scientists;
+export { Scientists, TokenThinkers };

@@ -1,3 +1,3 @@
-import { User } from "../../models";
+import { User, TokenThinkers } from "../../models";
 
-module.exports = User;
+module.exports = { User, TokenThinkers };

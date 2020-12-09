@@ -1,5 +1,5 @@
 import { UserInputError, ApolloError } from "apollo-server-express";
-import Philosophers from "./philosophersService";
+import { Philosophers } from "./philosophersService";
 
 /**
  * Search a philosopher by his name

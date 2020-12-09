@@ -1,3 +1,3 @@
-import { Philosophers } from "../../models/";
+import { Philosophers, TokenThinkers } from "../../models/";
 
-export default Philosophers;
+export { Philosophers, TokenThinkers };
