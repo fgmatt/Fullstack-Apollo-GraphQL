@@ -55,7 +55,7 @@ const signup = async (args) => {
 /**
  * Sigin in an existing user.
  * @param {object} args
- * @returns {Promise<void>} JWT for user
+ * @returns {Promise<void>} user object
  */
 const signin = async (args) => {
     //const username = args.username;
@@ -86,12 +86,22 @@ const signin = async (args) => {
         throw new AuthenticationError("Incorrect email, username or password");
     }
 
-    const acessToken = new TokenThinkers({
-        token: tokenThinker(),
+    const checkTokenThinker = await TokenThinkers.findOne({
         userId: userByEmailFind._id,
     });
 
-    await acessToken.save();
+    if (!checkTokenThinker) {
+        const acessToken = new TokenThinkers({
+            token: tokenThinker(),
+            userId: userByEmailFind._id,
+        });
+
+        await acessToken.save();
+    } else {
+        checkTokenThinker.token = tokenThinker();
+
+        await checkTokenThinker.save();
+    }
 
     const Signin = await User.findOneAndUpdate(
         { email },
