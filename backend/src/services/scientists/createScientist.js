@@ -1,6 +1,6 @@
 import { UserInputError, ApolloError } from "apollo-server-express";
 import { Scientists, TokenThinkers } from "./scientistsService";
-import { jwt_secret_thinker } from "../../keys/keys";
+import { thinkerTokenValidation } from "../validation";
 
 /**
  * Create a scientist
@@ -15,16 +15,14 @@ const createScientist = async (args) => {
     let topics = args.topics;
     let biography = args.biography;
 
-    const tokenThinkers = await TokenThinkers.findOne({ userId });
-
-    await jwt.verify(token, jwt_secret_thinker);
+    await thinkerTokenValidation(userId);
 
     const existingScientist = await Scientists.findOne({ name });
 
     if (!name) {
-        throw UserInputError("You must provide a name");
+        throw new UserInputError("You must provide a name");
     } else if (existingScientist) {
-        throw ApolloError("Scientist already exists");
+        throw new ApolloError("Scientist already exists");
     }
 
     if (
@@ -33,7 +31,7 @@ const createScientist = async (args) => {
         biography === "???" ||
         biographicalData === "???"
     ) {
-        throw UserInputError("??? is a placeholder for an empty input");
+        throw new UserInputError("??? is a placeholder for an empty input");
     } else if (!livedIn) {
         livedIn = "???";
     } else if (!topics) {

@@ -14,7 +14,7 @@ const changeCreds = async (args) => {
     const password = args.password;
 
     if (!_id) {
-        throw UserInputError("Please provide a id");
+        throw new UserInputError("Please provide a id");
     }
 
     const user = await User.findOne({ _id });
@@ -22,7 +22,7 @@ const changeCreds = async (args) => {
     const passwordMatches = await user.comparePassword(password);
 
     if (user.email === email && passwordMatches) {
-        throw UserInputError("The same email and password");
+        throw new UserInputError("The same email and password");
     }
 
     emailValidation(email);

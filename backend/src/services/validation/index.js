@@ -1,4 +1,7 @@
-import { UserInputError } from "apollo-server-express";
+import { UserInputError, ApolloError } from "apollo-server-express";
+import jwt from "jsonwebtoken";
+import { jwt_secret_thinker } from "../../keys/keys";
+import { TokenThinkers } from "../../models";
 
 const passwordValidation = (p) => {
     const regexL = /^.{8,20}$/;
@@ -14,25 +17,25 @@ const passwordValidation = (p) => {
     const vPasswordS = p.match(regexS);
 
     if (vPasswordL === null) {
-        throw UserInputError(
+        throw new UserInputError(
             "password must have 8 to 20 charakters or has a not allowed charakter"
         );
     }
 
     if (vPasswordN === null) {
-        throw UserInputError("password must have a number");
+        throw new UserInputError("password must have a number");
     }
 
     if (vPasswordA === null) {
-        throw UserInputError("password must have a letter");
+        throw new UserInputError("password must have a letter");
     }
 
     if (vPasswordAc === null) {
-        throw UserInputError("password must have a capital letter");
+        throw new UserInputError("password must have a capital letter");
     }
 
     if (vPasswordS === null) {
-        throw UserInputError("password must have a special character");
+        throw new serInputError("password must have a special character");
     }
 };
 
@@ -44,12 +47,22 @@ const emailValidation = (e) => {
     const vEmailE = e.match(regexE);
 
     if (vEmailL === null) {
-        throw UserInputError("email must have 5 to 998 characters");
+        throw new UserInputError("email must have 5 to 998 characters");
     }
 
     if (vEmailE === null) {
-        throw UserInputError("email has not the right format");
+        throw new UserInputError("email has not the right format");
     }
 };
 
-export { passwordValidation, emailValidation };
+const thinkerTokenValidation = async (userId) => {
+    const tokenThinkers = await TokenThinkers.findOne({ userId });
+
+    if (!tokenThinkers) {
+        throw new ApolloError("No valid user id");
+    }
+
+    await jwt.verify(tokenThinkers.token, jwt_secret_thinker);
+};
+
+export { passwordValidation, emailValidation, thinkerTokenValidation };

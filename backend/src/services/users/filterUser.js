@@ -15,7 +15,7 @@ const findUser = async (token, filter) => {
     const user = await User.findOne(filter).exec();
 
     if (token !== user.token) {
-        throw ForbiddenError("invalid token");
+        throw new ForbiddenError("invalid token");
     }
 
     return await user;

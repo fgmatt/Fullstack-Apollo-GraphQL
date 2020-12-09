@@ -13,7 +13,7 @@ const changePassword = async (args) => {
     const newPassword = args.newPassword;
 
     if (!_id) {
-        throw UserInputError("Please provide a id");
+        throw new UserInputError("Please provide a id");
     }
 
     const user = await User.findOne({ _id });
@@ -22,11 +22,11 @@ const changePassword = async (args) => {
     const newPasswordMatches = await user.comparePassword(newPassword);
 
     if (!passwordMatches) {
-        throw UserInputError("invalid password");
+        throw new UserInputError("invalid password");
     }
 
     if (newPasswordMatches) {
-        throw UserInputError("the same password");
+        throw new UserInputError("the same password");
     }
 
     passwordValidation(newPassword);

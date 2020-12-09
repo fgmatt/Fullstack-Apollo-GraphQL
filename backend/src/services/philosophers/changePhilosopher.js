@@ -1,5 +1,6 @@
 import { UserInputError, ApolloError } from "apollo-server-express";
 import { Philosophers, TokenThinkers } from "./philosophersService";
+import { thinkerTokenValidation } from "../validation";
 
 /**
  * Change philosopher by his name
@@ -7,6 +8,7 @@ import { Philosophers, TokenThinkers } from "./philosophersService";
  * @returns {Promise<any>} changed philosopher
  */
 const changePhilosopher = async (args) => {
+    const userId = args.userId;
     const name = args.name;
     let livedIn = args.livedIn;
     let biographicalData = args.biographicalData;
@@ -14,12 +16,14 @@ const changePhilosopher = async (args) => {
     let biography = args.biography;
     let works = args.works;
 
+    await thinkerTokenValidation(userId);
+
     const philosopher = await Philosophers.findOne({ name });
 
     if (!name) {
-        throw UserInputError("You must provide a name");
+        throw new UserInputError("You must provide a name");
     } else if (!philosopher) {
-        throw ApolloError("Scientist not found");
+        throw new ApolloError("Scientist not found");
     }
 
     if (
@@ -29,7 +33,7 @@ const changePhilosopher = async (args) => {
         biographicalData === "???" ||
         works === "???"
     ) {
-        throw UserInputError("??? is a placeholder for an empty input");
+        throw new UserInputError("??? is a placeholder for an empty input");
     } else if (!livedIn) {
         livedIn = "???";
     } else if (!topics) {

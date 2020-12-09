@@ -30,25 +30,41 @@ const typeDefs = gql`
             biography: String
         ): Scientist
         changeScientist(
+            userId: String!
             name: String!
             livedIn: String
             biographicalData: String
             topics: String
             biography: String
         ): Scientist
-        changeScientistNameByName(name: String!, newName: String): Scientist
-        changeScientistLivedInByName(name: String!, livedIn: String): Scientist
+        changeScientistNameByName(
+            userId: String!
+            name: String!
+            newName: String
+        ): Scientist
+        changeScientistLivedInByName(
+            userId: String!
+            name: String!
+            livedIn: String
+        ): Scientist
         changeScientistBiographicalDataByName(
+            userId: String!
             name: String!
             biographicalData: String
         ): Scientist
-        changeScientistTopicsByName(name: String!, topics: String): Scientist
+        changeScientistTopicsByName(
+            userId: String!
+            name: String!
+            topics: String
+        ): Scientist
         changeScientistBiographyByName(
+            userId: String!
             name: String!
             biography: String
         ): Scientist
-        deleteScientistByName(name: String!): Scientist
+        deleteScientistByName(userId: String!, name: String!): Scientist
         createPhilosopher(
+            userId: String!
             name: String!
             livedIn: String
             biographicalData: String
@@ -57,6 +73,7 @@ const typeDefs = gql`
             works: String
         ): Philosopher
         changePhilosopher(
+            userId: String!
             name: String!
             livedIn: String
             biographicalData: String
@@ -64,26 +81,39 @@ const typeDefs = gql`
             biography: String
             works: String
         ): Philosopher
-        changePhilosopherNameByName(name: String!, newName: String): Philosopher
+        changePhilosopherNameByName(
+            userId: String!
+            name: String!
+            newName: String
+        ): Philosopher
         changePhilosopherLivedInByName(
+            userId: String!
             name: String!
             livedIn: String
         ): Philosopher
         changePhilosopherBiographicalDataByName(
+            userId: String!
             name: String!
             biographicalData: String
         ): Philosopher
         changePhilosopherTopicsByName(
+            userId: String!
             name: String!
             topics: String
         ): Philosopher
         changePhilosopherBiographyByName(
+            userId: String!
             name: String!
             biography: String
         ): Philosopher
-        changePhilosopherWorksByName(name: String!, works: String): Philosopher
-        deletePhilosopherByName(name: String!): Philosopher
+        changePhilosopherWorksByName(
+            userId: String!
+            name: String!
+            works: String
+        ): Philosopher
+        deletePhilosopherByName(userId: String!, name: String!): Philosopher
     }
+
     type User {
         _id: String
         email: String

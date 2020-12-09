@@ -1,5 +1,6 @@
 import { UserInputError, ApolloError } from "apollo-server-express";
 import { Philosophers } from "./philosophersService";
+import { thinkerTokenValidation } from "../validation";
 
 /**
  * Search a philosopher by his name
@@ -7,16 +8,19 @@ import { Philosophers } from "./philosophersService";
  * @returns {any} searched philosopher
  */
 const searchPhilosopherByName = async (args) => {
+    const userId = args.userId;
     const name = args.name;
 
+    await thinkerTokenValidation(userId);
+
     if (!name) {
-        throw UserInputError("You have not provided a name");
+        throw new UserInputError("You have not provided a name");
     }
 
     const philosopher = await Philosophers.findOne({ name });
 
     if (!philosopher) {
-        throw ApolloError("Philosopher not found");
+        throw new ApolloError("Philosopher not found");
     }
 
     return await philosopher;

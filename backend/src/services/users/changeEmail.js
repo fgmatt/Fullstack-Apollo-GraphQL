@@ -13,7 +13,7 @@ const changeEmail = async (args) => {
     const password = args.password;
 
     if (!_id) {
-        throw UserInputError("Please provide a id");
+        throw new UserInputError("Please provide a id");
     }
 
     const user = await User.findOne({ _id });
@@ -21,11 +21,11 @@ const changeEmail = async (args) => {
     const passwordMatches = await user.comparePassword(password);
 
     if (user.email === email) {
-        throw UserInputError("The same email");
+        throw new UserInputError("The same email");
     }
 
     if (!passwordMatches) {
-        throw UserInputError("Invalid Password");
+        throw new UserInputError("Invalid Password");
     }
 
     emailValidation(email);

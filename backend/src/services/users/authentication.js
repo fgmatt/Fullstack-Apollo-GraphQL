@@ -71,7 +71,7 @@ const signin = async (args) => {
 
     if (/*userByUsernameFind*/ !userByEmailFind) {
         //var passwordMatches = await userByUsernameFind.comparePassword(password);
-        throw AuthenticationError("incorrect email or password");
+        throw new AuthenticationError("incorrect email or password");
     } else {
         var passwordMatches = await userByEmailFind.comparePassword(password);
     }
