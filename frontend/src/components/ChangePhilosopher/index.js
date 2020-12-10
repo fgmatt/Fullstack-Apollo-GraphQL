@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation, useQuery } from "@apollo/react-hooks";
 import { useHistory } from "react-router-dom";
 import Form from "../Elements/Form";
 import { SubButton, InputButton } from "../Elements/Buttons";
 import BlockingMessage from "../Blocking";
+import { USERFINDBYID } from "../../graphQL/queries";
 import { CHANGE_PHILOSOPHER } from "../../graphQL/mutations";
 import { rHome, rScientists } from "../RoutesName";
 import {
@@ -20,8 +21,13 @@ const ChangePhilosopher = () => {
   const history = useHistory();
 
   const userIdSession = sessionStorage.getItem("userId");
+  const userIdToken = sessionStorage.getItem("token");
 
-  if (userIdSession === null) {
+  const userfindById = useQuery(USERFINDBYID, {
+    variables: { _id: userIdSession, token: userIdToken },
+  });
+
+  if (userfindById.error) {
     history.push(rHome);
   }
 
@@ -75,7 +81,15 @@ const ChangePhilosopher = () => {
     event.preventDefault();
     setIsBlocking(false);
     changePhilosopher({
-      variables: { name, livedIn, biographicalData, topics, biography, works },
+      variables: {
+        userId: userIdSession,
+        name,
+        livedIn,
+        biographicalData,
+        topics,
+        biography,
+        works,
+      },
     })
       .then(({ data }) => {
         history.push(rScientists);

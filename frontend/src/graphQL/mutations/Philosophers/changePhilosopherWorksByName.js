@@ -1,8 +1,12 @@
 import gql from "graphql-tag";
 
 const CHANGE_PHILOSOPHER_WORKS_BY_NAME = gql`
-  mutation ChangePhilosopherWorksByName($name: String!, $works: String) {
-    changePhilosopherWorksByName(name: $name, works: $works) {
+  mutation ChangePhilosopherWorksByName(
+    $userId: String!
+    $name: String!
+    $works: String
+  ) {
+    changePhilosopherWorksByName(userId: $userId, name: $name, works: $works) {
       name
       works
     }

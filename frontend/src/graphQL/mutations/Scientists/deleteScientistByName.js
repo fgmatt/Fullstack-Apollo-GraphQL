@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
 const DELETE_SCIENTIST_BY_NAME = gql`
-  mutation DeleteScientistByName($name: String!) {
-    deleteScientistByName(name: $name) {
+  mutation DeleteScientistByName($userId: String!, $name: String!) {
+    deleteScientistByName(userId: $userId, name: $name) {
       name
     }
   }

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation, useQuery } from "@apollo/react-hooks";
 import { useHistory } from "react-router-dom";
 import Form from "../Elements/Form";
 import { SubButton, InputButton } from "../Elements/Buttons";
 import BlockingMessage from "../Blocking";
+import { USERFINDBYID } from "../../graphQL/queries";
 import { CREATE_SCIENTIST } from "../../graphQL/mutations";
 import { rHome, rScientists } from "../RoutesName";
 import {
@@ -19,8 +20,13 @@ const NewScientist = () => {
   const history = useHistory();
 
   const userIdSession = sessionStorage.getItem("userId");
+  const userIdToken = sessionStorage.getItem("token");
 
-  if (userIdSession === null) {
+  const userfindById = useQuery(USERFINDBYID, {
+    variables: { _id: userIdSession, token: userIdToken },
+  });
+
+  if (userfindById.error) {
     history.push(rHome);
   }
 
@@ -68,7 +74,14 @@ const NewScientist = () => {
     event.preventDefault();
     setIsBlocking(false);
     createScientist({
-      variables: { name, livedIn, biographicalData, topics, biography },
+      variables: {
+        userId: userIdSession,
+        name,
+        livedIn,
+        biographicalData,
+        topics,
+        biography,
+      },
     })
       .then(({ data }) => {
         history.push(rScientists);

@@ -64,6 +64,8 @@ const DialogActions = withStyles((theme) => ({
 }))(MuiDialogActions);
 
 export default function NewPhilosopherDialogs() {
+  const userIdSession = sessionStorage.getItem("userId");
+
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [livedIn, setLivedIn] = useState("");
@@ -109,7 +111,15 @@ export default function NewPhilosopherDialogs() {
   function handleSubmit(event) {
     event.preventDefault();
     createPhilosopher({
-      variables: { name, livedIn, biographicalData, topics, biography, works },
+      variables: {
+        userId: userIdSession,
+        name,
+        livedIn,
+        biographicalData,
+        topics,
+        biography,
+        works,
+      },
     })
       .then(({ data }) => {
         handleClose();

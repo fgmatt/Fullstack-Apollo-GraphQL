@@ -8,17 +8,19 @@ function UserSpace() {
   const history = useHistory();
 
   const userIdSession = sessionStorage.getItem("userId");
+  const userIdToken = sessionStorage.getItem("token");
 
-  if (userIdSession === null) {
+  const { loading, error, data } = useQuery(USERFINDBYID, {
+    variables: { _id: userIdSession, token: userIdToken },
+  });
+
+  if (error) {
     history.push(rHome);
   }
 
-  const { loading, error, data } = useQuery(USERFINDBYID, {
-    variables: { _id: userIdSession },
-  });
-
   function handleLink() {
     sessionStorage.removeItem("userId");
+    sessionStorage.removeItem("token");
   }
 
   return (

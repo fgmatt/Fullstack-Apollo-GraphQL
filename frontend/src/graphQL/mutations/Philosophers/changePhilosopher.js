@@ -2,6 +2,7 @@ import gql from "graphql-tag";
 
 const CHANGE_PHILOSOPHER = gql`
   mutation ChangePhilosopher(
+    $userId: String!
     $name: String!
     $livedIn: String
     $biographicalData: String
@@ -10,6 +11,7 @@ const CHANGE_PHILOSOPHER = gql`
     $works: String
   ) {
     ChangePhilosopher(
+      userId: $userId
       name: $name
       livedIn: $livedIn
       biographicalData: $biographicalData

@@ -6,16 +6,19 @@ import { SubButton, InputButton } from "../Elements/Buttons";
 import BlockingMessage from "../Blocking";
 import { DELETE_PHILOSOPHER_BY_NAME } from "../../graphQL/mutations";
 import { rHome, rScientists } from "../RoutesName";
-import {
-  PNameInput,
-} from "../Elements/Inputs";
+import { PNameInput } from "../Elements/Inputs";
 
 const DeletePhilosopher = () => {
   const history = useHistory();
 
   const userIdSession = sessionStorage.getItem("userId");
+  const userIdToken = sessionStorage.getItem("token");
 
-  if (userIdSession === null) {
+  const userfindById = useQuery(USERFINDBYID, {
+    variables: { _id: userIdSession, token: userIdToken },
+  });
+
+  if (userfindById.error) {
     history.push(rHome);
   }
 
@@ -39,7 +42,7 @@ const DeletePhilosopher = () => {
     event.preventDefault();
     setIsBlocking(false);
     deletePhilosopherByName({
-      variables: { name },
+      variables: { userId: userIdSession, name },
     })
       .then(({ data }) => {
         history.push(rScientists);

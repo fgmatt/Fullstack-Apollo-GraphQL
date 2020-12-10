@@ -29,6 +29,8 @@ const Philosopher = ({
 }) => {
   const history = useHistory();
 
+  const userIdSession = sessionStorage.getItem("userId");
+
   const [vName, setVName] = useState(name);
   const [vLivedIn, setVLivedIn] = useState(livedIn);
   const [vBiographicalData, setVBiographicalData] = useState(biographicalData);
@@ -57,43 +59,49 @@ const Philosopher = ({
     changePhilosopherNameByName,
     resChangePhilosopherNameByName,
   ] = useMutation(CHANGE_PHILOSOPHER_NAME_BY_NAME, {
-    variables: { name, newName: vName },
+    variables: { userId: userIdSession, name, newName: vName },
   });
   const [
     changePhilosopherLivedInByName,
     resChangePhilsopherLivedInByName,
   ] = useMutation(CHANGE_PHILOSOPHER_LIVED_IN_BY_NAME, {
-    variables: { name, livedIn: vLivedIn },
+    variables: { userId: userIdSession, name, livedIn: vLivedIn },
   });
   const [
     changePhilosopherBiographicalDataByName,
     resChangePhilosopherBiographicalDataByName,
   ] = useMutation(CHANGE_PHILOSOPHER_BIOGRAPHICAL_DATA_BY_NAME, {
-    variables: { name, biographicalData: vBiographicalData },
+    variables: {
+      userId: userIdSession,
+      name,
+      biographicalData: vBiographicalData,
+    },
   });
   const [
     changePhilosopherTopicsByName,
     resChangePhilosopherTopicsByName,
   ] = useMutation(CHANGE_PHILOSOPHER_TOPICS_BY_NAME, {
-    variables: { name, topics: vTopics },
+    variables: { userId: userIdSession, name, topics: vTopics },
   });
   const [
     changePhilosopherBiographyByName,
     resChangePhilsopherBiographyByName,
   ] = useMutation(CHANGE_PHILOSOPHER_BIOGRAPHY_BY_NAME, {
-    variables: { name, biography: vBiography },
+    variables: { userId: userIdSession, name, biography: vBiography },
   });
   const [
     changePhilosopherWorksByName,
     resChangePhilosopherWorksByName,
   ] = useMutation(CHANGE_PHILOSOPHER_WORKS_BY_NAME, {
-    variables: { name, works: vWorks },
+    variables: { userId: userIdSession, name, works: vWorks },
   });
 
   const [
     deletePhilosopherByName,
     resDeletePhilsopherByName,
-  ] = useMutation(DELETE_PHILOSOPHER_BY_NAME, { variables: { name } });
+  ] = useMutation(DELETE_PHILOSOPHER_BY_NAME, {
+    variables: { userId: userIdSession, name },
+  });
 
   function handleClickBlock() {
     setIsOneClicked(true);

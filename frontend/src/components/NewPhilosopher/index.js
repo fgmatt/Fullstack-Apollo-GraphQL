@@ -20,8 +20,13 @@ const NewPhilosopher = () => {
   const history = useHistory();
 
   const userIdSession = sessionStorage.getItem("userId");
+  const userIdToken = sessionStorage.getItem("token");
 
-  if (userIdSession === null) {
+  const userfindById = useQuery(USERFINDBYID, {
+    variables: { _id: userIdSession, token: userIdToken },
+  });
+
+  if (userfindById.error) {
     history.push(rHome);
   }
 
@@ -75,7 +80,15 @@ const NewPhilosopher = () => {
     event.preventDefault();
     setIsBlocking(false);
     createPhilosopher({
-      variables: { name, livedIn, biographicalData, topics, biography, works },
+      variables: {
+        userId: userIdSession,
+        name,
+        livedIn,
+        biographicalData,
+        topics,
+        biography,
+        works,
+      },
     })
       .then(({ data }) => {
         history.push(rScientists);

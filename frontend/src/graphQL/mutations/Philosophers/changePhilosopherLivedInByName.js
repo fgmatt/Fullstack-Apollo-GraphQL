@@ -1,8 +1,16 @@
 import gql from "graphql-tag";
 
 const CHANGE_PHILOSOPHER_LIVED_IN_BY_NAME = gql`
-  mutation ChangePhilosopherLivedInByName($name: String!, $livedIn: String) {
-    changePhilosopherLivedInByName(name: $name, livedIn: $livedIn) {
+  mutation ChangePhilosopherLivedInByName(
+    $userId: String!
+    $name: String!
+    $livedIn: String
+  ) {
+    changePhilosopherLivedInByName(
+      userId: $userId
+      name: $name
+      livedIn: $livedIn
+    ) {
       name
       livedIn
     }

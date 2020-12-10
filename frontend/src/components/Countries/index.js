@@ -73,6 +73,7 @@ const Countries = () => {
 
   function handleLink() {
     sessionStorage.removeItem("userId");
+    sessionStorage.removeItem("token");
   }
 
   return (

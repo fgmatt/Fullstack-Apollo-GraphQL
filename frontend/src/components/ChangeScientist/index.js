@@ -8,6 +8,7 @@ import { CHANGE_SCIENTIST } from "../../graphQL/mutations";
 import {
   FETCH_ALL_SCIENTISTS,
   SEARCH_SCIENTIST_BY_NAME,
+  USERFINDBYID,
 } from "../../graphQL/queries";
 import { rHome, rScientists } from "../RoutesName";
 import {
@@ -23,8 +24,13 @@ const ChangeScientist = () => {
   const history = useHistory();
 
   const userIdSession = sessionStorage.getItem("userId");
+  const userIdToken = sessionStorage.getItem("token");
 
-  if (userIdSession === null) {
+  const userfindById = useQuery(USERFINDBYID, {
+    variables: { _id: userIdSession, token: userIdToken },
+  });
+
+  if (userfindById.error) {
     history.push(rHome);
   }
 
@@ -87,7 +93,14 @@ const ChangeScientist = () => {
     event.preventDefault();
     setIsBlocking(false);
     changeScientist({
-      variables: { name, livedIn, biographicalData, topics, biography },
+      variables: {
+        userId: userIdSession,
+        name,
+        livedIn,
+        biographicalData,
+        topics,
+        biography,
+      },
     })
       .then(({ data }) => {
         history.push(rScientists);

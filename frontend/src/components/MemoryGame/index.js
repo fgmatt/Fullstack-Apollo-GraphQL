@@ -149,6 +149,7 @@ export default function MemoryGame() {
 
   function handleLink() {
     sessionStorage.removeItem("userId");
+    sessionStorage.removeItem("token");
   }
 
   return (

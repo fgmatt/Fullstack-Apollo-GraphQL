@@ -27,6 +27,7 @@ export default function Miscellaneous() {
 
   function handleLink() {
     sessionStorage.removeItem("userId");
+    sessionStorage.removeItem("token");
   }
 
   function handleButtonClickPhilosophen(event) {

@@ -2,6 +2,7 @@ import gql from "graphql-tag";
 
 const CREATE_SCIENTIST = gql`
   mutation CreateScientist(
+    $userId: String!
     $name: String!
     $livedIn: String
     $biographicalData: String
@@ -9,6 +10,7 @@ const CREATE_SCIENTIST = gql`
     $biography: String
   ) {
     createScientist(
+      userId: $userId
       name: $name
       livedIn: $livedIn
       biographicalData: $biographicalData
