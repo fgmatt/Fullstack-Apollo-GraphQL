@@ -16,6 +16,7 @@ import {
   WorksInput,
 } from "../Elements/Inputs";
 import TextareaBiography from "../Elements/Textarea";
+import Footer from "../Elements/Footer";
 
 const ChangePhilosopher = () => {
   const history = useHistory();
@@ -100,60 +101,63 @@ const ChangePhilosopher = () => {
   }
 
   return (
-    <Form
-      onSubmit={(e) => {
-        handleSubmit(e);
-      }}
-    >
-      <BlockingMessage when={isBlocking} />
-      <h2>Ändere Philosoph</h2>
-      <PNameInput
-        value={name}
-        onChange={(e) => {
-          handleName(e);
+    <div>
+      <Form
+        onSubmit={(e) => {
+          handleSubmit(e);
         }}
-      />
-      <LivedInInput
-        value={livedIn}
-        onChange={(e) => {
-          handleLivedIn(e);
-        }}
-      />
-      <BiographicalDataInput
-        value={biographicalData}
-        onChange={(e) => {
-          handleBiogracicalData(e);
-        }}
-      />
-      <TopicsInput
-        value={topics}
-        onChange={(e) => {
-          handleTopics(e);
-        }}
-      />
-      {/* <BiographyInput
+      >
+        <BlockingMessage when={isBlocking} />
+        <h2>Ändere Philosoph</h2>
+        <PNameInput
+          value={name}
+          onChange={(e) => {
+            handleName(e);
+          }}
+        />
+        <LivedInInput
+          value={livedIn}
+          onChange={(e) => {
+            handleLivedIn(e);
+          }}
+        />
+        <BiographicalDataInput
+          value={biographicalData}
+          onChange={(e) => {
+            handleBiogracicalData(e);
+          }}
+        />
+        <TopicsInput
+          value={topics}
+          onChange={(e) => {
+            handleTopics(e);
+          }}
+        />
+        {/* <BiographyInput
         value={biography}
         onChange={(e) => {
           handleBiography(e);
         }}
       /> */}
-      <TextareaBiography
-        value={biography}
-        onChange={(e) => {
-          handleBiography(e);
-        }}
-      />
-      <WorksInput
-        value={works}
-        onChange={(e) => {
-          handleWorks(e);
-        }}
-      />
-      <div className="buttonBar">
-        <InputButton onClick={(e) => handleButtonClick(e)} />
-        <SubButton value="Ändere Philosophen" />
-      </div>
-    </Form>
+        <TextareaBiography
+          value={biography}
+          onChange={(e) => {
+            handleBiography(e);
+          }}
+        />
+        <WorksInput
+          value={works}
+          onChange={(e) => {
+            handleWorks(e);
+          }}
+        />
+        <div className="buttonBar">
+          <InputButton onClick={(e) => handleButtonClick(e)} />
+          <SubButton value="Ändere Philosophen" />
+        </div>
+      </Form>
+      <Footer />
+    </div>
   );
 };
 

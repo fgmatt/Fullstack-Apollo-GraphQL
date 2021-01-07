@@ -7,6 +7,7 @@ import BlockingMessage from "../Blocking";
 import { DELETE_PHILOSOPHER_BY_NAME } from "../../graphQL/mutations";
 import { rHome, rScientists } from "../RoutesName";
 import { PNameInput } from "../Elements/Inputs";
+import Footer from "../Elements/Footer";
 
 const DeletePhilosopher = () => {
   const history = useHistory();
@@ -53,26 +54,29 @@ const DeletePhilosopher = () => {
   }
 
   return (
-    <Form
-      onSubmit={(e) => {
-        handleSubmit(e);
-      }}
-    >
-      <BlockingMessage when={isBlocking} />
-      <h2>Lösche Philosophen</h2>
-      <PNameInput
-        value={name}
-        onChange={(e) => {
-          handleName(e);
+    <div>
+      <Form
+        onSubmit={(e) => {
+          handleSubmit(e);
         }}
-      />
+      >
+        <BlockingMessage when={isBlocking} />
+        <h2>Lösche Philosophen</h2>
+        <PNameInput
+          value={name}
+          onChange={(e) => {
+            handleName(e);
+          }}
+        />
 
-      <InputButton
-        className="div_button"
-        onClick={(e) => handleButtonClick(e)}
-      />
-      <SubButton className="subButton" value="Lösche Philosophen" />
-    </Form>
+        <InputButton
+          className="div_button"
+          onClick={(e) => handleButtonClick(e)}
+        />
+        <SubButton className="subButton" value="Lösche Philosophen" />
+      </Form>
+      <Footer />
+    </div>
   );
 };
 

@@ -8,6 +8,7 @@ import { rHome, rMiscelleanous } from "../RoutesName";
 import BlockingMessage from "../Blocking";
 import NewPhilosopherDialog from "../Elements/NewPhilosopherDialog";
 import AltNewPhilosopherDialog from "../Elements/AltNewPhilosopherDialog";
+import Footer from "../Elements/Footer";
 
 export default function Philosophers() {
   const history = useHistory();
@@ -70,46 +71,49 @@ export default function Philosophers() {
 
   return (
     <div>
-      <div className="header_usp">
-        <BlockingMessage when={isBlocking} />
-        <h1>Philosophen</h1>
-        <div>
-          <p className="logout">
-            <Link to={rHome} onClick={handleLink}>
-              Logout
-            </Link>
-          </p>
+      <div className="container">
+        <div className="header_usp">
+          <BlockingMessage when={isBlocking} />
+          <h1>Philosophen</h1>
+          <div>
+            <p className="logout">
+              <Link to={rHome} onClick={handleLink}>
+                Logout
+              </Link>
+            </p>
+          </div>
+        </div>
+        {loading && <p>Loading...</p>}
+        <div className="gridPhilosophers">
+          {data &&
+            philosophers.map((philosopher) => (
+              <Philosopher
+                key={philosopher._id}
+                name={philosopher.name}
+                livedIn={philosopher.livedIn}
+                biographicalData={philosopher.biographicalData}
+                topics={philosopher.topics}
+                biography={philosopher.biography}
+                works={philosopher.works}
+                isOneClicked={isOneClicked}
+                setIsOneClicked={setIsOneClicked}
+                setIsBlocking={setIsBlocking}
+                setIsUsed={setIsUsed}
+                refetch={() => refetch()}
+              />
+            ))}
+        </div>
+        <div className="div_wlinks">
+          <div>
+            <p className="back">
+              <Link to={rMiscelleanous}>Zurück</Link>
+            </p>
+          </div>
+          <NewPhilosopherDialog />
+          {/* <AltNewPhilosopherDialog /> */}
         </div>
       </div>
-      {loading && <p>Loading...</p>}
-      <div className="gridPhilosophers">
-        {data &&
-          philosophers.map((philosopher) => (
-            <Philosopher
-              key={philosopher._id}
-              name={philosopher.name}
-              livedIn={philosopher.livedIn}
-              biographicalData={philosopher.biographicalData}
-              topics={philosopher.topics}
-              biography={philosopher.biography}
-              works={philosopher.works}
-              isOneClicked={isOneClicked}
-              setIsOneClicked={setIsOneClicked}
-              setIsBlocking={setIsBlocking}
-              setIsUsed={setIsUsed}
-              refetch={() => refetch()}
-            />
-          ))}
-      </div>
-      <div className="div_wlinks">
-        <div>
-          <p className="back">
-            <Link to={rMiscelleanous}>Zurück</Link>
-          </p>
-        </div>
-        <NewPhilosopherDialog />
-        {/* <AltNewPhilosopherDialog /> */}
-      </div>
+      <Footer />
     </div>
   );
 }

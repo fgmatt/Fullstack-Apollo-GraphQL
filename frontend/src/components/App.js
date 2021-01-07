@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./Home";
 import Login from "./Login";
 import NewLogin from "./NewLogin";
 import UserSpace from "./UserSpace";
@@ -17,6 +18,7 @@ import MemoryGame from "./MemoryGame";
 import NoMatch from "./NoMatch";
 import {
   rHome,
+  rLogin,
   rNewLogin,
   rUserSpace,
   rStartSite,
@@ -37,9 +39,12 @@ import "./style.css";
 function App() {
   return (
     <Router>
-      <div className="container">
+      <div className="">
         <Switch>
           <Route exact path={rHome}>
+            <Home />
+          </Route>
+          <Route path={rLogin}>
             <Login />
           </Route>
           <Route path={rNewLogin}>

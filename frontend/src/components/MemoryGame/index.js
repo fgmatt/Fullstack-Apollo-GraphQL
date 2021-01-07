@@ -10,6 +10,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { rHome, rMiscelleanous } from "../RoutesName";
 import { USERFINDBYID } from "../../graphQL/queries";
+import Footer from "../Elements/Footer";
 
 function DialogScore({ count }) {
   const [open, setOpen] = useState(false);
@@ -176,6 +177,7 @@ export default function MemoryGame() {
           <Link to={rMiscelleanous}>Zurück</Link>
         </p>
       </div>
+      <Footer />
     </div>
   );
 }

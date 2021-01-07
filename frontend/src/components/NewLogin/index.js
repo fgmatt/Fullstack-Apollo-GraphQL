@@ -6,6 +6,7 @@ import Form from "../Elements/Form";
 import { SubButton, InputButton } from "../Elements/Buttons";
 import Email from "../Elements/Email";
 import PasswordInput from "../Elements/Password";
+import Footer from "../Elements/Footer";
 import BlockingMessage from "../Blocking";
 import { rHome } from "../RoutesName";
 
@@ -51,33 +52,40 @@ function NewLogin() {
   }
 
   return (
-    <Form onSubmit={(e) => handleSubmit(e)}>
-      <BlockingMessage when={isBlocking} />
-      <h2>New Login</h2>
-      {loading && <p></p>}
-      {error && <p className="errorMessage">Email oder Passwort entspricht nicht den Anforderungen.</p>}
-      <Email value={email} onChange={(e) => handleChangeEmail(e)}>
-        E-Mail:
-      </Email>
-      <PasswordInput
-        name="password"
-        value={password}
-        onChange={(e) => handleChangePassword(e)}
-      >
-        Passwort:
-      </PasswordInput>
-      <PasswordInput
-        name="passwordb"
-        value={passwordb}
-        onChange={(e) => handleChangePasswordB(e)}
-      >
-        Passwort B:
-      </PasswordInput>
-      <div className="buttonBar">
-      <InputButton onClick={(e) => handleButtonClick(e)} />
-      <SubButton className="subButton" value="Neuer Benutzer" />
-      </div>
-    </Form>
+    <div>
+      <Form onSubmit={(e) => handleSubmit(e)}>
+        <BlockingMessage when={isBlocking} />
+        <h2>New Login</h2>
+        {loading && <p></p>}
+        {error && (
+          <p className="errorMessage">
+            Email oder Passwort entspricht nicht den Anforderungen.
+          </p>
+        )}
+        <Email value={email} onChange={(e) => handleChangeEmail(e)}>
+          E-Mail:
+        </Email>
+        <PasswordInput
+          name="password"
+          value={password}
+          onChange={(e) => handleChangePassword(e)}
+        >
+          Passwort:
+        </PasswordInput>
+        <PasswordInput
+          name="passwordb"
+          value={passwordb}
+          onChange={(e) => handleChangePasswordB(e)}
+        >
+          Passwort B:
+        </PasswordInput>
+        <div className="buttonBar">
+          <InputButton onClick={(e) => handleButtonClick(e)} />
+          <SubButton className="subButton" value="Neuer Benutzer" />
+        </div>
+      </Form>
+      <Footer />
+    </div>
   );
 }
 

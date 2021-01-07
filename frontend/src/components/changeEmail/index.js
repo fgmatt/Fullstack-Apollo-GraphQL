@@ -7,6 +7,7 @@ import Form from "../Elements/Form";
 import Email from "../Elements/Email";
 import PasswordInput from "../Elements/Password";
 import { SubButton, InputButton } from "../Elements/Buttons";
+import Footer from "../Elements/Footer";
 import BlockingMessage from "../Blocking";
 import { rHome, rUserData, rUserSpace } from "../RoutesName";
 
@@ -61,27 +62,32 @@ function ChangeEmail() {
   }
 
   return (
-    <Form onSubmit={(e) => handleSubmit(e)}>
-      <BlockingMessage when={isBlocking} />
-      <h2>Email-ändern</h2>
-      {loading && <p></p>}
-      {error && <p className="errorMessage">Email oder Passwort inkorrekt.</p>}
-      <Email value={email} onChange={(e) => handleChangeEmail(e)}>
-        Neue Email:
-      </Email>
-      <PasswordInput
-        name="password"
-        value={password}
-        onChange={(e) => handleChangePassword(e)}
-      >
-        {" "}
-        Passwort:
-      </PasswordInput>
-      <div className="buttonBar">
-        <InputButton onClick={(e) => handleQuitButton(e)} />
-        <SubButton className="div_button" />
-      </div>
-    </Form>
+    <div>
+      <Form onSubmit={(e) => handleSubmit(e)}>
+        <BlockingMessage when={isBlocking} />
+        <h2>Email-ändern</h2>
+        {loading && <p></p>}
+        {error && (
+          <p className="errorMessage">Email oder Passwort inkorrekt.</p>
+        )}
+        <Email value={email} onChange={(e) => handleChangeEmail(e)}>
+          Neue Email:
+        </Email>
+        <PasswordInput
+          name="password"
+          value={password}
+          onChange={(e) => handleChangePassword(e)}
+        >
+          {" "}
+          Passwort:
+        </PasswordInput>
+        <div className="buttonBar">
+          <InputButton onClick={(e) => handleQuitButton(e)} />
+          <SubButton className="div_button" />
+        </div>
+      </Form>
+      <Footer />
+    </div>
   );
 }
 

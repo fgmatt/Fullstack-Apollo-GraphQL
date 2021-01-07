@@ -19,6 +19,7 @@ import {
 } from "../Elements/Inputs";
 import SelectName from "../Elements/SelectName";
 import TextareaBiography from "../Elements/Textarea";
+import Footer from "../Elements/Footer";
 
 const ChangeScientist = () => {
   const history = useHistory();
@@ -112,57 +113,60 @@ const ChangeScientist = () => {
   }
 
   return (
-    <Form
-      onSubmit={(e) => {
-        handleSubmit(e);
-      }}
-    >
-      <BlockingMessage when={isBlocking} />
-      <h2>Ändere Wissenschaftler über Namen</h2>
-      {FetchAllScientists.loading && <p>Loading...</p>}
-      <SelectName
-        value={name}
-        onChange={(e) => {
-          handleName(e);
+    <div>
+      <Form
+        onSubmit={(e) => {
+          handleSubmit(e);
         }}
       >
-        {names}
-      </SelectName>
-      <LivedInInput
-        value={livedIn}
-        onChange={(e) => {
-          handleLivedIn(e);
-        }}
-      />
-      <BiographicalDataInput
-        value={biographicalData}
-        onChange={(e) => {
-          handleBiogracicalData(e);
-        }}
-      />
-      <TopicsInput
-        value={topics}
-        onChange={(e) => {
-          handleTopics(e);
-        }}
-      />
-      {/* <BiographyInput
+        <BlockingMessage when={isBlocking} />
+        <h2>Ändere Wissenschaftler über Namen</h2>
+        {FetchAllScientists.loading && <p>Loading...</p>}
+        <SelectName
+          value={name}
+          onChange={(e) => {
+            handleName(e);
+          }}
+        >
+          {names}
+        </SelectName>
+        <LivedInInput
+          value={livedIn}
+          onChange={(e) => {
+            handleLivedIn(e);
+          }}
+        />
+        <BiographicalDataInput
+          value={biographicalData}
+          onChange={(e) => {
+            handleBiogracicalData(e);
+          }}
+        />
+        <TopicsInput
+          value={topics}
+          onChange={(e) => {
+            handleTopics(e);
+          }}
+        />
+        {/* <BiographyInput
         value={biography}
         onChange={(e) => {
           handleBiography(e);
         }}
       /> */}
-      <TextareaBiography
-        value={biography}
-        onChange={(e) => {
-          handleBiography(e);
-        }}
-      />
-      <div className="buttonBar">
-        <InputButton onClick={(e) => handleButtonClick(e)} />
-        <SubButton value="Ändere Wissenschaftler" />
-      </div>
-    </Form>
+        <TextareaBiography
+          value={biography}
+          onChange={(e) => {
+            handleBiography(e);
+          }}
+        />
+        <div className="buttonBar">
+          <InputButton onClick={(e) => handleButtonClick(e)} />
+          <SubButton value="Ändere Wissenschaftler" />
+        </div>
+      </Form>
+      <Footer />
+    </div>
   );
 };
 

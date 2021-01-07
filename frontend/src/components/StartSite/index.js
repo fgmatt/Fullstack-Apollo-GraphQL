@@ -9,6 +9,7 @@ import {
 import { Link, useHistory } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import IconLegend from "../IconLegend";
+import Footer from "../Elements/Footer";
 import { rHome, rUserData, rScientists, rMiscelleanous } from "../RoutesName";
 import { USERFINDBYID } from "../../graphQL/queries";
 
@@ -75,69 +76,72 @@ function StartSite() {
 
   return (
     <div>
-      <div className="header_startsite">
-        <div className="div_icons_fauc">
-          <FontAwesomeIcon
-            className="icons_fauc"
-            icon={faUserCircle}
-            size="2x"
-            onClick={handleUserCircle}
-          />
-          <div className="div_userfindbyid">
-            {loading && <p>Loading...</p>}
-            {data && <p>{data.userfindById.email}</p>}
+      <div className="container">
+        <div className="header_startsite">
+          <div className="div_icons_fauc">
+            <FontAwesomeIcon
+              className="icons_fauc"
+              icon={faUserCircle}
+              size="2x"
+              onClick={handleUserCircle}
+            />
+            <div className="div_userfindbyid">
+              {loading && <p>Loading...</p>}
+              {data && <p>{data.userfindById.email}</p>}
+            </div>
+          </div>
+          <div>
+            <h1 id="title_startsite">Startseite</h1>
+          </div>
+          <div>
+            <p className="logout">
+              <Link onClick={handleLink} to="/">
+                Logout
+              </Link>
+            </p>
           </div>
         </div>
-        <div>
-          <h1 id="title_startsite">Startseite</h1>
-        </div>
-        <div>
-          <p className="logout">
-            <Link onClick={handleLink} to="/">
-              Logout
-            </Link>
-          </p>
+        <div className="icons">
+          <FontAwesomeIcon
+            className="icons_fa"
+            icon={faHouseUser}
+            size="4x"
+            onClick={handleHouseUser}
+            onMouseOver={handleMouseOverHU}
+            onMouseLeave={handleMouseLeaveHU}
+          />
+          <FontAwesomeIcon
+            className="icons_fa"
+            icon={faFlask}
+            size="4x"
+            onClick={handleFlask}
+            onMouseOver={handleMouseOverF}
+            onMouseLeave={handleMouseLeaveF}
+          />
+          <FontAwesomeIcon
+            className="icons_fa"
+            icon={faStickyNote}
+            size="4x"
+            onClick={handleStickyNote}
+            onMouseOver={handleMouseOverSN}
+            onMouseLeave={handleMouseLeaveSN}
+          />
+          {mouseoverHU && (
+            <IconLegend className="iconLegend iconLegendH">
+              Benutzerdaten
+            </IconLegend>
+          )}
+          {mouseoverF && (
+            <IconLegend className="iconLegend iconLegendS">
+              Wissenschaftler
+            </IconLegend>
+          )}
+          {mouseoverSN && (
+            <IconLegend className="iconLegend iconLegendW">Weiteres</IconLegend>
+          )}
         </div>
       </div>
-      <div className="icons">
-        <FontAwesomeIcon
-          className="icons_fa"
-          icon={faHouseUser}
-          size="4x"
-          onClick={handleHouseUser}
-          onMouseOver={handleMouseOverHU}
-          onMouseLeave={handleMouseLeaveHU}
-        />
-        <FontAwesomeIcon
-          className="icons_fa"
-          icon={faFlask}
-          size="4x"
-          onClick={handleFlask}
-          onMouseOver={handleMouseOverF}
-          onMouseLeave={handleMouseLeaveF}
-        />
-        <FontAwesomeIcon
-          className="icons_fa"
-          icon={faStickyNote}
-          size="4x"
-          onClick={handleStickyNote}
-          onMouseOver={handleMouseOverSN}
-          onMouseLeave={handleMouseLeaveSN}
-        />
-        {mouseoverHU && (
-          <IconLegend className="iconLegend iconLegendH">
-            Benutzerdaten
-          </IconLegend>
-        )}
-        {mouseoverF && (
-          <IconLegend className="iconLegend iconLegendS">
-            Wissenschaftler
-          </IconLegend>
-        )}
-        {mouseoverSN && (
-          <IconLegend className="iconLegend iconLegendW">Weiteres</IconLegend>
-        )}
-      </div>
+      <Footer />
     </div>
   );
 }

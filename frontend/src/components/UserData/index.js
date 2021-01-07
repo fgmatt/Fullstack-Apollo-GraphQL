@@ -3,6 +3,7 @@ import { useHistory, Link } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { USERFINDBYID } from "../../graphQL/queries";
 import { InputButton } from "../Elements/Buttons";
+import Footer from "../Elements/Footer";
 import { rHome, rEmail, rStartSite, rPassword } from "../RoutesName";
 
 function UserData() {
@@ -32,33 +33,36 @@ function UserData() {
   }
   return (
     <div>
-      <div className="header_usp">
-        <div className="div_userdata">
-          <h1>Benutzerdaten</h1>
+      <div className="container">
+        <div className="header_usp">
+          <div className="div_userdata">
+            <h1>Benutzerdaten</h1>
+          </div>
+          <div>
+            <p className="logout">
+              <Link to={rHome} onClick={handleLink}>
+                Logout
+              </Link>
+            </p>
+          </div>
         </div>
-        <div>
-          <p className="logout">
-            <Link to={rHome} onClick={handleLink}>
-              Logout
-            </Link>
+        <div className="div_udlinks">
+          <p className="linkData">
+            <Link to={rStartSite}>Zurück</Link>
           </p>
+          <InputButton
+            className="buttonData div_button"
+            onClick={handleEmail}
+            value="Email ändern"
+          />
+          <InputButton
+            className="buttonData div_button"
+            onClick={handlePassword}
+            value="Passwort ändern"
+          />
         </div>
       </div>
-      <div className="div_udlinks">
-        <p className="linkData">
-          <Link to={rStartSite}>Zurück</Link>
-        </p>
-        <InputButton
-          className="buttonData div_button"
-          onClick={handleEmail}
-          value="Email ändern"
-        />
-        <InputButton
-          className="buttonData div_button"
-          onClick={handlePassword}
-          value="Passwort ändern"
-        />
-      </div>
+      <Footer />
     </div>
   );
 }

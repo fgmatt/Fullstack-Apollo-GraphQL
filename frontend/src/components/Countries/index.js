@@ -5,6 +5,7 @@ import { FETCH_COUNTRY, USERFINDBYID } from "../../graphQL/queries";
 import { rHome, rMiscelleanous } from "../RoutesName";
 import { SearchInput } from "../Elements/Inputs";
 import BlockingMessage from "../Blocking";
+import Footer from "../Elements/Footer";
 
 const Countries = () => {
   const history = useHistory();
@@ -122,6 +123,7 @@ const Countries = () => {
           <Link to={rMiscelleanous}>Zurück</Link>
         </p>
       </div>
+      <Footer />
     </div>
   );
 };

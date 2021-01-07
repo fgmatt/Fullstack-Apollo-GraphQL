@@ -6,6 +6,7 @@ import { CHANGE_PASSWORD } from "../../graphQL/mutations";
 import Form from "../Elements/Form";
 import PasswordInput from "../Elements/Password";
 import { SubButton, InputButton } from "../Elements/Buttons";
+import Footer from "../Elements/Footer";
 import BlockingMessage from "../Blocking";
 import { rHome, rUserData } from "../RoutesName";
 
@@ -76,39 +77,42 @@ function ChangePassword() {
   }
 
   return (
-    <Form onSubmit={(e) => handleSubmit(e)}>
-      <BlockingMessage when={isBlocking} />
-      <h2>Passwort ändern:</h2>
-      {loading && <p></p>}
-      {error && <p className="errorMessage">Passwort inkorrekt.</p>}
-      <PasswordInput
-        name="passwordv"
-        value={passwordv}
-        onChange={(e) => handleChangePasswordv(e)}
-      >
-        Altes Passwort:
-      </PasswordInput>
-      <PasswordInput
-        name="password"
-        value={password}
-        onChange={(e) => handleChangePassword(e)}
-      >
-        {" "}
-        Neues Passwort:{" "}
-      </PasswordInput>
-      <PasswordInput
-        name="passwordb"
-        value={passwordb}
-        onChange={(e) => handleChangePasswordb(e)}
-      >
-        {" "}
-        Passwort Bestätigen:{" "}
-      </PasswordInput>
-      <div className="buttonBar">
-        <InputButton onClick={(e) => handleQuitButton(e)} />
-        <SubButton className="div_button" />
-      </div>
-    </Form>
+    <div>
+      <Form onSubmit={(e) => handleSubmit(e)}>
+        <BlockingMessage when={isBlocking} />
+        <h2>Passwort ändern:</h2>
+        {loading && <p></p>}
+        {error && <p className="errorMessage">Passwort inkorrekt.</p>}
+        <PasswordInput
+          name="passwordv"
+          value={passwordv}
+          onChange={(e) => handleChangePasswordv(e)}
+        >
+          Altes Passwort:
+        </PasswordInput>
+        <PasswordInput
+          name="password"
+          value={password}
+          onChange={(e) => handleChangePassword(e)}
+        >
+          {" "}
+          Neues Passwort:{" "}
+        </PasswordInput>
+        <PasswordInput
+          name="passwordb"
+          value={passwordb}
+          onChange={(e) => handleChangePasswordb(e)}
+        >
+          {" "}
+          Passwort Bestätigen:{" "}
+        </PasswordInput>
+        <div className="buttonBar">
+          <InputButton onClick={(e) => handleQuitButton(e)} />
+          <SubButton className="div_button" />
+        </div>
+      </Form>
+      <Footer />
+    </div>
   );
 }
 
