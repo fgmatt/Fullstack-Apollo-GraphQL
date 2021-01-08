@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation, useQuery } from "@apollo/react-hooks";
 import { useHistory } from "react-router-dom";
 import Form from "../Elements/Form";
 import { SubButton, InputButton } from "../Elements/Buttons";
 import BlockingMessage from "../Blocking";
+import { USERFINDBYID } from "../../graphQL/queries";
 import { CREATE_PHILOSOPHER } from "../../graphQL/mutations";
 import { rHome, rScientists } from "../RoutesName";
 import {

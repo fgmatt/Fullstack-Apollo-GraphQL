@@ -4,7 +4,7 @@
   z-index: unset;
 }
 
-cont .loginButton {
+.loginButton {
   float: right;
   margin-top: 10px;
 }

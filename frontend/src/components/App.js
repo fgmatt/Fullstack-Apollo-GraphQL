@@ -1,16 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Home";
-import Login from "./Login";
-import NewLogin from "./NewLogin";
+import { Login, NewLogin, ChangeEmail, ChangePassword } from "./User";
 import UserSpace from "./UserSpace";
 import StartSite from "./StartSite";
-import ChangeEmail from "./ChangeEmail";
-import ChangePassword from "./ChangePassword";
-import Scientists from "./Scientists";
-import NewScientist from "./NewScientist";
-import ChangeScientist from "./ChangeScientist";
-import Philosophers from "./Philosophers";
+import {
+  ScientistsProtected,
+  ScientistsPublic,
+  NewScientist,
+  ChangeScientist,
+} from "./Scientists";
+import { PhilosophersProtected, PhilosophersPublic } from "./Philosophers";
 import UserData from "./UserData";
 import Miscellaneous from "./Miscellaneous";
 import Countries from "./Countries";
@@ -63,7 +63,7 @@ function App() {
             <ChangeScientist />
           </Route>
           <Route path={rScientists}>
-            <Scientists />
+            <ScientistsProtected />
           </Route>
           <Route path={rUserSpace}>
             <UserSpace />
@@ -78,7 +78,7 @@ function App() {
             <Countries />
           </Route>
           <Route path={rPhilosophers}>
-            <Philosophers />
+            <PhilosophersProtected />
           </Route>
           <Route path={rMiscelleanous}>
             <Miscellaneous />
