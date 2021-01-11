@@ -24,12 +24,14 @@ import {
   rStartSite,
   rUserData,
   rScientists,
+  rScientistsPublic,
   rNewScientist,
   rChangeScientist,
   rEmail,
   rPassword,
   rMiscelleanous,
   rPhilosophers,
+  rPhilosophersPublic,
   rCountries,
   rMemoryGames,
   rError,
@@ -43,6 +45,12 @@ function App() {
         <Switch>
           <Route exact path={rHome}>
             <Home />
+          </Route>
+          <Route path={rScientistsPublic}>
+            <ScientistsPublic />
+          </Route>
+          <Route path={rPhilosophersPublic}>
+            <PhilosophersPublic />
           </Route>
           <Route path={rLogin}>
             <Login />

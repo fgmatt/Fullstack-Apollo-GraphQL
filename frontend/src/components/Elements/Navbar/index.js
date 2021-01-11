@@ -5,10 +5,10 @@ import { faAlignJustify as AlignJustify } from "@fortawesome/free-solid-svg-icon
 import {
   rLogin,
   rHome,
-  rPhilosophers,
-  rCountries,
-  rScientists,
-  rMemoryGames,
+  rPhilosophersPublic,
+  rCountriesPublic,
+  rScientistsPublic,
+  rMemoryGamesPublic,
 } from "../../RoutesName";
 import { InputButton } from "../Buttons";
 
@@ -51,16 +51,16 @@ export default function Navbar() {
             <Link to={rHome}>Home</Link>
           </p>
           <p>
-            <Link to={rCountries}>Länder</Link>
+            <Link to={rCountriesPublic}>Länder</Link>
           </p>
           <p>
-            <Link to={rScientists}>Wissenschaftler</Link>
+            <Link to={rScientistsPublic}>Wissenschaftler</Link>
           </p>
           <p>
-            <Link to={rPhilosophers}>Philosophen</Link>
+            <Link to={rPhilosophersPublic}>Philosophen</Link>
           </p>
           <p>
-            <Link to={rMemoryGames}>Gedächtnisspiel</Link>
+            <Link to={rMemoryGamesPublic}>Gedächtnisspiel</Link>
           </p>
         </div>
       )}

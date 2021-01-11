@@ -14,6 +14,7 @@ import {
 } from "../../../graphQL/mutations";
 
 const Scientist = ({
+  isPublic,
   name,
   biographicalData,
   livedIn,
@@ -86,12 +87,12 @@ const Scientist = ({
     variables: { userId: userIdSession, name, biography: vBiography },
   });
 
-  const [
-    deleteScientistByName,
-    resDeleteScientistByName,
-  ] = useMutation(DELETE_SCIENTIST_BY_NAME, {
-    variables: { userId: userIdSession, name },
-  });
+  const [deleteScientistByName, resDeleteScientistByName] = useMutation(
+    DELETE_SCIENTIST_BY_NAME,
+    {
+      variables: { userId: userIdSession, name },
+    }
+  );
 
   function handleClickBlock() {
     setIsOneClicked(true);
@@ -254,6 +255,26 @@ const Scientist = ({
 
   if (isDeleted) {
     return null;
+  } else if (isPublic) {
+    return (
+      <div className="scientist">
+        <div>
+          <p id="scientistName">{name}</p>
+        </div>
+        <div>
+          <p id="scientistBiographicalData">{biographicalData}</p>
+        </div>
+        <div>
+          <p id="scientistLivedIn">{livedIn}</p>
+        </div>
+        <div>
+          <p id="scientistTopics">{topics}</p>
+        </div>
+        <div>
+          <p id="scientistBiography">{biography}</p>
+        </div>
+      </div>
+    );
   } else {
     return (
       <div className="scientist">

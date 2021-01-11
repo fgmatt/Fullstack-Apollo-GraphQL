@@ -101,6 +101,7 @@ export default function ScientistsProtected() {
           {data &&
             scientists.map((scientist) => (
               <Scientist
+                isPublic={false}
                 key={scientist._id}
                 name={scientist.name}
                 livedIn={scientist.livedIn}

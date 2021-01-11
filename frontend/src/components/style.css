@@ -206,6 +206,10 @@ form {
   grid-auto-rows: auto;
 }
 
+.gridPublic {
+  padding: 1em;
+}
+
 .gridPhilosophers {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
