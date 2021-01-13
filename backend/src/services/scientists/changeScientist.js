@@ -34,15 +34,20 @@ const changeScientist = async (args) => {
         throw new UserInputError(
             "??? or 000 for numbers is a placeholder for an empty input"
         );
-    } else if (!livedIn) {
+    }
+    if (!livedIn) {
         livedIn = "???";
-    } else if (!topics) {
+    }
+    if (!topics) {
         topics = "???";
-    } else if (!biographicalData) {
+    }
+    if (!biographicalData) {
         biographicalData = "???";
-    } else if (!biography) {
+    }
+    if (!biography) {
         biography = "???";
-    } else if (
+    }
+    if (
         !(
             livedIn === "???" ||
             topics === "???" ||
@@ -52,11 +57,14 @@ const changeScientist = async (args) => {
     ) {
         if (livedIn === scientist.livedIn) {
             console.warn("The same lived as before");
-        } else if (topics === scientist.topics) {
+        }
+        if (topics === scientist.topics) {
             console.warn("The same topic as before");
-        } else if (biography === scientist.biography) {
+        }
+        if (biography === scientist.biography) {
             console.warn("The same biography as before");
-        } else if (biographicalData === scientist.biographicalData) {
+        }
+        if (biographicalData === scientist.biographicalData) {
             console.warn("The same biographicalData as before");
         }
     }

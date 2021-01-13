@@ -32,13 +32,17 @@ const createScientist = async (args) => {
         biographicalData === "???"
     ) {
         throw new UserInputError("??? is a placeholder for an empty input");
-    } else if (!livedIn) {
+    }
+    if (!livedIn) {
         livedIn = "???";
-    } else if (!topics) {
+    }
+    if (!topics) {
         topics = "???";
-    } else if (!biography) {
+    }
+    if (!biography) {
         biography = "???";
-    } else if (!biographicalData) {
+    }
+    if (!biographicalData) {
         biographicalData = "???";
     }
 

@@ -34,17 +34,24 @@ const changePhilosopher = async (args) => {
         works === "???"
     ) {
         throw new UserInputError("??? is a placeholder for an empty input");
-    } else if (!livedIn) {
+    }
+
+    if (!livedIn) {
         livedIn = "???";
-    } else if (!topics) {
+    }
+    if (!topics) {
         topics = "???";
-    } else if (!biographicalData) {
+    }
+    if (!biographicalData) {
         biographicalData = "???";
-    } else if (!biography) {
+    }
+    if (!biography) {
         biography = "???";
-    } else if (!works) {
+    }
+    if (!works) {
         works = "???";
-    } else if (
+    }
+    if (
         !(
             livedIn === "???" ||
             topics === "???" ||
@@ -55,13 +62,17 @@ const changePhilosopher = async (args) => {
     ) {
         if (livedIn === philosopher.livedIn) {
             console.warn("The same lived as before");
-        } else if (topics === philosopher.topics) {
+        }
+        if (topics === philosopher.topics) {
             console.warn("The same topic as before");
-        } else if (biography === philosopher.biography) {
+        }
+        if (biography === philosopher.biography) {
             console.warn("The same biography as before");
-        } else if (biographicalData === philosopher.biographicalData) {
+        }
+        if (biographicalData === philosopher.biographicalData) {
             console.warn("The same biographicalData as before");
-        } else if (works === philosopher.works) {
+        }
+        if (works === philosopher.works) {
             console.warn("The same works as before");
         }
     }
