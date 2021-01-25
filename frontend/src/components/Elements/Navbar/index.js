@@ -17,8 +17,10 @@ import { InputButton } from "../Buttons";
 export default function Navbar() {
   const history = useHistory();
 
-  const [isAlignJustifyClicked, setIsAlignJustifyClicked] = useState(false);
-  const [counter, setCounter] = useState(0);
+  const lottieRef = useRef(null);
+
+  //const [isAlignJustifyClicked, setIsAlignJustifyClicked] = useState(false);
+  const [isActive, setIsActive] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
 
   // function handleAlignJustifyClick(event) {
@@ -29,13 +31,24 @@ export default function Navbar() {
   //   }
   // }
 
-  function handleIsStopped() {
-    if (!isPaused) {
-      setIsPaused(true);
-    } else {
-      setIsPaused(false);
-    }
-  }
+  console.log(isPaused);
+
+  // function handleIsActive() {
+  //   if (isActive) {
+  //     setIsActive(false);
+  //   } else {
+  //     setIsActive(true);
+  //   }
+  //   return isActive;
+  // }
+
+  // function handleIsStopped() {
+  //   if (!isPaused) {
+  //     setIsPaused(true);
+  //   } else {
+  //     setIsPaused(false);
+  //   }
+  // }
 
   function handleButtonClickLogin(event) {
     event.preventDefault();
@@ -43,7 +56,7 @@ export default function Navbar() {
   }
 
   const defaultOptions = {
-    loop: false,
+    loop: true,
     autoplay: false,
     animationData,
     rendererSettings: {
@@ -52,9 +65,25 @@ export default function Navbar() {
     initialSegment: [0, 38],
   };
 
-  // const lottieRef = useRef();
+  const eventListeners = [
+    // {
+    //   eventName: "loopComplete",
+    //   callback: () => handleIsStopped(),
+    // },
+    // {
+    //   eventName: "loopComplete",
+    //   callback: () => handleIsActive(),
+    // },
+  ];
 
-  // lottieRef.current.setDirection(-1);
+  // console.log(isActive);
+
+  console.log(lottieRef.current);
+
+  if (lottieRef.current) {
+    lottieRef.current.setDirection(-1);
+    console.log(lottieRef.current);
+  }
 
   return (
     <div>
@@ -67,12 +96,12 @@ export default function Navbar() {
         /> */}
         <Lottie
           options={defaultOptions}
-          // lottieRef={lottieRef}
+          lottieRef={lottieRef}
           heigth={60}
           width={60}
           style={{ margin: 0, float: "left" }}
           isPaused={isPaused}
-          onClick={() => handleIsStopped()}
+          eventListeners={eventListeners}
         />
         <InputButton
           className="loginButton"
@@ -81,7 +110,7 @@ export default function Navbar() {
         />
       </div>
       {
-        /*isAlignJustifyClicked*/ null && (
+        /*isAlignJustifyClicked*/ isActive && (
           <div className="navLinks">
             <p>
               <Link to={rHome}>Home</Link>
