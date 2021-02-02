@@ -1,7 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useHistory, Link } from "react-router-dom";
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Lottie from "react-lottie";
+import Lottie from "lottie-react";
 //import { faAlignJustify as AlignJustify } from "@fortawesome/free-solid-svg-icons";
 import animationData from "../../../lotties/burger-menu.json";
 import {
@@ -17,11 +17,13 @@ import { InputButton } from "../Buttons";
 export default function Navbar() {
   const history = useHistory();
 
-  const lottieRef = useRef(null);
+  const lottieRef = useRef();
 
   //const [isAlignJustifyClicked, setIsAlignJustifyClicked] = useState(false);
-  const [isActive, setIsActive] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [blocked, setBlocked] = useState(true);
+  const [isUsed, setIsUsed] = useState(false);
+  const [counter, setCounter] = useState(0);
 
   // function handleAlignJustifyClick(event) {
   //   if (!isAlignJustifyClicked) {
@@ -31,59 +33,36 @@ export default function Navbar() {
   //   }
   // }
 
-  console.log(isPaused);
+  function handleIsPlaying() {
+    setIsPlaying(true);
+  }
 
-  // function handleIsActive() {
-  //   if (isActive) {
-  //     setIsActive(false);
-  //   } else {
-  //     setIsActive(true);
-  //   }
-  //   return isActive;
-  // }
+  function handleEnterFrame() {
+    setCounter(counter + 1);
+    console.log(counter);
+  }
 
-  // function handleIsStopped() {
-  //   if (!isPaused) {
-  //     setIsPaused(true);
-  //   } else {
-  //     setIsPaused(false);
-  //   }
-  // }
+  function handleLoopComplete() {
+    setCounter(0);
+  }
 
   function handleButtonClickLogin(event) {
     event.preventDefault();
     history.push(rLogin);
   }
 
-  const defaultOptions = {
-    loop: true,
-    autoplay: false,
-    animationData,
-    rendererSettings: {
-      preserveAspektRatio: "xMidYMid slice",
-    },
-    initialSegment: [0, 38],
-  };
+  useEffect(() => {
+    if (isPlaying) {
+      lottieRef.current.play();
+    }
 
-  const eventListeners = [
-    // {
-    //   eventName: "loopComplete",
-    //   callback: () => handleIsStopped(),
-    // },
-    // {
-    //   eventName: "loopComplete",
-    //   callback: () => handleIsActive(),
-    // },
-  ];
+    if (counter === 80 || (counter === 0 && !blocked)) {
+      setBlocked(true);
+      lottieRef.current.pause();
+    }
+  });
 
-  // console.log(isActive);
-
-  console.log(lottieRef.current);
-
-  if (lottieRef.current) {
-    lottieRef.current.setDirection(-1);
-    console.log(lottieRef.current);
-  }
+  const style = { heigth: 60, width: 60, margin: 0, float: "left" };
 
   return (
     <div>
@@ -94,15 +73,18 @@ export default function Navbar() {
           size="2x"
           onClick={(e) => handleAlignJustifyClick(e)}
         /> */}
-        <Lottie
-          options={defaultOptions}
-          lottieRef={lottieRef}
-          heigth={60}
-          width={60}
-          style={{ margin: 0, float: "left" }}
-          isPaused={isPaused}
-          eventListeners={eventListeners}
-        />
+        <div style={style} onClick={() => handleIsPlaying()}>
+          {" "}
+          <Lottie
+            animationData={animationData}
+            autoplay={false}
+            loop={true}
+            onEnterFrame={() => handleEnterFrame()}
+            onLoopComplete={() => handleLoopComplete()}
+            lottieRef={lottieRef}
+            style={style}
+          />
+        </div>
         <InputButton
           className="loginButton"
           value="Login"
@@ -110,7 +92,7 @@ export default function Navbar() {
         />
       </div>
       {
-        /*isAlignJustifyClicked*/ isActive && (
+        /*isAlignJustifyClicked*/ isPlaying && (
           <div className="navLinks">
             <p>
               <Link to={rHome}>Home</Link>
