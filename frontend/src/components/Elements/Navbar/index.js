@@ -20,9 +20,11 @@ export default function Navbar() {
   const lottieRef = useRef();
 
   //const [isAlignJustifyClicked, setIsAlignJustifyClicked] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [blocked, setBlocked] = useState(true);
-  const [isUsed, setIsUsed] = useState(false);
+  const [isBlocking, setIsBlocking] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
+  const [hasPaused, setHasPaused] = useState(false);
   const [counter, setCounter] = useState(0);
 
   // function handleAlignJustifyClick(event) {
@@ -34,12 +36,20 @@ export default function Navbar() {
   // }
 
   function handleIsPlaying() {
-    setIsPlaying(true);
+    if (!isBlocking) {
+      if (!isOpen) {
+        setIsOpen(true);
+      } else {
+        setIsOpen(false);
+      }
+      setIsPlaying(true);
+      setHasPaused(false);
+      setIsBlocking(true);
+    }
   }
 
   function handleEnterFrame() {
     setCounter(counter + 1);
-    console.log(counter);
   }
 
   function handleLoopComplete() {
@@ -54,15 +64,22 @@ export default function Navbar() {
   useEffect(() => {
     if (isPlaying) {
       lottieRef.current.play();
+      lottieRef.current.setSpeed(2);
     }
 
-    if (counter === 80 || (counter === 0 && !blocked)) {
-      setBlocked(true);
+    if ((counter === 40 && !hasPaused) || (counter === 0 && hasStarted)) {
       lottieRef.current.pause();
+
+      setCounter(counter + 1);
+
+      setIsPlaying(false);
+      setHasPaused(true);
+      setHasStarted(true);
+      setIsBlocking(false);
     }
   });
 
-  const style = { heigth: 60, width: 60, margin: 0, float: "left" };
+  const style = { heigth: 60, width: 60, margin: "0 0 0 -6px", float: "left" };
 
   return (
     <div>
@@ -92,7 +109,7 @@ export default function Navbar() {
         />
       </div>
       {
-        /*isAlignJustifyClicked*/ isPlaying && (
+        /*isAlignJustifyClicked*/ isOpen && (
           <div className="navLinks">
             <p>
               <Link to={rHome}>Home</Link>
