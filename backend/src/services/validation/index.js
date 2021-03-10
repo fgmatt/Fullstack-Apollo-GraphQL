@@ -35,7 +35,7 @@ const passwordValidation = (p) => {
     }
 
     if (vPasswordS === null) {
-        throw new serInputError("password must have a special character");
+        throw new UserInputError("password must have a special character");
     }
 };
 
