@@ -1,5 +1,4 @@
 import express from "express";
-import bodyParser from "body-parser";
 import cors from "cors";
 import helmet from "helmet";
 import hpp from "hpp";
@@ -18,7 +17,7 @@ const limiter = rateLimit({
     max: 100,
 });
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(cors());
 app.use(helmet());
 app.use(hpp());
